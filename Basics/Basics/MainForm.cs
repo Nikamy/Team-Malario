@@ -12,11 +12,17 @@ namespace Basics
 {
     public partial class MainForm : Form
     {
-        int ix0 = 0, iy0 = 400, ix1, iy1, ixMMultiplier0 = 4;
+        int ix0 = 0, iy0 = 400, ix1, iy1, ixMMultiplier0 = 4, itJump0 = 0;
+            bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false;
+
+        
+
         public MainForm()
         {
             InitializeComponent();
         }
+
+        
 
         /// <summary>
         /// Handles the painting on the MainForm.
@@ -223,27 +229,86 @@ namespace Basics
         {
 
         }
+        private void MMovement_Check_Tick(object sender, EventArgs e)
+        {
+            
+            Timer tJump0 = new Timer();
+            if (M_Right == true)
+            {
+                ix0 = ix0 + 2;
+                this.Invalidate();
+
+            }
+            if(M_Left == true && ix0 > 0)
+            {
+                ix0 = ix0 - 2;
+                this.Invalidate();
+            }
+            if (M_Jump == true)
+            {
+                
+                tJump0.Interval = 1;
+                tJump0.Tick += new EventHandler(MJump_1Bit_Up);
+                tJump0.Start();
+                itJump0 = 0;
+                
+                
+                
+            
+            }
+        }
+        private void MJump_1Bit_Up(object sender, EventArgs e)
+        {
+            if (itJump0 < 100)
+            {
+                iy0--;
+                itJump0++;
+                this.Invalidate();
+            }
+        }
+        private void MJump_1Bit_Down(object sender, EventArgs e)
+        {
+            if (itJump0 < 100)
+            {
+                iy0++;
+                itJump0++;
+                this.Invalidate();
+            }
+        }
+        private void TJump0_Tick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
                     switch (e.KeyCode)
                     {
                         case Keys.D:
-                    do
-                    {
-                        ix0 = ix0 + 1;
-                        this.Invalidate();
-                    } while (e.KeyCode != Keys.D);
-                            ix0 = ix0 +2;
+                    M_Right = true;
                             break;
                         case Keys.A:
-                            if (ix0 > 0){ix0 = ix0 -2;}
+                    M_Left = true;
                             break;
-                        default:
-                        case Keys.Z:
+                        case Keys.W:
+                    M_Jump = true;
                             break;
                     }
-            this.Invalidate();
+        }
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D:
+                    M_Right = false;
+                    break;
+                case Keys.A:
+                    M_Left = false;
+                    break;
+                case Keys.W:
+                    M_Jump = false;
+                    break;
+            }
         }
     }
 }

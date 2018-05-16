@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.MMovement_Check = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // MMovement_Check
+            // 
+            this.MMovement_Check.Enabled = true;
+            this.MMovement_Check.Interval = 1;
+            this.MMovement_Check.Tick += new System.EventHandler(this.MMovement_Check_Tick);
             // 
             // MainForm
             // 
@@ -43,11 +51,14 @@
             this.Text = "GDI+ Sample";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        public System.Windows.Forms.Timer MMovement_Check;
     }
 }
 
