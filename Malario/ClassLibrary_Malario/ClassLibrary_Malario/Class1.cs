@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace ClassLibrary_Malario
 {
     public class Class1
     {

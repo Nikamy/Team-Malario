@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.MMovement_Check = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // MMovement_Check
@@ -38,12 +39,21 @@
             this.MMovement_Check.Interval = 1;
             this.MMovement_Check.Tick += new System.EventHandler(this.MMovement_Check_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(95, 203);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 112);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(464, 441);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
@@ -59,6 +69,7 @@
         #endregion
 
         public System.Windows.Forms.Timer MMovement_Check;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

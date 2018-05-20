@@ -44,14 +44,15 @@ namespace Basics
             Pen pen = new Pen(PenColor);
             Rectangle Bit = new Rectangle(ix1, iy1, ixMMultiplier0, ixMMultiplier0);
             Graphics formGraphics;
-            formGraphics = this.CreateGraphics();
+            formGraphics = CreateGraphics();
 
             graphics.DrawRectangle(pen, Bit);
             formGraphics.FillRectangle(Brush, Bit);
         }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
-
-
+        }
         protected void Malario_Child_Standing_Right(ref Graphics graphics,ref int ix0, ref int iy0,ref int ixMMultiplier0)
         {
             ix1 = ix0;
