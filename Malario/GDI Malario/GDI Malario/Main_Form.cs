@@ -18,6 +18,10 @@ namespace GDI_Malario
         {
             InitializeComponent();
         }
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void Main_Form_KeyDown(object sender, KeyEventArgs e)
         {
@@ -37,7 +41,6 @@ namespace GDI_Malario
                     break;
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (M_Right == true)
@@ -73,10 +76,7 @@ namespace GDI_Malario
                     break;
             }
         }
-        private void Main_Form_Load(object sender, EventArgs e)
-        {
-            
-        }
+
         private void Panel_Malario_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;

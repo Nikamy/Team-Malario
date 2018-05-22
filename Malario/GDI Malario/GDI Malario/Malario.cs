@@ -184,5 +184,26 @@ namespace GDI_Malario
             grundmethoden.malen_Bit(ref graphics, ref  x_Coordinate1, ref  y_Coordinate1, ref grafikfarbe, ref stiftfarbe, ref  x_Bit_Multiplier0, ref  y_Bit_Multiplier0);
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Panel_Malario
+            // 
+            this.Panel_Malario.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Malario_Paint);
+            // 
+            // Malario
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(464, 441);
+            this.Name = "Malario";
+            this.ResumeLayout(false);
+
+        }
+
+        private void Panel_Malario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
