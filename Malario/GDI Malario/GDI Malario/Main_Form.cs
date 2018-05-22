@@ -12,8 +12,8 @@ namespace GDI_Malario
 {
     public partial class Main_Form : Form
     {
-        int x_Coorinate_Malario;
         bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false;
+        int anziehungskraft, anziehungskaft_Wert = 15;
         public Main_Form()
         {
             InitializeComponent();
@@ -30,7 +30,10 @@ namespace GDI_Malario
                     M_Left = true;
                     break;
                 case Keys.W:
-                    M_Jump = true;
+                    if (M_Jump != true && M_Crouch != true)
+                    {
+                        M_Jump = true;
+                    }
                     break;
             }
         }
@@ -39,12 +42,24 @@ namespace GDI_Malario
         {
             if (M_Right == true)
             {
-                Panel_Malario.Left += 5;
+                Panel_Malario.Left += 4;
             }
             if (M_Left == true)
             {
-                Panel_Malario.Left -= 5;
+                Panel_Malario.Left -= 4;
             }
+            if(M_Jump == true)
+            {
+                Panel_Malario.Top -= anziehungskraft;
+                anziehungskraft -= 1;
+            }
+            if(Panel_Malario.Height + Panel_Malario.Top >= Panel_Game.Height)
+            {
+                Panel_Malario.Top = Panel_Game.Height - Panel_Malario.Height;
+                M_Jump = false;
+                anziehungskraft = anziehungskaft_Wert;
+            }
+             
         }
         private void Main_Form_KeyUp(object sender, KeyEventArgs e)
         {
@@ -55,9 +70,6 @@ namespace GDI_Malario
                     break;
                 case Keys.A:
                     M_Left = false;
-                    break;
-                case Keys.W:
-                    M_Jump = false;
                     break;
             }
         }
@@ -74,7 +86,5 @@ namespace GDI_Malario
             Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
             //Panel_Malario.Refresh();
         }
-
-        
     }
 }
