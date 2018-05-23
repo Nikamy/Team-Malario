@@ -183,7 +183,6 @@ namespace GDI_Malario
             x_Pos = x_Pos + x_Bit_Multiplier0;
             grundmethoden.malen_Bit(ref graphics, ref x_Pos, ref y_Pos, ref füllfarbe, ref stiftfarbe, ref x_Bit_Multiplier0, ref y_Bit_Multiplier0);
         }
-
         private void InitializeComponent()
         {
             this.SuspendLayout();
@@ -200,7 +199,6 @@ namespace GDI_Malario
             this.ResumeLayout(false);
 
         }
-
         private void Panel_Malario_Paint(object sender, PaintEventArgs e)
         {
 

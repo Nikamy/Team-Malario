@@ -12,14 +12,13 @@ namespace GDI_Malario
 {
     class Level_Blöcke : Grundmethoden
     {
-        public static void setzen_Boden(ref int x_Coordinate_PanelG)
+        public void setzen_Boden(Panel panel)
         {
-            int y_Coordinate_PanelG = 489, x_Panel_Size = 24, y_Panel_Size = 24 * 2;
+            int x_Coordinate_PanelG = 214;
+            int y_Coordinate_PanelG = 309, x_Panel_Size = 24, y_Panel_Size = 24 * 2;
             string Panel_Name = "Panel_Boden_";
             Color Hintergrundfarbe = Color.Gray;
-            Grundmethoden grundmethoden = new Grundmethoden();
-            grundmethoden.generiert_Panel(ref x_Coordinate_PanelG, ref y_Coordinate_PanelG, ref x_Panel_Size, ref y_Panel_Size, ref Hintergrundfarbe, ref Panel_Name);
-            
+            //malen_MauerBlock(ref graphics, ref zähler_Blöcke, ref zähler_Block, ref x_Coordinate1, ref y_Coordinate1);
         }
         public static void malen_MauerBlock(ref Graphics graphics, ref int zähler_Blöcke, ref int zähler_Block, ref int x_Coordinate1, ref int y_Coordinate1)
         {
