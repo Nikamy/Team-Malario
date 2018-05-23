@@ -10,14 +10,13 @@ using System.Windows.Forms;
 
 namespace GDI_Malario
 {
-    class Malario:Grundmethoden
+    class Gegner:Grundmethoden
     {
-        public static void malen_Malario(ref Graphics graphics)
+        public static void malen_Gambo(ref Graphics graphics)
         {
             int x_Coordinate1 = 0, y_Coordinate1 = 0, x_Bit_Multiplier0 = 2, y_Bit_Multiplier0 =2;
-            Color füllfarbe = Color.Brown;
-            Color stiftfarbe = Color.Brown;
-
+            Color füllfarbe = Color.Blue;
+            Color stiftfarbe = Color.Blue;
 
             y_Coordinate1 = y_Coordinate1 + (y_Bit_Multiplier0 * 16);
             //Schuh links
@@ -183,6 +182,7 @@ namespace GDI_Malario
             x_Coordinate1 = x_Coordinate1 + x_Bit_Multiplier0;
             grundmethoden.malen_Bit(ref graphics, ref  x_Coordinate1, ref  y_Coordinate1, ref füllfarbe, ref stiftfarbe, ref  x_Bit_Multiplier0, ref  y_Bit_Multiplier0);
         }
+
         private void InitializeComponent()
         {
             this.SuspendLayout();
@@ -195,22 +195,14 @@ namespace GDI_Malario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(464, 441);
-            this.Name = "Malario";
+            this.Name = "Gambo";
             this.ResumeLayout(false);
 
         }
+
         private void Panel_Malario_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        public void Malen_Gamba(ref Graphics graphics)
-        {
-            int x_Koordinate = 0, y_Koordinate = 0, x_Bit_Multiplier = 2, y_Bit_Multiplier = 2;
-            Color füllfarbe = Color.Blue;
-            Color stiftfarbe = Color.Blue;
-            y_Koordinate = y_Koordinate + (y_Bit_Multiplier * 16);
-            Grundmethoden.
-        }
-    }
 }
 }

@@ -57,6 +57,9 @@
     <Compile Include="Grundmethoden.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Gegner.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Malario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gegner.resx">
+      <DependentUpon>Gegner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Malario.resx">
       <DependentUpon>Malario.cs</DependentUpon>

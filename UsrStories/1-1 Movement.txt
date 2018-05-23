@@ -1,0 +1,6 @@
+Man sollte Malario mit
+W - Springen
+A - Nach links laufen
+S - Ducken ( Große Form)
+D - Nach rechts laufen
+durchs bild bewegen können.
