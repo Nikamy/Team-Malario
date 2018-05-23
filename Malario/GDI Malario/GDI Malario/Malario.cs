@@ -14,7 +14,7 @@ namespace GDI_Malario
     {
         public static void malen_Malario(ref Graphics graphics)
         {
-            int x_Coordinate1 = 0, y_Coordinate1 = 0, x_Bit_Multiplier0 = 4, y_Bit_Multiplier0 =4;
+            int x_Coordinate1 = 0, y_Coordinate1 = 0, x_Bit_Multiplier0 = 2, y_Bit_Multiplier0 =2;
             Color grafikfarbe = Color.Brown;
             Color stiftfarbe = Color.Brown;
 

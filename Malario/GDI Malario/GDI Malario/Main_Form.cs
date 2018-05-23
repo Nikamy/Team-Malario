@@ -17,6 +17,13 @@ namespace GDI_Malario
         public Main_Form()
         {
             InitializeComponent();
+            int x_Coordinate_PanelG = 0;
+            do
+            {
+                Level_Blöcke.setzen_Boden(ref x_Coordinate_PanelG);
+                x_Coordinate_PanelG += 24;
+
+            } while (x_Coordinate_PanelG < Panel_Game.Width);
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
@@ -51,18 +58,17 @@ namespace GDI_Malario
             {
                 Panel_Malario.Left -= 4;
             }
-            if(M_Jump == true)
+            if (M_Jump == true)
             {
                 Panel_Malario.Top -= anziehungskraft;
                 anziehungskraft -= 1;
             }
-            if(Panel_Malario.Height + Panel_Malario.Top >= Panel_Game.Height)
+            if (Panel_Malario.Height + Panel_Malario.Top >= Panel_Game.Height)
             {
                 Panel_Malario.Top = Panel_Game.Height - Panel_Malario.Height;
                 M_Jump = false;
                 anziehungskraft = anziehungskaft_Wert;
             }
-             
         }
         private void Main_Form_KeyUp(object sender, KeyEventArgs e)
         {
