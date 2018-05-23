@@ -1,0 +1,4 @@
+Das verhalten von guba festlegen. 
+Er läuft nach links bis er irgendwo gegen läuft. dann nach rechts. usw
+wenn man drauf springt wird er zerstört.
+Man stirbt wenn er gegen einen läuft.

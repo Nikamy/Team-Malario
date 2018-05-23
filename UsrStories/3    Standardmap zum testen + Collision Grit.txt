@@ -1,0 +1,5 @@
+Einfache map mit vielen grund elementen designen,zum testen.
+ein Collisiongrid erstellen, damit Mario über den Boden laufen kann. 
+Es sollte die gesamte Map abdecken.
+sorgt dafür, dass durch Wände laufen / in den Boden fallen nicht möglich ist.
+Collision Grit unterbrechen an Stellen an denen der Boden nicht mehr vorhanden ist.
