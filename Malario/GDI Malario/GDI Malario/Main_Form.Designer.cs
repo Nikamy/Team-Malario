@@ -44,7 +44,7 @@
             this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Malario.BackColor = System.Drawing.Color.White;
             this.Panel_Malario.ForeColor = System.Drawing.Color.White;
-            this.Panel_Malario.Location = new System.Drawing.Point(214, 309);
+            this.Panel_Malario.Location = new System.Drawing.Point(183, 289);
             this.Panel_Malario.Name = "Panel_Malario";
             this.Panel_Malario.Size = new System.Drawing.Size(30, 34);
             this.Panel_Malario.TabIndex = 0;
@@ -60,6 +60,7 @@
             // 
             this.Panel_Game.Controls.Add(this.Panel_Malario);
             this.Panel_Game.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Game.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Panel_Game.Location = new System.Drawing.Point(0, 0);
             this.Panel_Game.Name = "Panel_Game";
             this.Panel_Game.Size = new System.Drawing.Size(569, 569);
@@ -126,11 +127,11 @@
 
         public System.Windows.Forms.Panel Panel_Malario;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel Panel_Game;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.Panel Panel_Game;
     }
 }
 
