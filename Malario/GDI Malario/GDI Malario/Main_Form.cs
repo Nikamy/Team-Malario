@@ -17,13 +17,13 @@ namespace GDI_Malario
         public Main_Form()
         {
             InitializeComponent();
-            int x_Coordinate_PanelG = 0;
-            do
-            {
-                Level_Blöcke.setzen_Boden(ref x_Coordinate_PanelG);
-                x_Coordinate_PanelG += 24;
+            //int x_Coordinate_PanelG = 0;
+            //do
+            //{
+            //    Level_Blöcke.setzen_Boden(ref x_Coordinate_PanelG);
+            //    x_Coordinate_PanelG += 24;
 
-            } while (x_Coordinate_PanelG < Panel_Game.Width);
+            //} while (x_Coordinate_PanelG < Panel_Game.Width);
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
