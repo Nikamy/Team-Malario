@@ -107,11 +107,20 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-            Malario.malen_Malario(ref graphics); 
-            //Gegner.malen_Goethe(ref graphics, 'r')
-            //Lässt das Panel neuladen und anzeigen
-            Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
-            //Panel_Malario.Refresh();
+            //Malario.malen_Malario(ref graphics); 
+            ////Gegner.malen_Goethe(ref graphics, 'r')
+            ////Lässt das Panel neuladen und anzeigen
+            //Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
+            ////Panel_Malario.Refresh();
+
+            //nur zum testen
+            Level_Blöcke level_blöcke = new Level_Blöcke();
+            int zähler_Blöcke = 1;
+            int zähler_Block = 1;
+            int x_Coordinate1 = 1;
+            int y_Coordinate1 = 1;
+            Level_Blöcke.malen_MauerBlock(ref graphics, ref zähler_Blöcke, ref zähler_Block, ref x_Coordinate1, ref y_Coordinate1);
+
         }
     }
 }
