@@ -107,12 +107,8 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-<<<<<<< HEAD
-            Malario.malen_Malario(ref graphics);
-=======
             Malario.malen_Malario(ref graphics); 
             //Gegner.malen_Goethe(ref graphics, 'r')
->>>>>>> 0e8f44d1a93ff3ad3fe6c43fcdd9103a71d0c99d
             //Lässt das Panel neuladen und anzeigen
             Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
             //Panel_Malario.Refresh();
