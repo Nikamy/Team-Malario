@@ -44,9 +44,9 @@
             this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Malario.BackColor = System.Drawing.Color.White;
             this.Panel_Malario.ForeColor = System.Drawing.Color.White;
-            this.Panel_Malario.Location = new System.Drawing.Point(183, 289);
+            this.Panel_Malario.Location = new System.Drawing.Point(140, 233);
             this.Panel_Malario.Name = "Panel_Malario";
-            this.Panel_Malario.Size = new System.Drawing.Size(30, 34);
+            this.Panel_Malario.Size = new System.Drawing.Size(73, 90);
             this.Panel_Malario.TabIndex = 0;
             this.Panel_Malario.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Malario_Paint);
             // 
