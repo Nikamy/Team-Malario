@@ -203,14 +203,6 @@ namespace GDI_Malario
         {
 
         }
-        public void Malen_Gamba(ref Graphics graphics)
-        {
-            int x_Koordinate = 0, y_Koordinate = 0, x_Bit_Multiplier = 2, y_Bit_Multiplier = 2;
-            Color füllfarbe = Color.Blue;
-            Color stiftfarbe = Color.Blue;
-            y_Koordinate = y_Koordinate + (y_Bit_Multiplier * 16);
-            Grundmethoden.
-        }
     }
 }
-}
+
