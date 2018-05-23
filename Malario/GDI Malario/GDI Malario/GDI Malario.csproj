@@ -45,12 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gegner.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gegner.Designer.cs">
-      <DependentUpon>Gegner.cs</DependentUpon>
-    </Compile>
     <Compile Include="Level_Blöcke.cs">
       <SubType>Form</SubType>
     </Compile>
