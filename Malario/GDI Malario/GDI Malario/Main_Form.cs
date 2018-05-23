@@ -19,16 +19,6 @@ namespace GDI_Malario
         public Main_Form()
         {
             InitializeComponent();
-<<<<<<< HEAD
-=======
-            //int x_Coordinate_PanelG = 0;
-            //do
-            //{
-            //    Level_Blöcke.setzen_Boden(ref x_Coordinate_PanelG);
-            //    x_Coordinate_PanelG += 24;
-
-            //} while (x_Coordinate_PanelG < Panel_Game.Width);
->>>>>>> bc6ebac66fd41b07eafc690fe69edcd7067aad1d
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
@@ -40,7 +30,7 @@ namespace GDI_Malario
             Hinzufügen_Panel(ref x_Coordinate_PanelG, ref y_Coordinate_PanelG, ref x_Panel_Size, ref y_Panel_Size, ref Hintergrundfarbe, ref Panel_Name, ref Panelanzahl_Zähler);
             
             Level_Blöcke level_blöcke = new Level_Blöcke();
-            level_blöcke.malen_MauerBlock(ref graphics, ref zähler_Blöcke, ref zähler_Block, ref x_Coordinate1, ref y_Coordinate1);
+            //level_blöcke.malen_MauerBlock(ref graphics, ref zähler_Blöcke, ref zähler_Block, ref x_Coordinate1, ref y_Coordinate1);
             
         }
 
