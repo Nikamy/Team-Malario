@@ -33,10 +33,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Panel_Game = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Panel_Game.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +41,7 @@
             this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Malario.BackColor = System.Drawing.Color.White;
             this.Panel_Malario.ForeColor = System.Drawing.Color.White;
-            this.Panel_Malario.Location = new System.Drawing.Point(277, 339);
+            this.Panel_Malario.Location = new System.Drawing.Point(25, 312);
             this.Panel_Malario.Name = "Panel_Malario";
             this.Panel_Malario.Size = new System.Drawing.Size(34, 34);
             this.Panel_Malario.TabIndex = 0;
@@ -59,16 +55,12 @@
             // 
             // Panel_Game
             // 
-            this.Panel_Game.Controls.Add(this.panel1);
-            this.Panel_Game.Controls.Add(this.panel5);
-            this.Panel_Game.Controls.Add(this.panel4);
-            this.Panel_Game.Controls.Add(this.panel3);
             this.Panel_Game.Controls.Add(this.Panel_Malario);
             this.Panel_Game.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Game.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Panel_Game.Location = new System.Drawing.Point(0, 0);
             this.Panel_Game.Name = "Panel_Game";
-            this.Panel_Game.Size = new System.Drawing.Size(569, 569);
+            this.Panel_Game.Size = new System.Drawing.Size(480, 480);
             this.Panel_Game.TabIndex = 1;
             // 
             // contextMenuStrip1
@@ -76,48 +68,12 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(512, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(57, 569);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(57, 569);
-            this.panel4.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Black;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(57, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(455, 57);
-            this.panel5.TabIndex = 4;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(57, 512);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(455, 57);
-            this.panel1.TabIndex = 5;
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(569, 569);
+            this.ClientSize = new System.Drawing.Size(480, 480);
             this.Controls.Add(this.Panel_Game);
             this.Name = "Main_Form";
             this.Text = "Malario";
@@ -135,10 +91,6 @@
         private System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.Panel Panel_Game;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
     }
 }
 
