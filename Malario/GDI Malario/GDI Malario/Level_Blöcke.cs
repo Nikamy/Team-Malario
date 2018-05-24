@@ -20,7 +20,7 @@ namespace GDI_Malario
             Color Hintergrundfarbe = Color.Gray;
             //malen_MauerBlock(ref graphics, ref zähler_Blöcke, ref zähler_Block, ref x_Coordinate1, ref y_Coordinate1);
         }
-        public static void malen_MauerBlock(ref Graphics graphics, ref int zähler_Blöcke, ref int zähler_Block, ref int x_Coordinate1, ref int y_Coordinate1)
+        public static void malen_MauerBlock(ref Graphics graphics, ref int x_Coordinate1, ref int y_Coordinate1)
         {
             int y_Bit_Multiplier_GanzerBlock = 24,
                 x_Bit_Multiplier0 = (y_Bit_Multiplier_GanzerBlock - 8) / 2,
