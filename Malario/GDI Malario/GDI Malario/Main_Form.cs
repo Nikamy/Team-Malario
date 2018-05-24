@@ -13,7 +13,7 @@ namespace GDI_Malario
     public partial class Main_Form : Form
     {
         List<Panel> panellist = new List<Panel>();
-        int Panelzähler, Bewegungszähler;
+        int Panelzähler;
         int Panelanzahl_Zähler;
         bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false;
         int anziehungskraft, anziehungskaft_Wert = 15;
@@ -40,7 +40,8 @@ namespace GDI_Malario
                 Graphics graphics = panellist[panellist.Count - 1].CreateGraphics();
                 PaintEventArgs pe = new PaintEventArgs(graphics, rectangle);
                 panellist_Mauerblock_Paint(panellist.Count, pe);
-            } while (Panelanzahl_Zähler != 22);
+            } while (Panelanzahl_Zähler != 20);
+            label1.Text = panellist.Count.ToString();
         }
 
         private void Main_Form_KeyDown(object sender, KeyEventArgs e)
@@ -75,7 +76,6 @@ namespace GDI_Malario
                         Bewegungs_Panel_Zähler--;
                     } while(Bewegungs_Panel_Zähler>=0);
                 }
-                Bewegungszähler += 4;
             }
             if (M_Left == true && Panel_Malario.Left > 0)
             {
@@ -92,10 +92,6 @@ namespace GDI_Malario
                 M_Jump = false;
                 anziehungskraft = anziehungskaft_Wert;
             }
-            /*if (Bewegungszähler == 24)
-            {
-                panellist.Remove(panellist[Panelzähler - Panelzähler+1]);
-            }*/
         }
         private void Main_Form_KeyUp(object sender, KeyEventArgs e)
         {
@@ -160,7 +156,7 @@ namespace GDI_Malario
             y_Coordinate1 += 24;
             Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
             //Lässt das Panel neuladen und anzeigen
-            panellist[Panelzähler].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
+            panellist[panellist.Count-1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
         }
     }
 }
