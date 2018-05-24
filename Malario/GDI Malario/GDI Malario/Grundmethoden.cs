@@ -13,7 +13,7 @@ namespace GDI_Malario
     class Grundmethoden : Main_Form
     {
         int c = 0;
-        public void malen_Bit(ref Graphics graphics, ref int x_Coordinate1, ref int y_Coordinate1, ref Color füllfarbe, ref Color stiftfarbe, ref int x_Bit_Multiplier0, ref int y_Bit_Multiplier0)
+        public void malen_Bit(Graphics graphics, int x_Coordinate1, int y_Coordinate1, Color füllfarbe, Color stiftfarbe, int x_Bit_Multiplier0, int y_Bit_Multiplier0)
 
         {
             SolidBrush brush = new SolidBrush(füllfarbe);
