@@ -13,7 +13,6 @@ namespace GDI_Malario
     public partial class Main_Form : Form
     {
         List<Panel> panellist = new List<Panel>();
-        int Panelzähler;
         int Panelanzahl_Zähler;
         bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false;
         int anziehungskraft, anziehungskaft_Wert = 15;
@@ -25,7 +24,7 @@ namespace GDI_Malario
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            int x_Coordinate_PanelG = 0, y_Coordinate_PanelG = 432, x_Panel_Size = 24, y_Panel_Size = 48;
+            int x_Coordinate_PanelG = 0, y_Coordinate_PanelG = 432, x_Panel_Size = 480, y_Panel_Size = 48;
             string Panel_Name = "Panel_Boden_";
             Color Hintergrundfarbe = Color.Gray;
             
@@ -40,7 +39,7 @@ namespace GDI_Malario
                 Graphics graphics = panellist[panellist.Count - 1].CreateGraphics();
                 PaintEventArgs pe = new PaintEventArgs(graphics, rectangle);
                 panellist_Mauerblock_Paint(panellist.Count, pe);
-            } while (Panelanzahl_Zähler != 20);
+            } while (Panelanzahl_Zähler != 1);
             label1.Text = panellist.Count.ToString();
         }
 
@@ -86,9 +85,9 @@ namespace GDI_Malario
                 Panel_Malario.Top -= anziehungskraft;
                 anziehungskraft -= 1;
             }
-            if (Panel_Malario.Height + Panel_Malario.Top >= Panel_Game.Height - 32)
+            if (Panel_Malario.Height + Panel_Malario.Top >= Panel_Game.Height - 50)
             {
-                Panel_Malario.Top = Panel_Game.Height - Panel_Malario.Height - 48;
+                Panel_Malario.Top = Panel_Game.Height - Panel_Malario.Height - 50;
                 M_Jump = false;
                 anziehungskraft = anziehungskaft_Wert;
             }
@@ -149,14 +148,20 @@ namespace GDI_Malario
         {
             int x_Coordinate1 = 0,
                 y_Coordinate1 = 0;
-
             Graphics graphics = pe.Graphics;
             base.OnPaint(pe);
-            Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
-            y_Coordinate1 += 24;
-            Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
+
+            do
+            {
+                Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
+                y_Coordinate1 += 24;
+                Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
+                y_Coordinate1 -= 24;
+                x_Coordinate1 += 24;
+            } while (x_Coordinate1 < panellist[panellist.Count - 1].Width);
+            
             //Lässt das Panel neuladen und anzeigen
-            panellist[panellist.Count-1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
+            panellist[panellist.Count - 1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
         }
     }
 }

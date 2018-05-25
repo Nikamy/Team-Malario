@@ -42,7 +42,7 @@
             this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Malario.BackColor = System.Drawing.Color.White;
             this.Panel_Malario.ForeColor = System.Drawing.Color.White;
-            this.Panel_Malario.Location = new System.Drawing.Point(25, 312);
+            this.Panel_Malario.Location = new System.Drawing.Point(25, 387);
             this.Panel_Malario.Name = "Panel_Malario";
             this.Panel_Malario.Size = new System.Drawing.Size(34, 34);
             this.Panel_Malario.TabIndex = 0;
@@ -74,7 +74,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 13);
+            this.label1.Location = new System.Drawing.Point(202, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
