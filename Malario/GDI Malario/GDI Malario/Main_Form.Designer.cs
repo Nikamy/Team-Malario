@@ -32,8 +32,8 @@
             this.Panel_Malario = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Panel_Game = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Panel_Game.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,11 +65,7 @@
             this.Panel_Game.Name = "Panel_Game";
             this.Panel_Game.Size = new System.Drawing.Size(480, 480);
             this.Panel_Game.TabIndex = 1;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.Panel_Game.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Game_Paint);
             // 
             // label1
             // 
@@ -79,6 +75,11 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Main_Form
             // 
