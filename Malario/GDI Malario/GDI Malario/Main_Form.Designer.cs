@@ -34,13 +34,17 @@
             this.Panel_Game = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Panel_Malario.SuspendLayout();
             this.Panel_Game.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Malario
             // 
             this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Malario.BackColor = System.Drawing.Color.White;
+            this.Panel_Malario.Controls.Add(this.pictureBox1);
             this.Panel_Malario.ForeColor = System.Drawing.Color.White;
             this.Panel_Malario.Location = new System.Drawing.Point(25, 387);
             this.Panel_Malario.Name = "Panel_Malario";
@@ -81,6 +85,14 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,8 +105,10 @@
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyUp);
+            this.Panel_Malario.ResumeLayout(false);
             this.Panel_Game.ResumeLayout(false);
             this.Panel_Game.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -106,6 +120,7 @@
         public System.Windows.Forms.Panel Panel_Game;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
