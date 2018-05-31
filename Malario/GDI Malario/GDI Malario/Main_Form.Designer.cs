@@ -32,8 +32,8 @@
             this.Panel_Malario = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Panel_Game = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Panel_Game.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,9 +42,9 @@
             this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Malario.BackColor = System.Drawing.Color.White;
             this.Panel_Malario.ForeColor = System.Drawing.Color.White;
-            this.Panel_Malario.Location = new System.Drawing.Point(25, 387);
+            this.Panel_Malario.Location = new System.Drawing.Point(132, 189);
             this.Panel_Malario.Name = "Panel_Malario";
-            this.Panel_Malario.Size = new System.Drawing.Size(34, 34);
+            this.Panel_Malario.Size = new System.Drawing.Size(62, 92);
             this.Panel_Malario.TabIndex = 0;
             this.Panel_Malario.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Malario_Paint);
             // 
@@ -66,11 +66,6 @@
             this.Panel_Game.Size = new System.Drawing.Size(480, 480);
             this.Panel_Game.TabIndex = 1;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -79,6 +74,11 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Main_Form
             // 

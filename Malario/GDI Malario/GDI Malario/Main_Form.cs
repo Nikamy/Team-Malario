@@ -110,8 +110,8 @@ namespace GDI_Malario
 
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-
-            Malario.malen_Malario(graphics); 
+            Level_Blöcke.malen_Röhren_Kopf(graphics);
+            //Malario.malen_Malario(graphics); 
             //Lässt das Panel neuladen und anzeigen
             Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
             //Panel_Malario.resh();

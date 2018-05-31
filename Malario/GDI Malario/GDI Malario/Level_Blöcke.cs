@@ -103,5 +103,53 @@ namespace GDI_Malario
             y_Coordinate1 += y_Bit_Multiplier0 + Block_Spalenbreite;
             x_Coordinate1 -= (x_Bit_Multiplier0 + Block_Spalenbreite);
         }
+        public static void malen_Röhren_Kopf(Graphics graphics)
+        {
+            Grundmethoden grundmethoden = new Grundmethoden();
+            int x_Rectangle = 0,
+                y_Rectangle = 0,
+                x_Coordinate = 0,
+                y_Coordinate = 0,
+                x55 = (55*2/3),
+                y30 = 20;
+            
+
+            Color grafikfarbe = Color.Black,
+                  stiftfarbe = Color.Black;
+
+
+            //äußerer Rand des Kopfs
+
+            grafikfarbe = Color.FromArgb(0, 0, 0);
+            stiftfarbe = Color.FromArgb(0, 0, 0);
+            //x_Coordinate += (3 / 55 * x55);
+            //y_Coordinate += (3 / 55 * y30);
+            x_Rectangle = x55;
+            y_Rectangle = y30;
+            x_Coordinate = 1;
+            y_Coordinate = 1;
+            grundmethoden.malen_Bit(graphics, x_Coordinate, y_Coordinate, grafikfarbe, stiftfarbe, x_Rectangle, y_Rectangle);
+
+            //inneres Quadrat des Kopfs
+            grafikfarbe = Color.FromArgb(59, 97, 32);
+            stiftfarbe = Color.FromArgb(59, 97, 32);
+            x_Coordinate += (3/55 * x55);
+            y_Coordinate += (3/55 * y30);
+            x_Rectangle -= 8;
+            y_Rectangle = y30;
+            grundmethoden.malen_Bit(graphics, x_Coordinate, y_Coordinate, grafikfarbe, stiftfarbe, x_Rectangle, y_Rectangle);
+
+            //inneres 2tes Quadrat des Kopfs
+            grafikfarbe = Color.FromArgb(47,115,47);
+            stiftfarbe = Color.FromArgb(47, 115, 47);
+            x_Coordinate += 9;
+            y_Coordinate += 2;
+            x_Rectangle = 30;
+            y_Rectangle = 22;
+            grundmethoden.malen_Bit(graphics, x_Coordinate, y_Coordinate, grafikfarbe, stiftfarbe, x_Rectangle, y_Rectangle);
+
+
+
+        }
     }
 }
