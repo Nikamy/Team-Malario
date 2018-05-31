@@ -21,6 +21,7 @@ namespace GDI_Malario
         public Main_Form()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.DoubleBuffer, true);
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
@@ -66,12 +67,14 @@ namespace GDI_Malario
         {
             if (M_Right == true)
             {
+                Panel_Malario.Invalidate();
                 if(Panel_Malario.Left < (Panel_Game.Width / 2)){ Panel_Malario.Left += 4; }
                 else {
                     int Bewegungs_Panel_Zähler = panellist.Count-1;
                     do
                     {
                         panellist[Bewegungs_Panel_Zähler].Left -= 4;
+                        panellist[Bewegungs_Panel_Zähler].Invalidate();
                         Bewegungs_Panel_Zähler--;
                     } while(Bewegungs_Panel_Zähler>=0);
                 }
@@ -92,6 +95,12 @@ namespace GDI_Malario
                 anziehungskraft = anziehungskaft_Wert;
             }
         }
+
+        private void Panel_Game_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void Main_Form_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -107,14 +116,14 @@ namespace GDI_Malario
 
         private void Panel_Malario_Paint(object sender, PaintEventArgs e)
         {
-
+            
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
             Level_Blöcke.malen_Röhren_Kopf(graphics);
             //Malario.malen_Malario(graphics); 
             //Lässt das Panel neuladen und anzeigen
-            Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
-            //Panel_Malario.resh();
+            //Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
+            //Panel_Malario.refresh();
 
 
             //nur zum testen
@@ -140,6 +149,9 @@ namespace GDI_Malario
             panel1.BringToFront();
             panel1.Visible = true;
             panellist.Add(panel1);
+            
+            panellist[panellist.Count - 1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
+
             Panel_Game.Controls.Add(panel1);
 
             return panel1;
@@ -161,7 +173,7 @@ namespace GDI_Malario
             } while (x_Coordinate1 < panellist[panellist.Count - 1].Width);
             
             //Lässt das Panel neuladen und anzeigen
-            panellist[panellist.Count - 1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
+            //panellist[panellist.Count - 1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
         }
     }
 }
