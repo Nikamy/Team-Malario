@@ -65,43 +65,20 @@ namespace GDI_Malario
             
         }
         //noch das gleiche wie drüber
-        public static void malen_BodenBlock( Graphics graphics,  int zähler_Blöcke,  int zähler_Block,  int x_Coordinate1,  int y_Coordinate1)
+        public static void malen_BodenBlock( Graphics graphics)
         {
-            int y_Bit_Multiplier_GanzerBlock = 24,
-                x_Bit_Multiplier0 = (y_Bit_Multiplier_GanzerBlock - 8) / 2,
-                y_Bit_Multiplier0 = (y_Bit_Multiplier_GanzerBlock - 16) / 4,
-                Block_Spalenbreite = y_Bit_Multiplier_GanzerBlock / 12;
+            int x_Pos = 0, y_Pos = 0;
+            Color color1 = Color.LightGray;
+            Color color2 = Color.DarkGray;
 
-            Color grafikfarbe = Color.Brown,
-                  stiftfarbe = Color.Brown;
+            //unterste Zeile
+            int Bit_Multiplier0 = 6;
+            y_Pos = y_Pos + (Bit_Multiplier0 * 15);
 
             Grundmethoden grundmethoden = new Grundmethoden();
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-            x_Coordinate1 += x_Bit_Multiplier0 + Block_Spalenbreite;
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-
-            y_Coordinate1 += y_Bit_Multiplier0 + Block_Spalenbreite;
-            x_Coordinate1 -= (x_Bit_Multiplier0 + Block_Spalenbreite);
-
-            x_Bit_Multiplier0 -= (x_Bit_Multiplier0 / 2);
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-            x_Bit_Multiplier0 += (x_Bit_Multiplier0);
-            x_Coordinate1 += (x_Bit_Multiplier0 / 2) + Block_Spalenbreite;
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-            x_Coordinate1 += (x_Bit_Multiplier0 + Block_Spalenbreite);
-            x_Bit_Multiplier0 -= (x_Bit_Multiplier0 / 2);
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-            x_Bit_Multiplier0 += (x_Bit_Multiplier0);
-
-            y_Coordinate1 += y_Bit_Multiplier0 + Block_Spalenbreite;
-            x_Coordinate1 -= (x_Bit_Multiplier0 / 2) + x_Bit_Multiplier0 + 2 * Block_Spalenbreite;
-
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-            x_Coordinate1 += x_Bit_Multiplier0 + Block_Spalenbreite;
-            grundmethoden.malen_Bit( graphics,  x_Coordinate1,  y_Coordinate1,  grafikfarbe,  stiftfarbe,  x_Bit_Multiplier0,  y_Bit_Multiplier0);
-
-            y_Coordinate1 += y_Bit_Multiplier0 + Block_Spalenbreite;
-            x_Coordinate1 -= (x_Bit_Multiplier0 + Block_Spalenbreite);
+            x_Pos += Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
+            x_Pos += (12 * Bit_Multiplier0);
         }
         public static void malen_Röhren_Kopf(Graphics graphics)
         {
