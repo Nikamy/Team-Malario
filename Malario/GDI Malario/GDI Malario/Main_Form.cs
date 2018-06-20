@@ -28,7 +28,6 @@ namespace GDI_Malario
         {
             this.DoubleBuffered = true;
             InitializeComponent();
-            SetStyle(ControlStyles.DoubleBuffer, true);
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
@@ -103,70 +102,5 @@ namespace GDI_Malario
                     break;
             }
         }
-<<<<<<< HEAD
-
-        private void Panel_Malario_Paint(object sender, PaintEventArgs e)
-        {
-            
-            Graphics graphics = e.Graphics;
-            base.OnPaint(e);
-            Level_Blöcke.malen_Röhren_Kopf(graphics);
-            //Malario.malen_Malario(graphics); 
-            //Lässt das Panel neuladen und anzeigen
-            //Panel_Malario.Paint += new PaintEventHandler(Panel_Malario_Paint);
-            //Panel_Malario.refresh();
-
-
-            //nur zum testen
-
-            //Level_Blöcke level_blöcke = new Level_Blöcke();
-            //int zähler_Blöcke = 1;
-            //int zähler_Block = 1;
-            //int x_Coordinate1 = 1;
-            //int y_Coordinate1 = 1;
-            //Level_Blöcke.malen_MauerBlock(ref graphics, ref zähler_Blöcke, ref zähler_Block, ref x_Coordinate1, ref y_Coordinate1);
-
-
-        }
-        public Panel Hinzufügen_Panel( int x_Coordinate_PanelG,  int y_Coordinate_PanelG,  int x_Panel_Size,  int y_Panel_Size,  Color Hintergrundfarbe,  string Panel_Name,  int Panelanzahl_Zähler)
-        {
-            Panel panel1 = new Panel();
-            panel1.Name = Panel_Name + Panelanzahl_Zähler.ToString();
-            panel1.BackColor = Hintergrundfarbe;
-            panel1.Width = x_Panel_Size;
-            panel1.Height = y_Panel_Size;
-            panel1.Top = y_Coordinate_PanelG;
-            panel1.Left = x_Coordinate_PanelG;
-            panel1.BringToFront();
-            panel1.Visible = true;
-            panellist.Add(panel1);
-            
-            panellist[panellist.Count - 1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
-
-            Panel_Game.Controls.Add(panel1);
-
-            return panel1;
-        }
-        public void panellist_Mauerblock_Paint(object sender, PaintEventArgs pe)
-        {
-            int x_Coordinate1 = 0,
-                y_Coordinate1 = 0;
-            Graphics graphics = pe.Graphics;
-            base.OnPaint(pe);
-
-            do
-            {
-                Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
-                y_Coordinate1 += 24;
-                Level_Blöcke.malen_MauerBlock(graphics, x_Coordinate1, y_Coordinate1);
-                y_Coordinate1 -= 24;
-                x_Coordinate1 += 24;
-            } while (x_Coordinate1 < panellist[panellist.Count - 1].Width);
-            
-            //Lässt das Panel neuladen und anzeigen
-            //panellist[panellist.Count - 1].Paint += new PaintEventHandler(panellist_Mauerblock_Paint);
-        }
-=======
->>>>>>> Leon
     }
 }
