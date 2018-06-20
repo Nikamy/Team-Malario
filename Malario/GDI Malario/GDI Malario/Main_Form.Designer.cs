@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Panel_Malario = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Panel_Game = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -55,12 +53,17 @@
             this.Panel_Malario.TabIndex = 0;
             this.Panel_Malario.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Malario_Paint);
             // 
+=======
+            this.SuspendLayout();
+            // 
+>>>>>>> Leon
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+<<<<<<< HEAD
             // Panel_Game
             // 
             this.Panel_Game.BackColor = System.Drawing.Color.White;
@@ -86,6 +89,8 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
+=======
+>>>>>>> Leon
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -107,29 +112,35 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(480, 480);
-            this.Controls.Add(this.Panel_Game);
+            this.ClientSize = new System.Drawing.Size(464, 441);
+            this.DoubleBuffered = true;
             this.Name = "Main_Form";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Malario";
             this.Load += new System.EventHandler(this.Main_Form_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Main_Form_Paint_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyUp);
+<<<<<<< HEAD
             this.Panel_Malario.ResumeLayout(false);
             this.Panel_Game.ResumeLayout(false);
             this.Panel_Game.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+=======
+>>>>>>> Leon
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        public System.Windows.Forms.Panel Panel_Malario;
         private System.Windows.Forms.Timer timer1;
-        public System.Windows.Forms.Panel Panel_Game;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+<<<<<<< HEAD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+=======
+>>>>>>> Leon
     }
 }
 
