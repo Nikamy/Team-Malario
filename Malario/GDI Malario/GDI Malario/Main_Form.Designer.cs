@@ -29,52 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Panel_Malario = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Panel_Game = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Panel_Game.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Panel_Malario
-            // 
-            this.Panel_Malario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Panel_Malario.BackColor = System.Drawing.Color.White;
-            this.Panel_Malario.ForeColor = System.Drawing.Color.White;
-            this.Panel_Malario.Location = new System.Drawing.Point(25, 387);
-            this.Panel_Malario.Name = "Panel_Malario";
-            this.Panel_Malario.Size = new System.Drawing.Size(34, 34);
-            this.Panel_Malario.TabIndex = 0;
-            this.Panel_Malario.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Malario_Paint);
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // Panel_Game
-            // 
-            this.Panel_Game.BackColor = System.Drawing.Color.White;
-            this.Panel_Game.Controls.Add(this.label1);
-            this.Panel_Game.Controls.Add(this.Panel_Malario);
-            this.Panel_Game.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Game.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.Panel_Game.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Game.Name = "Panel_Game";
-            this.Panel_Game.Size = new System.Drawing.Size(480, 480);
-            this.Panel_Game.TabIndex = 1;
-            this.Panel_Game.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Game_Paint);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(202, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
             // 
             // contextMenuStrip1
             // 
@@ -86,26 +49,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(480, 480);
-            this.Controls.Add(this.Panel_Game);
+            this.ClientSize = new System.Drawing.Size(464, 441);
+            this.DoubleBuffered = true;
             this.Name = "Main_Form";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Malario";
             this.Load += new System.EventHandler(this.Main_Form_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Main_Form_Paint_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyUp);
-            this.Panel_Game.ResumeLayout(false);
-            this.Panel_Game.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        public System.Windows.Forms.Panel Panel_Malario;
         private System.Windows.Forms.Timer timer1;
-        public System.Windows.Forms.Panel Panel_Game;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label label1;
     }
 }
 

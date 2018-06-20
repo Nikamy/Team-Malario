@@ -389,35 +389,6 @@ namespace GDI_Malario
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.Panel_Game.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // Panel_Malario
-            // 
-            this.Panel_Malario.Location = new System.Drawing.Point(79, 161);
-            this.Panel_Malario.Size = new System.Drawing.Size(30, 30);
-            this.Panel_Malario.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Malario_Paint);
-            // 
-            // Panel_Game
-            // 
-            this.Panel_Game.Size = new System.Drawing.Size(464, 441);
-            this.Panel_Game.Controls.SetChildIndex(this.Panel_Malario, 0);
-            // 
-            // Gegner
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(464, 441);
-            this.Name = "Gegner";
-            this.Panel_Game.ResumeLayout(false);
-            this.ResumeLayout(false);
 
-        }
-
-        private void Panel_Malario_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
