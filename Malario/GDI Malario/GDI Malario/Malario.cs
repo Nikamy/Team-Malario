@@ -12,19 +12,18 @@ namespace GDI_Malario
 {
     class Malario : Grundmethoden
     {
-        public static void malen_Malario(Graphics graphics, int x_Pos_Malario, int y_Pos_Malario, bool Sichtrichtung)
+        public static void malen_Malario(Graphics graphics, int x_Pos_Malario, int y_Pos_Malario, bool Sichtrichtung,bool gehen_Animation)
         {
             int x_Bit_Multiplier0 = 2, y_Bit_Multiplier0 = 2;
             Color füllfarbe = Color.Yellow;
             Color stiftfarbe = Color.Yellow;
             Grundmethoden grundmethoden = new Grundmethoden();
-            y_Pos_Malario = y_Pos_Malario + (y_Bit_Multiplier0 * 16);
 
             if (Sichtrichtung == true)
             {
                 //Körper_Stehend_Links_Gelb
                 x_Pos_Malario += (2 * x_Bit_Multiplier0);
-                y_Pos_Malario += (13 * y_Bit_Multiplier0);
+                y_Pos_Malario += (3 * y_Bit_Multiplier0);
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 7 * x_Bit_Multiplier0, 10 * y_Bit_Multiplier0);
                 x_Pos_Malario += (7 * x_Bit_Multiplier0);
                 y_Pos_Malario -= (1 * y_Bit_Multiplier0);
@@ -150,7 +149,7 @@ namespace GDI_Malario
                 stiftfarbe = Color.Yellow;
 
                 x_Pos_Malario += (6 * x_Bit_Multiplier0);
-                y_Pos_Malario += (13 * y_Bit_Multiplier0);
+                y_Pos_Malario += (3 * y_Bit_Multiplier0);
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 7 * x_Bit_Multiplier0, 10 * y_Bit_Multiplier0);
                 x_Pos_Malario -= (4 * x_Bit_Multiplier0);
                 y_Pos_Malario -= (0 * y_Bit_Multiplier0);
@@ -270,6 +269,11 @@ namespace GDI_Malario
                 x_Pos_Malario += (1 * x_Bit_Multiplier0);
                 y_Pos_Malario += (1 * y_Bit_Multiplier0);
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 5 * x_Bit_Multiplier0, 1 * y_Bit_Multiplier0);
+
+            }
+
+            if(gehen_Animation ==true)
+            {
 
             }
         }

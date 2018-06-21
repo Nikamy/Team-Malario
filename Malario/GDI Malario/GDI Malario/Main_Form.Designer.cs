@@ -63,7 +63,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Malario";
             this.Load += new System.EventHandler(this.Main_Form_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Main_Form_Paint_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Main_Form_KeyUp);
             this.ResumeLayout(false);
