@@ -127,7 +127,7 @@ namespace GDI_Malario
                     {
                         gemalteslist_x_Pos[Bewegungs_Panel_Zähler]-= 4;
                         Bewegungs_Panel_Zähler--;
-                    } while(Bewegungs_Panel_Zähler>0);
+                    } while(Bewegungs_Panel_Zähler>=0);
                }
             }
             else if (M_Left == true && x_Pos_Malario > 0)
