@@ -26,14 +26,16 @@ namespace GDI_Malario
 
 
             label1counter.Text = Convert.ToString(gemalteslist_x_Pos.Count);
-            Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario);
+            Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Malario, y_Pos_Malario);
+            //Malario.malen_Malario
             int Blocklist_Zähler = 0;
 
-            if (Startbildschirm == true)
+            if (Startbildschirm == false)
             {
                 malen_Startmenü(graphics);
                 Startbildschirm = false;
             }
+           // malen_Startmenü(graphics);
 
             if (gemalteslist_x_Pos.Count > 0)
             {
@@ -134,7 +136,7 @@ namespace GDI_Malario
         private void malen_Startmenü(Graphics graphics)
         {
             x_Pos_Block = 0;
-            y_Pos_Block = (this.Height - 39 - 48);
+            y_Pos_Block = (200);
             do
             {
                 Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
