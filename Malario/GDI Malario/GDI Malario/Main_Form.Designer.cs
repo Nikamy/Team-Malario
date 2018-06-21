@@ -48,6 +48,7 @@
             // label1counter
             // 
             this.label1counter.AutoSize = true;
+            this.label1counter.BackColor = System.Drawing.Color.White;
             this.label1counter.Location = new System.Drawing.Point(433, 9);
             this.label1counter.Name = "label1counter";
             this.label1counter.Size = new System.Drawing.Size(35, 13);

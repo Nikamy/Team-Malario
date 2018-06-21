@@ -12,9 +12,9 @@ namespace GDI_Malario
 {
     public partial class Main_Form : Form
     {
-        int[] gemalteslist_x_Pos = new int[] {0};
-        int[] gemalteslist_y_Pos = new int[] { 0 };
-        int[] gemalteslist_Blockart = new int[] { 0 };
+        int[] gemalteslist_x_Pos = new int[] {};
+        int[] gemalteslist_y_Pos = new int[] {};
+        int[] gemalteslist_Blockart = new int[] {};
         bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false, Startbildschirm = true;
         int anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0;
 
@@ -30,7 +30,7 @@ namespace GDI_Malario
             //Malario.malen_Malario
             int Blocklist_Zähler = 0;
 
-            if (Startbildschirm == false)
+            if (Startbildschirm == true)
             {
                 malen_Startmenü(graphics);
                 Startbildschirm = false;
@@ -136,16 +136,16 @@ namespace GDI_Malario
         private void malen_Startmenü(Graphics graphics)
         {
             x_Pos_Block = 0;
-            y_Pos_Block = (200);
+            y_Pos_Block = (this.Height -38 - 50);
             do
             {
-                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length);
-                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length);
-                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length);
+                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length+1);
+                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length+1);
+                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length+1);
                 Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
-                gemalteslist_Blockart[gemalteslist_x_Pos.Length] = 0;
-                gemalteslist_x_Pos[gemalteslist_x_Pos.Length] = x_Pos_Block;
-                gemalteslist_y_Pos[gemalteslist_x_Pos.Length] = y_Pos_Block;
+                gemalteslist_Blockart[gemalteslist_x_Pos.Length-1] = 0;
+                gemalteslist_x_Pos[gemalteslist_x_Pos.Length-1] = x_Pos_Block;
+                gemalteslist_y_Pos[gemalteslist_x_Pos.Length-1] = y_Pos_Block;
                 y_Pos_Block += 24;
 
                 Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);

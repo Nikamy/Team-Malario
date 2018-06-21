@@ -65,9 +65,9 @@ namespace GDI_Malario
 
         }
 
-            public static void malen_BodenBlock(Graphics graphics, int x_Pos, int y_Pos)
+            public static void malen_BodenBlock(Graphics graphics, int x_Pos0, int y_Pos0)
             {
-
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
             int Bit_Multiplier0 = 3;
             Color color1 = Color.LightGray;
             Color color2 = Color.DarkGray;
