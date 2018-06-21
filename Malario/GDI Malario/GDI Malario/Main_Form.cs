@@ -12,9 +12,9 @@ namespace GDI_Malario
 {
     public partial class Main_Form : Form
     {
-        List<int> gemalteslist_x_Pos = new List<int>();
-        List<int> gemalteslist_y_Pos = new List<int>();
-        List<int> gemalteslist_Blockart = new List<int>();
+        int[] gemalteslist_x_Pos = new int[] {0};
+        int[] gemalteslist_y_Pos = new int[] { 0 };
+        int[] gemalteslist_Blockart = new int[] { 0 };
         bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false, Startbildschirm = true;
         int anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0;
 
@@ -25,7 +25,7 @@ namespace GDI_Malario
 
 
 
-            label1counter.Text = Convert.ToString(gemalteslist_x_Pos.Count);
+            label1counter.Text = Convert.ToString(gemalteslist_x_Pos.Length);
             Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Malario, y_Pos_Malario);
             //Malario.malen_Malario
             int Blocklist_Zähler = 0;
@@ -37,7 +37,7 @@ namespace GDI_Malario
             }
            // malen_Startmenü(graphics);
 
-            if (gemalteslist_x_Pos.Count > 0)
+            if (gemalteslist_x_Pos.Length > 0)
             {
                 do
                 {
@@ -47,7 +47,7 @@ namespace GDI_Malario
                         Level_Blöcke.malen_BodenBlock(graphics, gemalteslist_x_Pos[Blocklist_Zähler], gemalteslist_y_Pos[Blocklist_Zähler] + 24);
                         Blocklist_Zähler += 1;
                     }
-                } while (Blocklist_Zähler < gemalteslist_Blockart.Count);
+                } while (Blocklist_Zähler < gemalteslist_Blockart.Length);
             }
         }
         private void Main_Form_Paint_1(object sender, PaintEventArgs e)
@@ -90,7 +90,7 @@ namespace GDI_Malario
                 if (x_Pos_Malario < (this.Width / 2)){ x_Pos_Malario += 4; }
                else {
                     
-                    int Bewegungs_Panel_Zähler = gemalteslist_x_Pos.Count-1;
+                    int Bewegungs_Panel_Zähler = gemalteslist_x_Pos.Length-1;
                     do
                     {
                         gemalteslist_x_Pos[Bewegungs_Panel_Zähler]-= 4;
@@ -139,10 +139,13 @@ namespace GDI_Malario
             y_Pos_Block = (200);
             do
             {
+                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length);
+                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length);
+                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length);
                 Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
-                gemalteslist_Blockart.Add(0);
-                gemalteslist_x_Pos.Add(x_Pos_Block);
-                gemalteslist_y_Pos.Add(y_Pos_Block);
+                gemalteslist_Blockart[gemalteslist_x_Pos.Length] = 0;
+                gemalteslist_x_Pos[gemalteslist_x_Pos.Length] = x_Pos_Block;
+                gemalteslist_y_Pos[gemalteslist_x_Pos.Length] = y_Pos_Block;
                 y_Pos_Block += 24;
 
                 Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
