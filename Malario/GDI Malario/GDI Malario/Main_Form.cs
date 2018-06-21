@@ -15,8 +15,8 @@ namespace GDI_Malario
         int[] gemalteslist_x_Pos = new int[] {};
         int[] gemalteslist_y_Pos = new int[] {};
         int[] gemalteslist_Blockart = new int[] {};
-        bool M_Right = false, M_Left = false, M_Crouch = false, M_Jump = false, Startbildschirm = true;
-        int anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true;
+        int anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 200, x_Pos_Block = 0, y_Pos_Block = 0;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -26,8 +26,7 @@ namespace GDI_Malario
 
 
             label1counter.Text = Convert.ToString(gemalteslist_x_Pos.Length);
-            Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Malario, y_Pos_Malario);
-            //Malario.malen_Malario
+            Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung);
             int Blocklist_Zähler = 0;
 
             if (Startbildschirm == true)
@@ -89,12 +88,14 @@ namespace GDI_Malario
             {
                 case Keys.D:
                     M_Right = true;
+                    M_Richtung = false;
                     break;
                 case Keys.A:
                     M_Left = true;
+                    M_Richtung = true;
                     break;
                 case Keys.W:
-                    if (M_Jump != true && M_Crouch != true)
+                    if (M_Jump != true)
                     {
                         M_Jump = true;
                     }
