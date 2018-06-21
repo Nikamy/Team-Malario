@@ -73,7 +73,7 @@ namespace GDI_Malario
             Color color2 = Color.DarkGray;
             Grundmethoden grundmethoden = new Grundmethoden();
 
-            //unterste Zeile
+            //Oberste Zeile
             y_Pos += 21;
             x_Pos += 0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
