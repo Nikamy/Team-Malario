@@ -15,7 +15,7 @@ namespace GDI_Malario
         int[] gemalteslist_x_Pos = new int[] { };
         int[] gemalteslist_y_Pos = new int[] { };
         int[] gemalteslist_Blockart = new int[] { };
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
         int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48 - 300, x_Pos_Block = 0, y_Pos_Block = 0;
@@ -59,12 +59,23 @@ namespace GDI_Malario
 
                         Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    if (gemalteslist_Blockart[Blocklist_Zähler] == 1)
+                    else if (gemalteslist_Blockart[Blocklist_Zähler] == 1)
+                    {
+                        Level_Blöcke.malen_MauerBlock(graphics, x_Pos_Block, y_Pos_Block);
+                    }
+                    else if (gemalteslist_Blockart[Blocklist_Zähler] == 2)
                     {
                         x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
                         y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
 
                         Level_Blöcke.malen_RöhrenBlock_Kopf(graphics, x_Pos_Block, y_Pos_Block);
+                    }
+                    else if (gemalteslist_Blockart[Blocklist_Zähler] == 3)
+                    {
+                        x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
+                        y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
+
+                        Level_Blöcke.malen_RöhrenBlock_Hals(graphics, x_Pos_Block, y_Pos_Block);
                     }
                     Blocklist_Zähler++;
                 } while (Blocklist_Zähler < gemalteslist_Blockart.Length);
@@ -211,7 +222,32 @@ namespace GDI_Malario
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
 
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 1;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 2;
+            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
+            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+
+
+            x_Pos_Block += 24;
+            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
+
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 9999;
+            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
+            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+
+
+
+            x_Pos_Block -= 24;
+            y_Pos_Block += 24;
+
+
+
+            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
+
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 3;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
