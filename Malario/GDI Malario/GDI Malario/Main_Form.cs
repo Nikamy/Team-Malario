@@ -16,7 +16,9 @@ namespace GDI_Malario
         int[] gemalteslist_y_Pos = new int[] { };
         int[] gemalteslist_Blockart = new int[] { };
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false;
-        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48   -300, x_Pos_Block = 0, y_Pos_Block = 0;
+        //Collsions
+        bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
+        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48 - 300, x_Pos_Block = 0, y_Pos_Block = 0;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -160,13 +162,13 @@ namespace GDI_Malario
                 M_Jump = false;
                 anziehungskraft = anziehungskaft_Wert;
             }
-            if(animation_ms > 60)
+            if (animation_ms > 60)
             {
-                if(M_Gehend == true) { M_Gehend = false; }
+                if (M_Gehend == true) { M_Gehend = false; }
                 else { M_Gehend = true; }
                 animation_ms = 0;
             }
-            if(M_Left == false && M_Right == false)
+            if (M_Left == false && M_Right == false)
             {
                 M_Gehend = false;
                 animation_ms = 0;
@@ -198,6 +200,26 @@ namespace GDI_Malario
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
             // marvin block
+        }
+
+        private bool c_Right(int x, int y, int width)
+        {
+
+            return C_Right;
+        }
+        private bool c_Left(int x, int y, int width)
+        {
+
+            return C_Left;
+        }
+        private bool c_Above(int x, int y, int height)
+        {
+
+            return C_Above;
+        }
+        private bool c_Underneath(int x, int y, int height)
+        {
+            return C_Underneath;
         }
     }
 }
