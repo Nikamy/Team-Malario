@@ -212,21 +212,57 @@ namespace GDI_Malario
 
         private bool c_Right(int x, int y, int width)
         {
+            for (int i = 0, j = 0; i <= gemalteslist_x_Pos.Length && gemalteslist_x_Pos[i] <= x; i++)
+            {
+                if (x + width < gemalteslist_x_Pos[i])
+                {
+                    C_Right = false;
+                }
+                else if (x + width == gemalteslist_x_Pos[i])
+                {
+                    C_Right = true;
+                }
+                else
+                {
 
+                }
+            }
             return C_Right;
         }
         private bool c_Left(int x, int y, int width)
         {
-
+            if (true)
+            {
+                C_Left = false;
+            }
+            else if (false)
+            {
+                C_Left = true;
+            }
             return C_Left;
         }
         private bool c_Above(int x, int y, int height)
         {
-
+            if (false)
+            {
+                C_Above = false;
+            }
+            else if (true)
+            {
+                C_Above = true;
+            }
             return C_Above;
         }
         private bool c_Underneath(int x, int y, int height)
         {
+            if (false)
+            {
+                C_Underneath = false;
+            }
+            else if (true)
+            {
+                C_Underneath = true;
+            }
             return C_Underneath;
         }
     }
