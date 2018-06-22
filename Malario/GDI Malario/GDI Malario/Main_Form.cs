@@ -18,7 +18,7 @@ namespace GDI_Malario
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48 - 300, x_Pos_Block = 0, y_Pos_Block = 0;
+        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48, x_Pos_Block = 0, y_Pos_Block = 0;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -216,7 +216,7 @@ namespace GDI_Malario
             } while (Blockzähler < 480);
             // marvin block
             x_Pos_Block = 100;
-            y_Pos_Block = (this.Height - 38 - 50 - 70);
+            y_Pos_Block = (this.Height - 38 - 50 - 48);
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
@@ -269,7 +269,7 @@ namespace GDI_Malario
                 {
                     C_Right = false;
                 }
-                else if ((char_x_Koor + char_Breite) == obj_x_Koor && (char_y_Koor + char_Höhe) >= obj_y_Koor)
+                if ((char_x_Koor + char_Breite) == obj_x_Koor && (char_y_Koor + char_Höhe) >= obj_y_Koor)
                 {
                     C_Right = true;
                 }
