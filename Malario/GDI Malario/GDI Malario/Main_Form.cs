@@ -56,29 +56,17 @@ namespace GDI_Malario
                     {
                         x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
                         y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
-                        int Blockzähler = 0;
-                        do
-                        {
-                            Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
 
-                            y_Pos_Block += 24;
-
-                            Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
-                            y_Pos_Block -= 24;
-                            x_Pos_Block += 24;
-                            Blockzähler += 24;
-                        } while (Blockzähler < 480);
+                        Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
                         Blocklist_Zähler++;
                     }
-                    // marvin block
                     if (gemalteslist_Blockart[Blocklist_Zähler] == 1)
                     {
                         x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
                         y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
 
-                        Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
+                        Level_Blöcke.malen_MauerBlock(graphics, x_Pos_Block, y_Pos_Block);
                         Blocklist_Zähler++;
-                        // marvin block
                     }
                 } while (Blocklist_Zähler < gemalteslist_Blockart.Length);
             }
@@ -180,14 +168,34 @@ namespace GDI_Malario
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 38 - 50);
 
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
 
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
+
+            int Blockzähler = 0;
+            do
+            {
+                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
+                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
+                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
+
+                gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+                gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
+                gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+
+                y_Pos_Block += 24;
+
+                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
+                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
+                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
+
+                gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+                gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
+                gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+
+                y_Pos_Block -= 24;
+                x_Pos_Block += 24;
+                Blockzähler += 24;
+            } while (Blockzähler < 480);
             // marvin block
             x_Pos_Block = 100;
             y_Pos_Block = (this.Height - 38 - 50 - 70);

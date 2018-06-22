@@ -65,6 +65,7 @@ namespace GDI_Malario
 
         }
 
+
         public static void malen_BodenBlock(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
@@ -221,14 +222,12 @@ namespace GDI_Malario
         public static void malen_BoodenBlock(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
-            int Bit_Multiplier0 = 3;
+            int Bit_Multiplier0 = 24;
             Color color1 = Color.LightGray;
             Color color2 = Color.DarkGray;
             Grundmethoden grundmethoden = new Grundmethoden();
 
             //Oberste Zeile
-            y_Pos += 21;
-            x_Pos += 0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
         }
     }
