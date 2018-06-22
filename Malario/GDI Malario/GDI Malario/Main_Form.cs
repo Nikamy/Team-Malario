@@ -18,7 +18,7 @@ namespace GDI_Malario
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 0;
+        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -130,10 +130,10 @@ namespace GDI_Malario
             do
             {
                 C_Underneath = false;
-                c_Right(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Left(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Above(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Underneath(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Right(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Left(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Above(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Underneath(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 if (C_Underneath == true)
                 {
                     compareValue2 = gemalteslist_y_Pos[i];
@@ -141,7 +141,7 @@ namespace GDI_Malario
                 if (compareValue1 > compareValue2) compareValue1 = compareValue2;
                 i++;
             } while (i < gemalteslist_x_Pos.Length);
-            fall_Limit = compareValue1 - 31;
+            fall_Limit = compareValue1 - 29;
 
             if (M_Right == true && C_Right == false)
             {
@@ -297,7 +297,7 @@ namespace GDI_Malario
         }
         private void c_Underneath(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe >= obj_y_Koor)
+            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe <= obj_y_Koor)
             {
                 C_Underneath = true;
             }
