@@ -16,7 +16,7 @@ namespace GDI_Malario
         int[] gemalteslist_y_Pos = new int[] { };
         int[] gemalteslist_Blockart = new int[] { };
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false;
-        int anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48, x_Pos_Block = 0, y_Pos_Block = 0;
+        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48   -300, x_Pos_Block = 0, y_Pos_Block = 0;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -30,8 +30,6 @@ namespace GDI_Malario
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
-                if (M_Gehend == true) { M_Gehend = false; }
-                else { M_Gehend = true; }
             }
             else
             {
@@ -127,9 +125,12 @@ namespace GDI_Malario
 
             if (M_Right == true)
             {
+                animation_ms += 17;
 
                 if (x_Pos_Malario < (Width / 2))
-                { x_Pos_Malario += 4; }
+                {
+                    x_Pos_Malario += 4;
+                }
                 else
                 {
                     int Bewegungs_Panel_Zähler = gemalteslist_x_Pos.Length - 1;
@@ -143,6 +144,7 @@ namespace GDI_Malario
             else if (M_Left == true && x_Pos_Malario > 0)
             {
                 x_Pos_Malario -= 4;
+                animation_ms += 17;
             }
             if (M_Jump == true)
             {
@@ -157,6 +159,17 @@ namespace GDI_Malario
                 // 48 = der Boden unter Malario (Hardcode im Collisiongrit ändern!)
                 M_Jump = false;
                 anziehungskraft = anziehungskaft_Wert;
+            }
+            if(animation_ms > 60)
+            {
+                if(M_Gehend == true) { M_Gehend = false; }
+                else { M_Gehend = true; }
+                animation_ms = 0;
+            }
+            if(M_Left == false && M_Right == false)
+            {
+                M_Gehend = false;
+                animation_ms = 0;
             }
             Invalidate();
         }

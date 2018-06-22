@@ -17,7 +17,7 @@ namespace GDI_Malario
         {
             SolidBrush brush = new SolidBrush(füllfarbe);
             Pen stift = new Pen(stiftfarbe);
-            stift.Width = 0b0;
+            stift.Width = 0;
             Rectangle quadrat = new Rectangle(x_Coordinate1, y_Coordinate1, x_Bit_Multiplier0, y_Bit_Multiplier0);
 
             graphics.DrawRectangle(stift, quadrat);
