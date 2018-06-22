@@ -15,10 +15,10 @@ namespace GDI_Malario
         int[] gemalteslist_x_Pos = new int[] { };
         int[] gemalteslist_y_Pos = new int[] { };
         int[] gemalteslist_Blockart = new int[] { };
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480;
+        int animation_ms, anziehungskraft = 0, anziehungskraft_Steigen = 15, anziehungskaft_Fallen = -15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -166,16 +166,22 @@ namespace GDI_Malario
                 x_Pos_Malario -= 4;
                 animation_ms += 17;
             }
-            if (M_Jump == true)
+            if (M_Jump == true && M_Anziehungskraft == false)
             {
-                y_Pos_Malario -= anziehungskraft;
-                anziehungskraft -= 1;
+                anziehungskraft = anziehungskraft_Steigen;
+                M_Anziehungskraft = true;
             }
             if (y_Pos_Malario >= fall_Limit)
             {
                 y_Pos_Malario = fall_Limit;
                 M_Jump = false;
-                anziehungskraft = anziehungskaft_Wert;
+                M_Anziehungskraft = false;
+                anziehungskraft = anziehungskaft_Fallen;
+            }
+            else
+            {
+                y_Pos_Malario -= anziehungskraft;
+                anziehungskraft--;
             }
             if (animation_ms > 60)
             {
