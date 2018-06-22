@@ -124,12 +124,15 @@ namespace GDI_Malario
         {
             int i = 0;
             C_Right = false;
+            C_Left = false;
+            C_Above = false;
+            C_Underneath = false;
             do
             {
-                c_Right(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
-                c_Left(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
-                c_Above(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
-                c_Underneath(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
+                c_Right(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Left(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Above(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Underneath(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 i++;
             } while (i < gemalteslist_x_Pos.Length);
 
@@ -152,7 +155,7 @@ namespace GDI_Malario
                     } while (Bewegungs_Panel_Zähler >= 0);
                 }
             }
-            else if (M_Left == true && x_Pos_Malario > 0)
+            else if (M_Left == true && x_Pos_Malario > 0 && C_Left == false)
             {
                 x_Pos_Malario -= 4;
                 animation_ms += 17;
@@ -267,33 +270,21 @@ namespace GDI_Malario
             // marvin block
         }
 
-        private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
+        private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + 24 && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + 24)
-
+            if (char_x_Koor + char_Breite == obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
             {
                 C_Right = true;
             }
         }
-        private void c_Left(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
+        private void c_Left(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + 24)
+            if (char_x_Koor + char_Breite >= obj_x_Koor + obj_Breite && obj_x_Koor + obj_Breite == char_x_Koor && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
             {
-                if (char_x_Koor == obj_x_Koor + 24 && char_x_Koor >= obj_x_Koor + 24)
-                {
-                    C_Left = true;
-                }
-                else
-                {
-                    C_Left = false;
-                }
-            }
-            else
-            {
-                C_Left = false;
+                C_Left = true;
             }
         }
-        private void c_Above(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
+        private void c_Above(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
             if (char_x_Koor >= obj_x_Koor && char_x_Koor <= obj_x_Koor + 24)
             {
@@ -307,7 +298,7 @@ namespace GDI_Malario
                 C_Above = false;
             }
         }
-        private void c_Underneath(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
+        private void c_Underneath(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
             if (char_x_Koor >= obj_x_Koor && char_x_Koor <= obj_x_Koor + 24)
             {
