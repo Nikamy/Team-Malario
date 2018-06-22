@@ -129,15 +129,19 @@ namespace GDI_Malario
             C_Underneath = false;
             do
             {
-                c_Right(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Left(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Above(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Underneath(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                if (C_Underneath == true) compareValue2 = gemalteslist_y_Pos[i];
+                C_Underneath = false;
+                c_Right(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Left(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Above(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Underneath(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                if (C_Underneath == true)
+                {
+                    compareValue2 = gemalteslist_y_Pos[i];
+                }
                 if (compareValue1 > compareValue2) compareValue1 = compareValue2;
                 i++;
             } while (i < gemalteslist_x_Pos.Length);
-            fall_Limit = compareValue1 - 34;
+            fall_Limit = compareValue1 - 31;
 
             if (M_Right == true && C_Right == false)
             {
@@ -167,9 +171,9 @@ namespace GDI_Malario
                 y_Pos_Malario -= anziehungskraft;
                 anziehungskraft -= 1;
             }
-            if (C_Underneath == true)//y_Pos_Malario >= fall_Limit
+            if (y_Pos_Malario >= fall_Limit)
             {
-                //y_Pos_Malario = fall_Limit;
+                y_Pos_Malario = fall_Limit;
                 M_Jump = false;
                 anziehungskraft = anziehungskaft_Wert;
             }
