@@ -18,7 +18,7 @@ namespace GDI_Malario
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 480 / 2 - 15, y_Pos_Malario = 519 - 30 - 39 - 48, x_Pos_Block = 0, y_Pos_Block = 0;
+        int animation_ms, anziehungskraft, anziehungskaft_Wert = 15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -27,7 +27,7 @@ namespace GDI_Malario
 
 
 
-            label1counter.Text = Convert.ToString(gemalteslist_x_Pos.Length);
+            //label1counter.Text = Convert.ToString( panel1.Right);
 
             if (M_Left == true || M_Right == true)
             {
@@ -123,12 +123,12 @@ namespace GDI_Malario
         private void timer1_Tick(object sender, EventArgs e)
         {
             int i = 0;
+            C_Right = false;
             do
             {
-                c_Right(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
+                c_Right(x_Pos_Malario, y_Pos_Malario, 32, 32, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
                 i++;
             } while (i < gemalteslist_x_Pos.Length);
-
 
 
             if (M_Right == true && C_Right == false)
@@ -159,9 +159,9 @@ namespace GDI_Malario
                 y_Pos_Malario -= anziehungskraft;
                 anziehungskraft -= 1;
             }
-            if (y_Pos_Malario >= Height - 30 - 39 - 48)
+            if (y_Pos_Malario >= Height - 34 - 39 - 48)
             {
-                y_Pos_Malario = Height - 30 - 39 - 48;
+                y_Pos_Malario = Height - 34 - 39 - 48;
 
                 // 30 = Malariogröße
                 // 48 = der Boden unter Malario (Hardcode im Collisiongrit ändern!)
@@ -216,13 +216,13 @@ namespace GDI_Malario
             } while (Blockzähler < 480);
             // marvin block
             x_Pos_Block = 100;
-            y_Pos_Block = (this.Height - 38 - 50 - 48);
+            y_Pos_Block = (this.Height - 38 - 50 - 24);
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
 
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 2;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
@@ -232,12 +232,12 @@ namespace GDI_Malario
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
 
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 9999;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
 
-
+            /*
             x_Pos_Block -= 24;
             y_Pos_Block += 24;
 
@@ -260,29 +260,15 @@ namespace GDI_Malario
             gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 9999;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+            */
             // marvin block
         }
 
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
         {
-            if ((char_y_Koor + char_Höhe) >= obj_y_Koor && char_y_Koor <= obj_y_Koor + 24)
+            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + 24 && char_y_Koor + char_Höhe >= obj_y_Koor)
             {
-                if (char_x_Koor + char_Breite == obj_x_Koor && char_x_Koor + char_Breite <= obj_x_Koor)
-                {
-                    C_Right = true;
-                }
-<<<<<<< HEAD
-                if ((char_x_Koor + char_Breite) == obj_x_Koor && (char_y_Koor + char_Höhe) >= obj_y_Koor)
-=======
-                else
->>>>>>> 8a7200e26244421e42f0e7ceb832e6ac41906610
-                {
-                    C_Right = false;
-                }
-            }
-            else
-            {
-                C_Right = false;
+                C_Right = true;
             }
         }
         private void c_Left(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
