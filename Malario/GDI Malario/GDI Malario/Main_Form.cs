@@ -111,8 +111,16 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            int i = 0;
+            do
+            {
+                c_Right(x_Pos_Malario, y_Pos_Malario, 30, 30, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i]);
+                i++;
+            } while (i < gemalteslist_x_Pos.Length);
 
-            if (M_Right == true)
+
+
+            if (M_Right == true && C_Right == false)
             {
                 animation_ms += 17;
 
@@ -219,24 +227,16 @@ namespace GDI_Malario
             // marvin block
         }
 
-        private bool c_Right(int x, int y, int width)
+        private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
         {
-            for (int i = 0, j = 0; i <= gemalteslist_x_Pos.Length && gemalteslist_x_Pos[i] <= x; i++)
-            {
-                if (x + width < gemalteslist_x_Pos[i])
+                if ((char_x_Koor + char_Breite) < obj_x_Koor)
                 {
                     C_Right = false;
                 }
-                else if (x + width == gemalteslist_x_Pos[i])
+                else if ((char_x_Koor + char_Breite) == obj_x_Koor && (char_y_Koor + char_Höhe) >= obj_y_Koor)
                 {
                     C_Right = true;
                 }
-                else
-                {
-
-                }
-            }
-            return C_Right;
         }
         private bool c_Left(int x, int y, int width)
         {
