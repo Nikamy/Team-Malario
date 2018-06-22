@@ -265,26 +265,29 @@ namespace GDI_Malario
 
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
         {
-                if ((char_x_Koor + char_Breite) < obj_x_Koor)
-                {
-                    C_Right = false;
-                }
-                if ((char_x_Koor + char_Breite) == obj_x_Koor && (char_y_Koor + char_Höhe) >= obj_y_Koor)
+            if ((char_y_Koor + char_Höhe) >= obj_y_Koor && char_y_Koor <= obj_y_Koor + 24)
+            {
+                if (char_x_Koor + char_Breite == obj_x_Koor && char_x_Koor + char_Breite <= obj_x_Koor)
                 {
                     C_Right = true;
                 }
+<<<<<<< HEAD
+                if ((char_x_Koor + char_Breite) == obj_x_Koor && (char_y_Koor + char_Höhe) >= obj_y_Koor)
+=======
+                else
+>>>>>>> 8a7200e26244421e42f0e7ceb832e6ac41906610
+                {
+                    C_Right = false;
+                }
+            }
+            else
+            {
+                C_Right = false;
+            }
         }
-        private bool c_Left(int x, int y, int width)
+        private void c_Left(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor)
         {
-            if (true)
-            {
-                C_Left = false;
-            }
-            else if (false)
-            {
-                C_Left = true;
-            }
-            return C_Left;
+
         }
         private bool c_Above(int x, int y, int height)
         {
