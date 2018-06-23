@@ -22,6 +22,8 @@ namespace GDI_Malario
             Color color2 = Color.DarkGray;
             Color color3 = Color.LimeGreen;
             Grundmethoden grundmethoden = new Grundmethoden();
+
+
         }
             public static void malen_Energy(Graphics graphics, int x_Pos0, int y_Pos0)
         {
