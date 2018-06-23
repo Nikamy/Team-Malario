@@ -18,12 +18,54 @@ namespace GDI_Malario
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
             int xLänge, yLänge;
-            Color color1 = Color.Black;
-            Color color2 = Color.DarkGray;
-            Color color3 = Color.LimeGreen;
+            Color color1 = Color.Red;
             Grundmethoden grundmethoden = new Grundmethoden();
+       
+            y_Pos += 2;
+            x_Pos += 4;
+            xLänge = 4;
+            yLänge = 16;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
+            x_Pos += 10;
+            xLänge = 4;
+            yLänge = 16;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
+            y_Pos += 2;
+            x_Pos -= 12;
+            xLänge = 8;
+            yLänge = 12;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            x_Pos += 10;
+            xLänge = 8;
+            yLänge = 12;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 2;
+            x_Pos -= 12;
+            xLänge = 22;
+            yLänge = 8;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 8;
+            x_Pos += 6;
+            xLänge = 10;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 8;
+            x_Pos += 2;
+            xLänge = 6;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 2;
+            x_Pos += 2;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
         }
             public static void malen_Energy(Graphics graphics, int x_Pos0, int y_Pos0)
         {
