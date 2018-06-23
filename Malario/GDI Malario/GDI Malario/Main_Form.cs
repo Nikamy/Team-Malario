@@ -38,8 +38,7 @@ namespace GDI_Malario
             label1.Text = Convert.ToString(leftlimit);
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
-
-            Items.malen_Coin(graphics, 10, 10);
+            
 
             if (M_Left == true || M_Right == true)
             {
@@ -85,7 +84,7 @@ namespace GDI_Malario
                     }
                     else if (list_Typ_Obj[Blocklist_Zähler] == 4)
                     {
-                        Level_Blöcke.malen_LeererBlock(graphics, x_Pos_Block, y_Pos_Block);
+                        Level_Blöcke.malen_StahlBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
                     Blocklist_Zähler++;
                 } while (Blocklist_Zähler < list_Typ_Obj.Count);
