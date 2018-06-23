@@ -32,7 +32,7 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
 
-            Items.malen_Coin(graphics, 10, 10);
+            Items.malen_LaserGun(graphics, 10, 10);
 
 
             if (M_Left == true || M_Right == true)

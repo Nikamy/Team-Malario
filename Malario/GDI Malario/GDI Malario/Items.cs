@@ -143,20 +143,64 @@ namespace GDI_Malario
             yLänge = 10;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
         }
-        //public static void malen_LaserGun(Graphics graphics, int x_Pos0, int y_Pos0)
-        //{
-        //    int x_Pos = x_Pos0, y_Pos = y_Pos0;
-        //    int xLänge, yLänge;
-        //    Color color1 = Color.LightGray;
-        //    Grundmethoden grundmethoden = new Grundmethoden();
+        public static void malen_LaserGun(Graphics graphics, int x_Pos0, int y_Pos0)
+        {
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
+            int xLänge, yLänge;
+            Color color1 = Color.DarkGray;
+            Grundmethoden grundmethoden = new Grundmethoden();
 
-        //    y_Pos += 6;
-        //    x_Pos += 8;
-        //    xLänge = 8;
-        //    yLänge = 22;
-        //    grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+            //Scope
+            y_Pos += 4;
+            x_Pos += 6;
+            xLänge = 10;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
+            y_Pos += 2;
+            x_Pos += 2;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
-        //}
+            //Lauf
+            y_Pos += 2;
+            x_Pos -= 4;
+            xLänge = 22;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 2;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            x_Pos += 4;
+            xLänge = 2;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            x_Pos += 2;
+            xLänge = 3;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            x_Pos += 3;
+            xLänge = 1;
+            yLänge = 3;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 3;
+            x_Pos -= 3;
+            xLänge = 3;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos -= 4;
+            x_Pos += 10;
+            xLänge = 2;
+            yLänge = 5;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+        }
     }
 }
