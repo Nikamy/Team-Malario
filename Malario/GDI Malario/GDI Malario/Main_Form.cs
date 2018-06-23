@@ -296,7 +296,7 @@ namespace GDI_Malario
             } while (Blockzähler < 480);
             // marvin block
             x_Pos_Block = 100;
-            y_Pos_Block = (this.Height - 38 - 50 - 24);
+            y_Pos_Block = (this.Height - 38 - 50 - 48);
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
@@ -315,7 +315,7 @@ namespace GDI_Malario
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
             
-            x_Pos_Block -= 48;
+            x_Pos_Block += 24;
             y_Pos_Block += 24;
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
