@@ -12,8 +12,7 @@ namespace GDI_Malario
 {
     class Items : Grundmethoden
     {
-        //Hit-Box ist größer als das Item.
-        //Heißt es werden die X/Y Pos für oben links für ein 24X24 Item gegeben das Item benuzt aber nur 12X12
+
         public static void malen_Heart(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
