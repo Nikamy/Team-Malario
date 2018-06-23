@@ -38,12 +38,8 @@ namespace GDI_Malario
             label1.Text = Convert.ToString(leftlimit);
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
-<<<<<<< HEAD
 
             Items.malen_Heart(graphics, 10, 10);
-=======
-            
->>>>>>> Leon
 
             if (M_Left == true || M_Right == true)
             {
