@@ -14,7 +14,16 @@ namespace GDI_Malario
     {
         //Hit-Box ist größer als das Item.
         //Heißt es werden die X/Y Pos für oben links für ein 24X24 Item gegeben das Item benuzt aber nur 12X12
-        public static void malen_Energy(Graphics graphics, int x_Pos0, int y_Pos0)
+        public static void malen_Heart(Graphics graphics, int x_Pos0, int y_Pos0)
+        {
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
+            int xLänge, yLänge;
+            Color color1 = Color.Black;
+            Color color2 = Color.DarkGray;
+            Color color3 = Color.LimeGreen;
+            Grundmethoden grundmethoden = new Grundmethoden();
+        }
+            public static void malen_Energy(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
             int xLänge, yLänge;

@@ -111,6 +111,10 @@ namespace GDI_Malario
                     {
                         Items.malen_LaserGun(graphics, x_Pos_Block, y_Pos_Block);
                     }
+                    else if (list_Typ_Items[Itemlist_Zähler] == 3)
+                    {
+                        Items.malen_Heart(graphics, x_Pos_Block, y_Pos_Block);
+                    }
 
                     Blocklist_Zähler++;
                 } while (Blocklist_Zähler < list_Typ_Items.Count);
