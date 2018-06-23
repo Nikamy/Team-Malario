@@ -71,7 +71,6 @@ namespace GDI_Malario
             yLänge = 2;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
 
-
             x_Pos -= 10;
             y_Pos += 1;
             xLänge = 1;
@@ -85,6 +84,34 @@ namespace GDI_Malario
             xLänge = 1;
             yLänge = 6;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+        }
+
+        public static void malen_Coin(Graphics graphics, int x_Pos0, int y_Pos0)
+        {
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
+            int xLänge, yLänge;
+            Color color1 = Color.Chocolate;
+            Color color2 = Color.Gold;
+            Grundmethoden grundmethoden = new Grundmethoden();
+
+            //oberer Dosendeckel
+            x_Pos += 8;
+            xLänge = 8;
+            yLänge = 22;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 2;
+            x_Pos -= 2;
+            xLänge = 12;
+            yLänge = 18;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 2;
+            x_Pos -= 2;
+            xLänge = 16;
+            yLänge = 14;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
         }
     }
 }
