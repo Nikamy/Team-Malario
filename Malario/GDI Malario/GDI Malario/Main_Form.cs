@@ -39,12 +39,8 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
 
-<<<<<<< HEAD
-            Items.malen_LaserGun(graphics, 10, 10);
 
 
-=======
->>>>>>> master
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
