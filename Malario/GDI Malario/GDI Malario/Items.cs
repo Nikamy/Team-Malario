@@ -17,29 +17,33 @@ namespace GDI_Malario
         public static void malen_Energy(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
-            int Bit_Multiplier0 = 3;
-            Color color1 = Color.LightGray;
+            int xLänge, yLänge;
+            Color color1 = Color.Black;
             Color color2 = Color.DarkGray;
+            Color color3 = Color.LimeGreen;
             Grundmethoden grundmethoden = new Grundmethoden();
 
-            //Oberste Zeile
-            y_Pos += 21;
-            x_Pos += 0;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
+            //oberer Dosendeckel
+            y_Pos += 3;
+            x_Pos += 12;
+            xLänge = 6;
+            yLänge = 3;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
+            //Mittlere Dose
+            y_Pos += 3;
+            x_Pos -= 3;
+            xLänge = 12;
+            yLänge = 15;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            //unterer Dosen Deckel
+            y_Pos += 15;
             x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, Bit_Multiplier0, Bit_Multiplier0);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, Bit_Multiplier0, Bit_Multiplier0);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, Bit_Multiplier0, Bit_Multiplier0);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, Bit_Multiplier0, Bit_Multiplier0);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
+            xLänge = 6;
+            yLänge = 3;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
         }
     }
 }

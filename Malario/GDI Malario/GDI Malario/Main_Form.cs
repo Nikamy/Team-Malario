@@ -32,6 +32,9 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
 
+            Items.malen_Energy(graphics, 10, 10);
+
+
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
