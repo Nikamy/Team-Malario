@@ -12,9 +12,16 @@ namespace GDI_Malario
 {
     public partial class Main_Form : Form
     {
-        int[] gemalteslist_x_Pos = new int[] { };
-        int[] gemalteslist_y_Pos = new int[] { };
-        int[] gemalteslist_Blockart = new int[] { };
+        List<int> list_x_Pos_Obj = new List<int>();
+        List<int> list_y_Pos_Obj = new List<int>();
+        List<int> list_Typ_Obj = new List<int>();
+        List<int> list_x_Pos_Items = new List<int>();
+        List<int> list_y_Pos_Items = new List<int>();
+        List<int> list_Typ_Items = new List<int>();
+        List<int> list_x_Pos_Enemys = new List<int>();
+        List<int> list_y_Pos_Enemys = new List<int>();
+        List<int> list_Typ_Enemys = new List<int>();
+
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
@@ -32,8 +39,11 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
 
+<<<<<<< HEAD
             Items.malen_Coin(graphics, 10, 10);
 
+=======
+>>>>>>> Leon
 
             if (M_Left == true || M_Right == true)
             {
@@ -45,7 +55,6 @@ namespace GDI_Malario
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
             }
 
-            int Blocklist_Zähler = 0;
 
             if (Startbildschirm == true)
             {
@@ -54,37 +63,36 @@ namespace GDI_Malario
             }
             // malen_Startmenü(graphics);
 
-            if (gemalteslist_x_Pos.Length > 0)
+            int Blocklist_Zähler = 0;
+            if (list_x_Pos_Obj.Count > 0)
             {
                 do
                 {
-                    if (gemalteslist_Blockart[Blocklist_Zähler] == 0)
-                    {
-                        x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
-                        y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
+                    x_Pos_Block = list_x_Pos_Obj[Blocklist_Zähler];
+                    y_Pos_Block = list_y_Pos_Obj[Blocklist_Zähler];
 
+                    if (list_Typ_Obj[Blocklist_Zähler] == 0)
+                    {
                         Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (gemalteslist_Blockart[Blocklist_Zähler] == 1)
+                    else if (list_Typ_Obj[Blocklist_Zähler] == 1)
                     {
                         Level_Blöcke.malen_MauerBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (gemalteslist_Blockart[Blocklist_Zähler] == 2)
+                    else if (list_Typ_Obj[Blocklist_Zähler] == 2)
                     {
-                        x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
-                        y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
-
                         Level_Blöcke.malen_RöhrenBlock_Kopf(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (gemalteslist_Blockart[Blocklist_Zähler] == 3)
+                    else if (list_Typ_Obj[Blocklist_Zähler] == 3)
                     {
-                        x_Pos_Block = gemalteslist_x_Pos[Blocklist_Zähler];
-                        y_Pos_Block = gemalteslist_y_Pos[Blocklist_Zähler];
-
                         Level_Blöcke.malen_RöhrenBlock_Hals(graphics, x_Pos_Block, y_Pos_Block);
                     }
+                    else if (list_Typ_Obj[Blocklist_Zähler] == 4)
+                    {
+                        Level_Blöcke.malen_LeererBlock(graphics, x_Pos_Block, y_Pos_Block);
+                    }
                     Blocklist_Zähler++;
-                } while (Blocklist_Zähler < gemalteslist_Blockart.Length);
+                } while (Blocklist_Zähler < list_Typ_Obj.Count);
             }
         }
         public Main_Form()
@@ -128,7 +136,7 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = 0, UnderneathValue0 = 480, UnderneathValue1 = 480, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Bewegungs_Panel_Zähler = gemalteslist_x_Pos.Length - 1; 
+            int i = 0, UnderneathValue0 = 480, UnderneathValue1 = 480, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Bewegungs_Panel_Zähler = list_x_Pos_Obj.Count - 1; 
             C_Right = false;
             C_Left = false;
             C_Above = false;
@@ -139,33 +147,33 @@ namespace GDI_Malario
                 C_Underneath = false;
                 C_Right = false;
                 C_Left = false;
-                c_Right(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Left(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Above(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Underneath(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Right(x_Pos_Malario, y_Pos_Malario, 25, 28, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                c_Left(x_Pos_Malario, y_Pos_Malario, 25, 28, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                c_Above(x_Pos_Malario, y_Pos_Malario, 25, 28, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                c_Underneath(x_Pos_Malario, y_Pos_Malario, 25, 28, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                 if (C_Underneath == true)
                 {
-                    UnderneathValue1 = gemalteslist_y_Pos[i];
+                    UnderneathValue1 = list_y_Pos_Obj[i];
                     if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
                 }
                 if (C_Above == true)
                 {
-                    AboveValue1 = gemalteslist_y_Pos[i] + 24;
+                    AboveValue1 = list_y_Pos_Obj[i] + 24;
                     if (AboveValue0 <= AboveValue1) AboveValue0 = AboveValue1;
                 }
                 if (C_Right == true)
                 {
-                    RightValue1 = gemalteslist_x_Pos[i];
+                    RightValue1 = list_x_Pos_Obj[i];
                     if (RightValue0 > RightValue1) RightValue0 = RightValue1;
                 }
                 if (C_Left == true)
                 {
-                    LeftValue1 = gemalteslist_x_Pos[i] + 24;
+                    LeftValue1 = list_x_Pos_Obj[i] + 24;
                     if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
                 }
 
                 i++;
-            } while (i < gemalteslist_x_Pos.Length);
+            } while (i < list_x_Pos_Obj.Count);
             fall_Limit = UnderneathValue0 - 29;
             sprung_Limit = AboveValue0;
             rightlimit = RightValue0;
@@ -211,7 +219,7 @@ namespace GDI_Malario
             x_Pos_Malario += M_Bewegungskraft;
             do
             {
-                gemalteslist_x_Pos[Bewegungs_Panel_Zähler] -= Block_Bewegungskraft;
+                list_x_Pos_Obj[Bewegungs_Panel_Zähler] -= Block_Bewegungskraft;
                 Bewegungs_Panel_Zähler--;
             } while (Bewegungs_Panel_Zähler >= 0);
 
@@ -271,71 +279,78 @@ namespace GDI_Malario
             int Blockzähler = 0;
             do
             {
-                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
 
-                gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
-                gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-                gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+                list_Typ_Obj.Add(0);
+                list_x_Pos_Obj.Add(x_Pos_Block);
+                list_y_Pos_Obj.Add(y_Pos_Block);
 
                 y_Pos_Block += 24;
 
-                Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-                Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-                Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-
-                gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
-                gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-                gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+                list_Typ_Obj.Add(0);
+                list_x_Pos_Obj.Add(x_Pos_Block);
+                list_y_Pos_Obj.Add(y_Pos_Block);
 
 
                 y_Pos_Block -= 24;
                 x_Pos_Block += 24;
                 Blockzähler += 24;
             } while (Blockzähler < 480);
-            // marvin block
+
+
+
+            x_Pos_Block = 100;
+            y_Pos_Block = (this.Height - 38 - 50 - 24);
+
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+
+
+
+
+            // Pipe
+            /*
             x_Pos_Block = 100;
             y_Pos_Block = (this.Height - 38 - 50 - 72);
 
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 2;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
+            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
+            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
+            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 2;
+            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
+            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
             
             x_Pos_Block += 24;
 
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 99999;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
+            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
+            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
+            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 99999;
+            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
+            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
 
             
             x_Pos_Block -= 24;
             y_Pos_Block += 48;
 
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 3;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
+            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
+            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
+            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 3;
+            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
+            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
             x_Pos_Block += 24;
 
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 9999;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
-            
-            // marvin block
+            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
+            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
+            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
+            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 9999;
+            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
+            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
+            */
+            // Pipe
         }
-
+        //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
             if (char_x_Koor + char_Breite <= obj_x_Koor &&  char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
@@ -364,5 +379,6 @@ namespace GDI_Malario
                 C_Underneath = true;
             }
         }
+        //CollisionPunkt_Abfragen_Stop
     }
 }
