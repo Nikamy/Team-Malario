@@ -137,11 +137,26 @@ namespace GDI_Malario
             yLänge = 10;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
-            //onneres Gelb
+            //inneres Gelb
             x_Pos += 2;
             xLänge = 4;
             yLänge = 10;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
         }
+        //public static void malen_LaserGun(Graphics graphics, int x_Pos0, int y_Pos0)
+        //{
+        //    int x_Pos = x_Pos0, y_Pos = y_Pos0;
+        //    int xLänge, yLänge;
+        //    Color color1 = Color.LightGray;
+        //    Grundmethoden grundmethoden = new Grundmethoden();
+
+        //    y_Pos += 6;
+        //    x_Pos += 8;
+        //    xLänge = 8;
+        //    yLänge = 22;
+        //    grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+
+        //}
     }
 }
