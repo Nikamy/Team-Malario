@@ -53,7 +53,7 @@ namespace GDI_Malario
             yLänge = 1;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
             x_Pos += 4;
-            xLänge = 4;
+            xLänge = 3;
             yLänge = 1;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
 
