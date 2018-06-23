@@ -44,18 +44,46 @@ namespace GDI_Malario
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
             //Monster Logo
-            y_Pos += 1;
-            xLänge = 3;
+            y_Pos += 4;
+            xLänge = 4;
             yLänge = 1;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 4;
+            xLänge = 4;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 4;
+            xLänge = 4;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+
+            x_Pos -= 7;
             y_Pos += 1;
-            x_Pos += 1;
             xLänge = 2;
             yLänge = 2;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
-            y_Pos += 2;
+            x_Pos += 5;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+
+
+            x_Pos -= 10;
+            y_Pos += 1;
             xLänge = 1;
-            yLänge = 5;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 1;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 1;
+            yLänge = 6;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
         }
     }
