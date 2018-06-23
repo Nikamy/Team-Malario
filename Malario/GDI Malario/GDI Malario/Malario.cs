@@ -24,7 +24,7 @@ namespace GDI_Malario
                 //Körper_Stehend_Links_Gelb
                 if (gehen_Animation == true)
                 {
-                    x_Pos_Malario += (1 * x_Bit_Multiplier0);
+                    x_Pos_Malario += (2 * x_Bit_Multiplier0);
                     y_Pos_Malario += (2 * y_Bit_Multiplier0);
                 }
                 else
@@ -209,7 +209,7 @@ namespace GDI_Malario
                 }
                 else
                 {
-                    x_Pos_Malario += (6 * x_Bit_Multiplier0);
+                    x_Pos_Malario += (5 * x_Bit_Multiplier0);
                     y_Pos_Malario += (3 * y_Bit_Multiplier0);
                 }
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 7 * x_Bit_Multiplier0, 10 * y_Bit_Multiplier0);

@@ -15,10 +15,10 @@ namespace GDI_Malario
         int[] gemalteslist_x_Pos = new int[] { };
         int[] gemalteslist_y_Pos = new int[] { };
         int[] gemalteslist_Blockart = new int[] { };
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480;
+        int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = - 15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -27,10 +27,10 @@ namespace GDI_Malario
 
 
 
-            label1counter.Text = Convert.ToString( fall_Limit);
-            label1.Text = Convert.ToString(M_Jump);
+            label1counter.Text = Convert.ToString(rightlimit);
+            label1.Text = Convert.ToString(leftlimit);
             label2.Text = Convert.ToString(M_Anziehungskraft);
-            label3.Text = Convert.ToString(y_Pos_Malario);
+            label3.Text = Convert.ToString(C_Right);
 
             if (M_Left == true || M_Right == true)
             {
@@ -125,52 +125,95 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = 0, compareValue1 = 480, compareValue2 = 480;
+            int i = 0, UnderneathValue0 = 480, UnderneathValue1 = 480, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Bewegungs_Panel_Zähler = gemalteslist_x_Pos.Length - 1; 
             C_Right = false;
             C_Left = false;
             C_Above = false;
             C_Underneath = false;
             do
             {
+                C_Above = false;
                 C_Underneath = false;
+                C_Right = false;
+                C_Left = false;
                 c_Right(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 c_Left(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 c_Above(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 c_Underneath(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 if (C_Underneath == true)
                 {
-                    compareValue2 = gemalteslist_y_Pos[i];
+                    UnderneathValue1 = gemalteslist_y_Pos[i];
+                    if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
                 }
-                if (compareValue1 > compareValue2) compareValue1 = compareValue2;
+                if (C_Above == true)
+                {
+                    AboveValue1 = gemalteslist_y_Pos[i] + 24;
+                    if (AboveValue0 <= AboveValue1) AboveValue0 = AboveValue1;
+                }
+                if (C_Right == true)
+                {
+                    RightValue1 = gemalteslist_x_Pos[i];
+                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                }
+                if (C_Left == true)
+                {
+                    LeftValue1 = gemalteslist_x_Pos[i] + 24;
+                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                }
+
                 i++;
             } while (i < gemalteslist_x_Pos.Length);
-            fall_Limit = compareValue1 - 29;
+            fall_Limit = UnderneathValue0 - 29;
+            sprung_Limit = AboveValue0;
+            rightlimit = RightValue0;
+            leftlimit = LeftValue0;
 
-            if (M_Right == true && C_Right == false)
+            //Malario Links, Rechts Bewegung + Collisionsverarbeitung
+            M_Bewegungskraft = 0;
+            Block_Bewegungskraft = 0;
+            //Rechts
+            if (x_Pos_Malario + 30 >= rightlimit && M_Right == true)
+            {
+                M_Bewegungskraft = 0;
+                Block_Bewegungskraft = 0;
+                M_Gehend = false;
+                animation_ms = 0;
+            }
+            else
             {
                 animation_ms += 17;
 
-                if (x_Pos_Malario < (Width / 2))
+                if (M_Right == true && x_Pos_Malario < (Width / 2))
                 {
-                    x_Pos_Malario += 4;
+                    M_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
-                else
+                else if (M_Right == true)
                 {
-                    int Bewegungs_Panel_Zähler = gemalteslist_x_Pos.Length - 1;
-                    do
-                    {
-                        gemalteslist_x_Pos[Bewegungs_Panel_Zähler] -= 4;
-                        Bewegungs_Panel_Zähler--;
-                    } while (Bewegungs_Panel_Zähler >= 0);
+                    Block_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
             }
-            else if (M_Left == true && x_Pos_Malario > 0 && C_Left == false)
+            //Links
+            if (x_Pos_Malario <= leftlimit && M_Left == true)
             {
-                x_Pos_Malario -= 4;
+                M_Bewegungskraft = 0;
+                Block_Bewegungskraft = 0;
+                M_Gehend = false;
+                animation_ms = 0;
+            }
+            else if (M_Left == true)
+            {
+                M_Bewegungskraft = -M_Laufgeschwindigkeit;
                 animation_ms += 17;
             }
+            x_Pos_Malario += M_Bewegungskraft;
+            do
+            {
+                gemalteslist_x_Pos[Bewegungs_Panel_Zähler] -= Block_Bewegungskraft;
+                Bewegungs_Panel_Zähler--;
+            } while (Bewegungs_Panel_Zähler >= 0);
+
             //Malario fällt
-            if (y_Pos_Malario < fall_Limit)
+            if (y_Pos_Malario < fall_Limit )
             {
                 M_Jump = true;
                 anziehungskraft++;
@@ -179,10 +222,12 @@ namespace GDI_Malario
             //Malario Boden Collision erkannt und behandelt
             else if (M_Anziehungskraft == true && y_Pos_Malario >= fall_Limit)
             {
+
                 M_Jump = false;
                 M_Anziehungskraft = false;
                 anziehungskraft = 0;
                 y_Pos_Malario = fall_Limit;
+
             }
             //Sprungkraft wird angewändet
             if (M_Jump == true && M_Anziehungskraft == false)
@@ -190,10 +235,15 @@ namespace GDI_Malario
                 M_Anziehungskraft = true;
                 anziehungskraft = anziehungskraft_Steigen;
             }
+            //Malario Decken Collision erkannt und behandelt
+            if (y_Pos_Malario <= sprung_Limit)
+            {
+                anziehungskraft = 1;
+                y_Pos_Malario = sprung_Limit;
+            }
             y_Pos_Malario += anziehungskraft;
-
-
-
+            
+            //Malario Animation
             if (animation_ms > 60)
             {
                 if (M_Gehend == true) { M_Gehend = false; }
@@ -236,81 +286,74 @@ namespace GDI_Malario
                 gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
                 gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
+
                 y_Pos_Block -= 24;
                 x_Pos_Block += 24;
                 Blockzähler += 24;
             } while (Blockzähler < 480);
             // marvin block
             x_Pos_Block = 100;
-            y_Pos_Block = (this.Height - 38 - 50 - 24);
+            y_Pos_Block = (this.Height - 38 - 50 - 70);
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
+            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
+            x_Pos_Block += 24;
+
+            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
             gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
 
             x_Pos_Block += 24;
+            y_Pos_Block -= 24;
+
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
+            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
+            x_Pos_Block += 24;
+            y_Pos_Block -= 24;
 
+            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
+            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
             gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
-
-            /*
-            x_Pos_Block -= 24;
-            y_Pos_Block += 24;
-
-
-
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 3;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
-
-
-            x_Pos_Block += 24;
-            Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
-            Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 9999;
-            gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
-            gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
-            */
             // marvin block
         }
 
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor + char_Breite == obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
+            if (char_x_Koor + char_Breite <= obj_x_Koor &&  char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
             {
                 C_Right = true;
             }
         }
         private void c_Left(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor + char_Breite >= obj_x_Koor + obj_Breite && obj_x_Koor + obj_Breite == char_x_Koor && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
+            if (char_x_Koor >= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
             {
                 C_Left = true;
             }
         }
         private void c_Above(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_y_Koor == obj_y_Koor + obj_Höhe && char_x_Koor >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite)
+            if (char_y_Koor >= obj_y_Koor  && char_x_Koor + char_Breite > obj_x_Koor && char_x_Koor < obj_x_Koor + obj_Breite + char_Breite / 4)
             {
                 C_Above = true;
             }
-
         }
         private void c_Underneath(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
