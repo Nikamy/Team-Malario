@@ -136,10 +136,10 @@ namespace GDI_Malario
                 C_Underneath = false;
                 C_Right = false;
                 C_Left = false;
-                c_Right(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Left(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Above(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
-                c_Underneath(x_Pos_Malario, y_Pos_Malario, 28, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Right(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Left(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Above(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
+                c_Underneath(x_Pos_Malario, y_Pos_Malario, 25, 28, gemalteslist_x_Pos[i], gemalteslist_y_Pos[i], 24, 24);
                 if (C_Underneath == true)
                 {
                     UnderneathValue1 = gemalteslist_y_Pos[i];
@@ -293,44 +293,43 @@ namespace GDI_Malario
             } while (Blockzähler < 480);
             // marvin block
             x_Pos_Block = 100;
-            y_Pos_Block = (this.Height - 38 - 50 - 70);
+            y_Pos_Block = (this.Height - 38 - 50 - 24);
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 2;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
-
+            
             x_Pos_Block += 24;
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 99999;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
 
-
-            x_Pos_Block += 24;
-            y_Pos_Block -= 24;
+            
+            x_Pos_Block -= 48;
+            y_Pos_Block += 24;
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 3;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
             x_Pos_Block += 24;
-            y_Pos_Block -= 24;
 
             Array.Resize(ref gemalteslist_x_Pos, gemalteslist_x_Pos.Length + 1);
             Array.Resize(ref gemalteslist_y_Pos, gemalteslist_y_Pos.Length + 1);
             Array.Resize(ref gemalteslist_Blockart, gemalteslist_Blockart.Length + 1);
-            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 0;
+            gemalteslist_Blockart[gemalteslist_x_Pos.Length - 1] = 9999;
             gemalteslist_x_Pos[gemalteslist_x_Pos.Length - 1] = x_Pos_Block;
             gemalteslist_y_Pos[gemalteslist_x_Pos.Length - 1] = y_Pos_Block;
-
+            
             // marvin block
         }
 
