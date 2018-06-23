@@ -15,10 +15,10 @@ namespace GDI_Malario
         int[] gemalteslist_x_Pos = new int[] { };
         int[] gemalteslist_y_Pos = new int[] { };
         int[] gemalteslist_Blockart = new int[] { };
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, anziehungskraft = 0, anziehungskraft_Steigen = 15, anziehungskaft_Fallen = -15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480;
+        int animation_ms, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 0, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -27,7 +27,10 @@ namespace GDI_Malario
 
 
 
-            //label1counter.Text = Convert.ToString( panel1.Right);
+            label1counter.Text = Convert.ToString( fall_Limit);
+            label1.Text = Convert.ToString(M_Jump);
+            label2.Text = Convert.ToString(M_Anziehungskraft);
+            label3.Text = Convert.ToString(y_Pos_Malario);
 
             if (M_Left == true || M_Right == true)
             {
@@ -166,23 +169,31 @@ namespace GDI_Malario
                 x_Pos_Malario -= 4;
                 animation_ms += 17;
             }
-            if (M_Jump == true && M_Anziehungskraft == false)
+            //Malario fällt
+            if (y_Pos_Malario < fall_Limit)
             {
-                anziehungskraft = anziehungskraft_Steigen;
+                M_Jump = true;
+                anziehungskraft++;
                 M_Anziehungskraft = true;
             }
-            if (y_Pos_Malario >= fall_Limit)
+            //Malario Boden Collision erkannt und behandelt
+            else if (M_Anziehungskraft == true && y_Pos_Malario >= fall_Limit)
             {
-                y_Pos_Malario = fall_Limit;
                 M_Jump = false;
                 M_Anziehungskraft = false;
-                anziehungskraft = anziehungskaft_Fallen;
+                anziehungskraft = 0;
+                y_Pos_Malario = fall_Limit;
             }
-            else
+            //Sprungkraft wird angewändet
+            if (M_Jump == true && M_Anziehungskraft == false)
             {
-                y_Pos_Malario -= anziehungskraft;
-                anziehungskraft--;
+                M_Anziehungskraft = true;
+                anziehungskraft = anziehungskraft_Steigen;
             }
+            y_Pos_Malario += anziehungskraft;
+
+
+
             if (animation_ms > 60)
             {
                 if (M_Gehend == true) { M_Gehend = false; }
@@ -303,7 +314,7 @@ namespace GDI_Malario
         }
         private void c_Underneath(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe <= obj_y_Koor)
+            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe / 2 <= obj_y_Koor)
             {
                 C_Underneath = true;
             }
