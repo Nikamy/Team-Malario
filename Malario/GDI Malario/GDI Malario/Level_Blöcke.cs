@@ -406,7 +406,7 @@ namespace GDI_Malario
             y_Pos += (0 * Bit_Multiplier0);
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
         }
-        public static void malen_LeererBlock(Graphics graphics, int x_Pos0, int y_Pos0)
+        public static void malen_StahlBlock(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
             int Bit_Multiplier0 = 1;
