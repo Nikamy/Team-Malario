@@ -30,19 +30,22 @@ namespace GDI_Malario
             yLänge = 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
 
+            //unterer Dosen Deckel
+            y_Pos += 18;
+            xLänge = 6;
+            yLänge = 3;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
             //Mittlere Dose
-            y_Pos += 3;
+            y_Pos -= 15;
             x_Pos -= 3;
             xLänge = 12;
             yLänge = 15;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
-            //unterer Dosen Deckel
-            y_Pos += 15;
-            x_Pos += 3;
-            xLänge = 6;
-            yLänge = 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
+
+            //Monster Logo
 
         }
     }
