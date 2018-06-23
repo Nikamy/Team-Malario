@@ -70,8 +70,6 @@ namespace GDI_Malario
             x_Coordinate1 -= (x_Bit_Multiplier0 / 2) + x_Bit_Multiplier0 + 2 * Block_Spalenbreite;
 
         }
-
-
         public static void malen_BodenBlock(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
@@ -232,7 +230,7 @@ namespace GDI_Malario
             Color füllfarbe = Color.Black;
             Color stiftfarbe = Color.Black;
             Grundmethoden grundmethoden = new Grundmethoden();
-            
+
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 19 * Bit_Multiplier0, 9 * Bit_Multiplier0);
 
 
@@ -352,7 +350,7 @@ namespace GDI_Malario
             Color füllfarbe = Color.Black;
             Color stiftfarbe = Color.Black;
             Grundmethoden grundmethoden = new Grundmethoden();
-            
+
             x_Pos += (2 * Bit_Multiplier0);
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 15 * Bit_Multiplier0, 8 * Bit_Multiplier0);
             x_Pos += (1 * Bit_Multiplier0);
@@ -406,6 +404,38 @@ namespace GDI_Malario
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
             x_Pos += (2 * Bit_Multiplier0);
             y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+        }
+        public static void malen_LeererBlock(Graphics graphics, int x_Pos0, int y_Pos0)
+        {
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
+            int Bit_Multiplier0 = 1;
+            Color füllfarbe = Color.Black;
+            Color stiftfarbe = Color.Black;
+            Grundmethoden grundmethoden = new Grundmethoden();
+
+            x_Pos += (2 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 20 * Bit_Multiplier0, 24 * Bit_Multiplier0);
+            x_Pos -= (2 * Bit_Multiplier0);
+            y_Pos += (2 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 24 * Bit_Multiplier0, 20 * Bit_Multiplier0);
+
+            füllfarbe = Color.Chocolate;
+            stiftfarbe = Color.Chocolate;
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 20 * Bit_Multiplier0, 20 * Bit_Multiplier0);
+            füllfarbe = Color.Black;
+            stiftfarbe = Color.Black;
+            x_Pos += (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (17 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (17 * Bit_Multiplier0);
+            y_Pos += (17 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (17 * Bit_Multiplier0);
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
         }
     }
