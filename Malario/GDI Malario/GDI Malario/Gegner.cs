@@ -12,7 +12,7 @@ namespace GDI_Malario
 {
     class Gegner : Grundmethoden
     {
-        public static void malen_Goethe( Graphics graphics, char direction)
+        public static void malen_Goethe(Graphics graphics, char direction)
         {
             int x_Pos = 0, y_Pos = 0, Bit_Multiplier0 = 2;
             Color colour = Color.SaddleBrown;
@@ -388,7 +388,5 @@ namespace GDI_Malario
                 x_Pos += Bit_Multiplier0;
             }
         }
-
-
     }
 }
