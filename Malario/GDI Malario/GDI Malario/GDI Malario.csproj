@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Items.cs" />
     <Compile Include="Level_Blöcke.cs">
       <SubType>Form</SubType>
     </Compile>
