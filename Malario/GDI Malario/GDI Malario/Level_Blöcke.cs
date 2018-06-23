@@ -225,17 +225,6 @@ namespace GDI_Malario
             x_Pos += 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
         }
-        public static void malen_BoodenBlock(Graphics graphics, int x_Pos0, int y_Pos0)
-        {
-            int x_Pos = x_Pos0, y_Pos = y_Pos0;
-            int Bit_Multiplier0 = 24;
-            Color color1 = Color.LightGray;
-            Color color2 = Color.DarkGray;
-            Grundmethoden grundmethoden = new Grundmethoden();
-
-            //Oberste Zeile
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, Bit_Multiplier0, Bit_Multiplier0);
-        }
         public static void malen_RöhrenBlock_Kopf(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
@@ -243,8 +232,7 @@ namespace GDI_Malario
             Color füllfarbe = Color.Black;
             Color stiftfarbe = Color.Black;
             Grundmethoden grundmethoden = new Grundmethoden();
-
-            //19
+            
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 19 * Bit_Multiplier0, 9 * Bit_Multiplier0);
 
 
@@ -307,6 +295,55 @@ namespace GDI_Malario
             y_Pos += (1 * Bit_Multiplier0);
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 17 * Bit_Multiplier0, 1 * Bit_Multiplier0);
 
+            //Halsstück
+
+            x_Pos += (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 15 * Bit_Multiplier0, 6 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            x_Pos += (1 * Bit_Multiplier0);
+            füllfarbe = Color.YellowGreen;
+            stiftfarbe = Color.YellowGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 13 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            x_Pos += (1 * Bit_Multiplier0);
+            füllfarbe = Color.DarkGreen;
+            stiftfarbe = Color.DarkGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            x_Pos += (4 * Bit_Multiplier0);
+            füllfarbe = Color.DarkGreen;
+            stiftfarbe = Color.DarkGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            füllfarbe = Color.DarkGreen;
+            stiftfarbe = Color.DarkGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 2 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            //Muster
+            x_Pos += (2 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (0 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
         }
         public static void malen_RöhrenBlock_Hals(Graphics graphics, int x_Pos0, int y_Pos0)
         {
@@ -315,18 +352,61 @@ namespace GDI_Malario
             Color füllfarbe = Color.Black;
             Color stiftfarbe = Color.Black;
             Grundmethoden grundmethoden = new Grundmethoden();
-
-            //19
+            
             x_Pos += (2 * Bit_Multiplier0);
-            y_Pos += (0 * Bit_Multiplier0);
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 5 * Bit_Multiplier0, 9 * Bit_Multiplier0);
-
-
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 15 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            x_Pos += (1 * Bit_Multiplier0);
             füllfarbe = Color.YellowGreen;
             stiftfarbe = Color.YellowGreen;
-            x_Pos += (1 * Bit_Multiplier0);
-            y_Pos += (1 * Bit_Multiplier0);
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 13 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            x_Pos += (1 * Bit_Multiplier0);
+            füllfarbe = Color.DarkGreen;
+            stiftfarbe = Color.DarkGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            x_Pos += (4 * Bit_Multiplier0);
+            füllfarbe = Color.DarkGreen;
+            stiftfarbe = Color.DarkGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            füllfarbe = Color.DarkGreen;
+            stiftfarbe = Color.DarkGreen;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 2 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            //Muster
+            x_Pos += (3 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos -= (1 * Bit_Multiplier0);
+            y_Pos += (1 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
+            x_Pos += (2 * Bit_Multiplier0);
+            y_Pos += (0 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
         }
     }
 }
