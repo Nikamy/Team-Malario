@@ -94,7 +94,7 @@ namespace GDI_Malario
             Color color2 = Color.Gold;
             Grundmethoden grundmethoden = new Grundmethoden();
 
-            //oberer Dosendeckel
+            //aüßerer Rand
             x_Pos += 8;
             xLänge = 8;
             yLänge = 22;
@@ -112,6 +112,36 @@ namespace GDI_Malario
             yLänge = 14;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
+            // aüßeres Gelb
+            y_Pos -= 2;
+            x_Pos += 4;
+            xLänge = 8;
+            yLänge = 18;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
+            y_Pos += 2;
+            x_Pos -= 2;
+            xLänge = 12;
+            yLänge = 14;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
+            //innerer Rand
+            x_Pos += 4;
+            xLänge = 4;
+            yLänge = 14;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            y_Pos += 2;
+            x_Pos -= 2;
+            xLänge = 8;
+            yLänge = 10;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+
+            //onneres Gelb
+            x_Pos += 2;
+            xLänge = 4;
+            yLänge = 10;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
         }
     }
 }
