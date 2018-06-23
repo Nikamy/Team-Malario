@@ -43,10 +43,20 @@ namespace GDI_Malario
             yLänge = 15;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
-
-
             //Monster Logo
-
+            y_Pos += 1;
+            xLänge = 3;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            y_Pos += 1;
+            x_Pos += 1;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            y_Pos += 2;
+            xLänge = 1;
+            yLänge = 5;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
         }
     }
 }
