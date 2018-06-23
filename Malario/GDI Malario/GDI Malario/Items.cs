@@ -30,20 +30,61 @@ namespace GDI_Malario
             yLänge = 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
 
+            //unterer Dosen Deckel
+            y_Pos += 18;
+            xLänge = 6;
+            yLänge = 3;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+
             //Mittlere Dose
-            y_Pos += 3;
+            y_Pos -= 15;
             x_Pos -= 3;
             xLänge = 12;
             yLänge = 15;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
 
-            //unterer Dosen Deckel
-            y_Pos += 15;
-            x_Pos += 3;
-            xLänge = 6;
-            yLänge = 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xLänge, yLänge);
+            //Monster Logo
+            y_Pos += 4;
+            xLänge = 4;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 4;
+            xLänge = 4;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 4;
+            xLänge = 4;
+            yLänge = 1;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
 
+            x_Pos -= 7;
+            y_Pos += 1;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 2;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+
+
+            x_Pos -= 10;
+            y_Pos += 1;
+            xLänge = 1;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 1;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
+            x_Pos += 5;
+            xLänge = 1;
+            yLänge = 6;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color3, color3, xLänge, yLänge);
         }
     }
 }
