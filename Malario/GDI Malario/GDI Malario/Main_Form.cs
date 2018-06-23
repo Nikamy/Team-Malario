@@ -92,28 +92,28 @@ namespace GDI_Malario
             }
 
             int Itemlist_Zähler = 0;
-            if (list_x_Pos_Obj.Count > 0)
+            if (list_x_Pos_Items.Count > 0)
             {
                 do
                 {
-                    x_Pos_Block = list_x_Pos_Obj[Itemlist_Zähler];
-                    y_Pos_Block = list_y_Pos_Obj[Itemlist_Zähler];
+                    x_Pos_Block = list_x_Pos_Items[Itemlist_Zähler];
+                    y_Pos_Block = list_y_Pos_Items[Itemlist_Zähler];
 
-                    if (list_Typ_Obj[Itemlist_Zähler] == 0)
+                    if (list_Typ_Items[Itemlist_Zähler] == 0)
                     {
                         Items.malen_Coin(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Itemlist_Zähler] == 1)
+                    else if (list_Typ_Items[Itemlist_Zähler] == 1)
                     {
                         Items.malen_Energy(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Itemlist_Zähler] == 2)
+                    else if (list_Typ_Items[Itemlist_Zähler] == 2)
                     {
                         Items.malen_LaserGun(graphics, x_Pos_Block, y_Pos_Block);
                     }
 
                     Blocklist_Zähler++;
-                } while (Blocklist_Zähler < list_Typ_Obj.Count);
+                } while (Blocklist_Zähler < list_Typ_Items.Count);
             }
         }
         public Main_Form()
