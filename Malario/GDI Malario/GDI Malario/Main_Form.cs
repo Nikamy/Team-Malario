@@ -37,21 +37,20 @@ namespace GDI_Malario
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
 
-<<<<<<< HEAD
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(leftlimit);
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
             Items.malen_Heart(graphics, 10, 10);
-=======
+
             label1counter.Text = Convert.ToString(rightlimit);
             label1.Text = Convert.ToString(Lives);
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
 
 
->>>>>>> Jan
+
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
