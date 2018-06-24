@@ -21,6 +21,7 @@ namespace GDI_Malario
         List<int> list_x_Pos_Enemys = new List<int>();
         List<int> list_y_Pos_Enemys = new List<int>();
         List<int> list_Typ_Enemys = new List<int>();
+        List<bool> list_Richtung_Enemys = new List<bool>();
 
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
@@ -330,8 +331,55 @@ namespace GDI_Malario
             list_x_Pos_Obj.Add(x_Pos_Block);
             list_y_Pos_Obj.Add(y_Pos_Block);
 
+            x_Pos_Block = 300;
+            y_Pos_Block = (this.Height - 38 - 50 - 24);
 
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            x_Pos_Block += 24;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            x_Pos_Block += 24;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            y_Pos_Block -= 24;
+            x_Pos_Block -= 24;
+            
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            x_Pos_Block += 24;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            y_Pos_Block -= 24;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
 
+            y_Pos_Block -= 96;
+            x_Pos_Block -= 150;
+
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            x_Pos_Block += 24;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            x_Pos_Block += 24;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
+            y_Pos_Block -= 24;
+
+            x_Pos_Block -= 48;
+            list_Typ_Obj.Add(4);
+            list_x_Pos_Obj.Add(x_Pos_Block);
+            list_y_Pos_Obj.Add(y_Pos_Block);
 
             // Pipe
             /*

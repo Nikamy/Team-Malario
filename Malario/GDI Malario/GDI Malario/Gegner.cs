@@ -32,7 +32,7 @@ namespace GDI_Malario
                 
             }
             
-            }
+            
         }
     }
 }
