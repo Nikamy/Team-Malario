@@ -39,7 +39,7 @@ namespace GDI_Malario
             I_Laser = true;
             I_Energy = true;
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
-            label1.Text = Convert.ToString(I_LaserActive);
+            label1.Text = Convert.ToString(M_Lives);
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
