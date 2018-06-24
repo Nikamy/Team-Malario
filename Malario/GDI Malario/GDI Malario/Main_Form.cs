@@ -23,6 +23,7 @@ namespace GDI_Malario
         List<int> list_Typ_Enemys = new List<int>();
         List<bool> list_RichtungLinks_Enemys = new List<bool>();
 
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
 <<<<<<< HEAD
@@ -31,12 +32,12 @@ namespace GDI_Malario
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
 =======
+        int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive = false;
 >>>>>>> Marvin
         int M_Lives = 3;
-        
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -423,18 +424,29 @@ namespace GDI_Malario
                     {
                         list_RichtungLinks_Enemys[j] = true;
                     }
-                    //Mario läuft nach Rechts in der Linken Hälfte und Goethe trifft auf ein Objekt
                     else
                     {
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit && x_Pos_Malario < Width / 2)
                     {
                         list_RichtungLinks_Enemys[j] = false;
                     }
                     else
                     {
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
+                    }
+                    //Goethe fällt
+                    if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] < fall_Limit)
+                    {
+                        Goethe_AnziehungskraftInt++;
+                        Goethe_AnziehungskraftBool = true;
+                    }
+                    else
+                    {
+                        Goethe_AnziehungskraftInt = 0;
+                        Goethe_AnziehungskraftBool = false;
                     }
                 }
                 else if (list_Typ_Enemys[j] == 1)
@@ -448,6 +460,7 @@ namespace GDI_Malario
 
                     }
                 }
+                list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
                 j++;
             } while (j < list_Typ_Enemys.Count);
 
