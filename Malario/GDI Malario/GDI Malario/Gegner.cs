@@ -87,6 +87,5 @@ namespace GDI_Malario
             else if (direction == 'l') x_Pos = x_Koordinate + 7 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 2 * Bit_Multiplier0, 2 * Bit_Multiplier0);
         }
-        public static void laufen_Goethe(Graphics graphics, int x_Koordinate, int y_Koordinate); //mehr?? bin müde, GutNacht.
     }
 }

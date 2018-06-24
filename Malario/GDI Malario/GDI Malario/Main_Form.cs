@@ -37,8 +37,8 @@ namespace GDI_Malario
 
             label1counter.Text = Convert.ToString(rightlimit);
             label1.Text = Convert.ToString(leftlimit);
-            label2.Text = Convert.ToString(M_Anziehungskraft);
-            label3.Text = Convert.ToString(C_Right);
+            label2.Text = Convert.ToString(x_Pos_Malario);
+            label3.Text = Convert.ToString(y_Pos_Malario);
 
             Items.malen_Heart(graphics, 10, 10);
             Gegner.malen_Goethe(graphics, 50, 35, 'l');
@@ -162,7 +162,7 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = 0, UnderneathValue0 = 480, UnderneathValue1 = 480, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Bewegungs_Panel_Zähler = list_x_Pos_Obj.Count - 1; 
+            int i = 0, UnderneathValue0 = 480, UnderneathValue1 = 480, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Block_Zähler = list_x_Pos_Obj.Count - 1; 
             C_Right = false;
             C_Left = false;
             C_Above = false;
@@ -245,9 +245,9 @@ namespace GDI_Malario
             x_Pos_Malario += M_Bewegungskraft;
             do
             {
-                list_x_Pos_Obj[Bewegungs_Panel_Zähler] -= Block_Bewegungskraft;
-                Bewegungs_Panel_Zähler--;
-            } while (Bewegungs_Panel_Zähler >= 0);
+                list_x_Pos_Obj[Block_Zähler] -= Block_Bewegungskraft;
+                Block_Zähler--;
+            } while (Block_Zähler >= 0);
 
             //Malario fällt
             if (y_Pos_Malario < fall_Limit )
