@@ -62,6 +62,11 @@ namespace GDI_Malario
             {
 
             }
+            //Leben
+            if (M_Lives == 0)
+            {
+
+            }
             //Item Wirkung Ende
 
             if (M_Left == true || M_Right == true)
