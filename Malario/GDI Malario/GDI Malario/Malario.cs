@@ -192,7 +192,6 @@ namespace GDI_Malario
                     y_Pos_Malario -= (1 * y_Bit_Multiplier0);
                     grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 2 * x_Bit_Multiplier0, 1 * y_Bit_Multiplier0);
 
-
                 }
             }
             else

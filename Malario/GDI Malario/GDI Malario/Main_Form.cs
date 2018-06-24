@@ -21,7 +21,7 @@ namespace GDI_Malario
         List<int> list_x_Pos_Enemys = new List<int>();
         List<int> list_y_Pos_Enemys = new List<int>();
         List<int> list_Typ_Enemys = new List<int>();
-        List<bool> list_Richtung_Enemys = new List<bool>();
+        List<bool> list_RichtungLinks_Enemys = new List<bool>();
 
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
@@ -150,7 +150,7 @@ namespace GDI_Malario
                 {
                     x_Pos_Block = list_x_Pos_Enemys[Zähler];
                     y_Pos_Block = list_y_Pos_Enemys[Zähler];
-                    bool Richtung_Gegner = list_Richtung_Enemys[Zähler];
+                    bool Richtung_Gegner = list_RichtungLinks_Enemys[Zähler];
                     if (list_Typ_Enemys[Zähler] == 0)
                     {
                         Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block, Richtung_Gegner);
@@ -386,9 +386,9 @@ namespace GDI_Malario
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
-                    if (list_Richtung_Enemys[j] == false && list_x_Pos_Enemys[j] + 30 >= rightlimit)
+                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 30 >= rightlimit)
                     {
-                        list_Richtung_Enemys[j] = true;
+                        list_RichtungLinks_Enemys[j] = true;
                     }
                     //Mario läuft nach Rechts in der Linken Hälfte und Goethe trifft auf ein Objekt
                     else
@@ -396,9 +396,9 @@ namespace GDI_Malario
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
-                    if (list_Richtung_Enemys[j] == true && list_x_Pos_Enemys[j] + 30 >= rightlimit)
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] + 30 >= rightlimit && x_Pos_Malario < Width / 2)
                     {
-                        list_Richtung_Enemys[j] = false;
+                        list_RichtungLinks_Enemys[j] = false;
                     }
                     else
                     {
@@ -407,11 +407,11 @@ namespace GDI_Malario
                 }
                 else if (list_Typ_Enemys[j] == 1)
                 {
-                    if (list_Richtung_Enemys[j] == false)
+                    if (list_RichtungLinks_Enemys[j] == false)
                     {
 
                     }
-                    else if (list_Richtung_Enemys[j] == true)
+                    else if (list_RichtungLinks_Enemys[j] == true)
                     {
 
                     }
@@ -554,7 +554,7 @@ namespace GDI_Malario
             */
             // Pipe
             list_Typ_Enemys.Add(0);
-            list_Richtung_Enemys.Add(false);
+            list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(140);
             list_y_Pos_Enemys.Add(200);
         }
@@ -585,6 +585,13 @@ namespace GDI_Malario
             if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe / 2 <= obj_y_Koor)
             {
                 C_Underneath = true;
+            }
+        }
+        private void c_Malario(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int M_x_Koor, int M_y_Koor, int M_Breite, int M_Höhe)
+        {
+            if ((char_x_Koor + char_Breite < M_x_Koor && char_y_Koor + char_Höhe > M_y_Koor && char_y_Koor < M_y_Koor + M_Höhe) || (char_x_Koor >= M_x_Koor + M_Breite && char_y_Koor + char_Höhe >= M_y_Koor && char_y_Koor <= M_y_Koor + M_Höhe) || (char_y_Koor >= M_y_Koor && char_x_Koor + char_Breite > M_x_Koor && char_x_Koor < M_x_Koor + M_Breite + char_Breite / 4) || (char_x_Koor + char_Breite >= M_x_Koor && char_x_Koor <= M_x_Koor + M_Breite && char_y_Koor + char_Höhe / 2 <= M_y_Koor))
+            {
+                M_Lives--;
             }
         }
         //CollisionPunkt_Abfragen_Stop
