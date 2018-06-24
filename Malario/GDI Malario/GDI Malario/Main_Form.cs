@@ -239,7 +239,7 @@ namespace GDI_Malario
                 }
                 if (C_Left == true)
                 {
-                    LeftValue1 = list_x_Pos_Obj[i] + 24;
+                    LeftValue1 = list_x_Pos_Obj[i] + 30;
                     if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
                 }
 
@@ -344,7 +344,6 @@ namespace GDI_Malario
             int j = 0;
             do
             {
-
                 i = 0;
                 do
                 {
