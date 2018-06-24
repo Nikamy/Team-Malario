@@ -41,8 +41,13 @@ namespace GDI_Malario
             base.OnPaint(e);
             I_Laser = true;
             I_Energy = false;
+<<<<<<< HEAD
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(M_Lives);
+=======
+            label1counter.Text = Convert.ToString(list_Typ_Obj.Count);
+            label1.Text = Convert.ToString(laufzähler);
+>>>>>>> master
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
@@ -168,7 +173,11 @@ namespace GDI_Malario
                     bool Richtung_Gegner = list_RichtungLinks_Enemys[Zähler];
                     if (list_Typ_Enemys[Zähler] == 0 && x_Pos_Block < 504 && x_Pos_Block > -60)
                     {
+<<<<<<< HEAD
                         Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block+4, Richtung_Gegner);
+=======
+                        Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block + 4, Richtung_Gegner);
+>>>>>>> master
 
                     }
                     else if (list_Typ_Enemys[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
@@ -319,7 +328,7 @@ namespace GDI_Malario
             if (y_Pos_Malario < fall_Limit)
             {
                 M_Jump = true;
-                anziehungskraft+= 3;
+                anziehungskraft += 3;
                 M_Anziehungskraft = true;
             }
             //Malario Boden Collision erkannt und behandelt
@@ -402,7 +411,11 @@ namespace GDI_Malario
                     c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                     if (C_Underneath == true)
                     {
+<<<<<<< HEAD
                         UnderneathValue1 = list_y_Pos_Obj[i]-8;
+=======
+                        UnderneathValue1 = list_y_Pos_Obj[i] - 8;
+>>>>>>> master
                         if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
                     }
                     if (C_Right == true)
@@ -423,6 +436,10 @@ namespace GDI_Malario
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                     if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
@@ -432,7 +449,12 @@ namespace GDI_Malario
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
+<<<<<<< HEAD
                     if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit +26)
+=======
+
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
+>>>>>>> master
                     {
                         list_RichtungLinks_Enemys[j] = false;
                     }
@@ -480,10 +502,10 @@ namespace GDI_Malario
         }
         private void malen_Startmenü()
         {
+            generiert_Rechteck(480, 24, 0, 2, 9);
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
 
-            generiert_Röhre(24, 432, 480);
 
             int Blockzähler = 0;
             do
@@ -673,7 +695,7 @@ namespace GDI_Malario
                 y_Pos_Block -= 24;
             } while (y_Pos_Block >= boden_Höhe);
         }
-        private void generiert_Röhre(int röhren_Höhe, int boden_Höhe,int x_Coor)
+        private void generiert_Röhre(int röhren_Höhe, int boden_Höhe, int x_Coor)
         {
             int x_Pos_Block = x_Coor,
             y_Pos_Block = röhren_Höhe;
@@ -705,7 +727,27 @@ namespace GDI_Malario
                 list_y_Pos_Obj.Add(y_Pos_Block);
             } while (y_Pos_Block < boden_Höhe);
         }
-
-
+        private void generiert_Rechteck(int x_Coor, int y_Choor, int blockArt, int block_Höhe, int block_Breite)
+        {
+            int x_Pos_Block = x_Coor,
+            y_Pos_Block = y_Choor;
+            int Zähler0 = 0,
+                Zähler1 = 0;
+            do
+            {
+                Zähler0 = 0;
+                do
+                {
+                    y_Pos_Block += 24;
+                    list_Typ_Obj.Add(blockArt);
+                    list_x_Pos_Obj.Add(x_Pos_Block);
+                    list_y_Pos_Obj.Add(y_Pos_Block);
+                    Zähler0++;
+                } while (Zähler0 < block_Höhe);
+                y_Pos_Block -= 24 * block_Höhe;
+                x_Pos_Block -= 24;
+                Zähler1++;
+            } while (Zähler1 < block_Breite);
+        }
     }
 }
