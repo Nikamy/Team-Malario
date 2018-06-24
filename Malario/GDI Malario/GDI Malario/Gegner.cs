@@ -18,7 +18,7 @@ namespace GDI_Malario
             Color colour = Color.SaddleBrown;
             Grundmethoden grundmethoden = new Grundmethoden();
             x_Pos = x_Koordinate + 5 * Bit_Multiplier0;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, Bit_Multiplier0, 4 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 4 * Bit_Multiplier0, Bit_Multiplier0);
             y_Pos = y_Koordinate + 1 * Bit_Multiplier0;
             x_Pos = x_Koordinate + 3 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, Bit_Multiplier0, Bit_Multiplier0);
