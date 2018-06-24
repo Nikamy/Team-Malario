@@ -26,17 +26,12 @@ namespace GDI_Malario
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-<<<<<<< HEAD
-        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2;
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-=======
-        int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
+        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
 
         //Items
-        bool I_Energy, I_Laser, I_LaserActive = false;
->>>>>>> Marvin
         int M_Lives = 3;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -61,11 +56,8 @@ namespace GDI_Malario
                 M_Laufgeschwindigkeit = 4;
             }
             //Laser
-<<<<<<< HEAD
+
             if (I_LaserAnimation == true )
-=======
-            if (I_LaserActive == true)
->>>>>>> Marvin
             {
                 int nextBlock = 0;
                 if (M_Richtung == false)
