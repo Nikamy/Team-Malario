@@ -258,7 +258,7 @@ namespace GDI_Malario
 
                 i++;
             } while (i < list_x_Pos_Obj.Count);
-            fall_Limit = UnderneathValue0 - 29;
+            fall_Limit = UnderneathValue0 - 34;
             sprung_Limit = AboveValue0;
             rightlimit = RightValue0;
             leftlimit = LeftValue0;
