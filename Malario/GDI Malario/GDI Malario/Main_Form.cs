@@ -50,6 +50,7 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(M_Anziehungskraft);
             label3.Text = Convert.ToString(C_Right);
 
+
 >>>>>>> Jan
             if (M_Left == true || M_Right == true)
             {
