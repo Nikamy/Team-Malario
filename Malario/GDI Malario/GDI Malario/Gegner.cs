@@ -12,7 +12,9 @@ namespace GDI_Malario
 {
     class Gegner : Grundmethoden
     {
-        public static void malen_Goethe(Graphics graphics, int x_Koordinate, int y_Koordinate, char direction)
+        //direction = false = rechts
+        //direction = true = links
+        public static void malen_Goethe(Graphics graphics, int x_Koordinate, int y_Koordinate, bool direction)
         {
             int x_Pos = x_Koordinate, y_Pos = y_Koordinate, Bit_Multiplier0 = 2;
             Color colour = Color.SaddleBrown;
@@ -59,32 +61,32 @@ namespace GDI_Malario
             colour = Color.LightGray;
 
             y_Pos = y_Koordinate + 3 * Bit_Multiplier0;
-            if (direction == 'r') x_Pos = x_Koordinate + 4 * Bit_Multiplier0;
-            else if (direction == 'l') x_Pos = x_Koordinate + 2 * Bit_Multiplier0;
+            if (direction == false) x_Pos = x_Koordinate + 4 * Bit_Multiplier0;
+            else if (direction == true) x_Pos = x_Koordinate + 2 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 2 * Bit_Multiplier0, 5 * Bit_Multiplier0);
-            if (direction == 'r') x_Pos = x_Koordinate + 10 * Bit_Multiplier0;
-            else if (direction == 'l') x_Pos = x_Koordinate + 8 * Bit_Multiplier0;
+            if (direction == false) x_Pos = x_Koordinate + 10 * Bit_Multiplier0;
+            else if (direction == true) x_Pos = x_Koordinate + 8 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 2 * Bit_Multiplier0, 5 * Bit_Multiplier0);
 
             y_Pos = y_Koordinate + 4 * Bit_Multiplier0;
-            if (direction == 'r') x_Pos = x_Koordinate + 3 * Bit_Multiplier0;
-            else if (direction == 'l') x_Pos = x_Koordinate + Bit_Multiplier0;
+            if (direction == false) x_Pos = x_Koordinate + 3 * Bit_Multiplier0;
+            else if (direction == true) x_Pos = x_Koordinate + Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 4 * Bit_Multiplier0, 3 * Bit_Multiplier0);
 
 
-            if (direction == 'r') x_Pos = x_Koordinate + 9 * Bit_Multiplier0;
-            else if (direction == 'l') x_Pos = x_Koordinate + 7 * Bit_Multiplier0;
+            if (direction == false) x_Pos = x_Koordinate + 9 * Bit_Multiplier0;
+            else if (direction == true) x_Pos = x_Koordinate + 7 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 4 * Bit_Multiplier0, 3 * Bit_Multiplier0);
             //Pupillen
             colour = Color.Blue;
 
             y_Pos = y_Koordinate + 5 * Bit_Multiplier0;
-            if (direction == 'r') x_Pos = x_Koordinate + 5 * Bit_Multiplier0;
-            else if (direction == 'l') x_Pos = x_Koordinate + Bit_Multiplier0;
+            if (direction == false) x_Pos = x_Koordinate + 5 * Bit_Multiplier0;
+            else if (direction == true) x_Pos = x_Koordinate + Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 2 * Bit_Multiplier0, 2 * Bit_Multiplier0);
 
-            if (direction == 'r') x_Pos = x_Koordinate + 11 * Bit_Multiplier0;
-            else if (direction == 'l') x_Pos = x_Koordinate + 7 * Bit_Multiplier0;
+            if (direction == false) x_Pos = x_Koordinate + 11 * Bit_Multiplier0;
+            else if (direction == true) x_Pos = x_Koordinate + 7 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 2 * Bit_Multiplier0, 2 * Bit_Multiplier0);
         }
     }
