@@ -33,7 +33,7 @@ namespace GDI_Malario
         int M_Lives = 3;
 
         //Level_Generator
-        int bodenhöhe = 432, bodenabstand, laufzähler = 0;
+        int bodenhöhe = 432, bodenabstand, laufzähler = 950;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -97,6 +97,10 @@ namespace GDI_Malario
             }
             // malen_Startmenü(graphics);
 
+
+            generiert_LevelAbschnitt();
+
+
             int Zähler = 0;
             if (list_x_Pos_Obj.Count > 0)
             {
@@ -105,23 +109,23 @@ namespace GDI_Malario
                     x_Pos_Block = list_x_Pos_Obj[Zähler];
                     y_Pos_Block = list_y_Pos_Obj[Zähler];
 
-                    if (list_Typ_Obj[Zähler] == 0 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    if (list_Typ_Obj[Zähler] == 0 && x_Pos_Block < 600 && x_Pos_Block > -60)
                     {
                         Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 1 && x_Pos_Block < 600 && x_Pos_Block > -60)
                     {
                         Level_Blöcke.malen_MauerBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 2 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 2 && x_Pos_Block < 600 && x_Pos_Block > -60)
                     {
                         Level_Blöcke.malen_RöhrenBlock_Kopf(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 3 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 3 && x_Pos_Block < 600 && x_Pos_Block > -60)
                     {
                         Level_Blöcke.malen_RöhrenBlock_Hals(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < 600 && x_Pos_Block > -60)
                     {
                         Level_Blöcke.malen_StahlBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
@@ -386,10 +390,10 @@ namespace GDI_Malario
             i = 0;
             UnderneathValue0 = 480;
             UnderneathValue1 = 480;
-            RightValue0 = 480;
-            RightValue1 = 480;
-            LeftValue0 = 0;
-            LeftValue1 = 0;
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
             int j = 0;
             do
             {
@@ -482,7 +486,6 @@ namespace GDI_Malario
         }
         private void malen_Startmenü()
         {
-            generiert_Rechteck(480, 24, 0, 2, 9);
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
 
@@ -491,13 +494,13 @@ namespace GDI_Malario
             do
             {
 
-                list_Typ_Obj.Add(4);
+                list_Typ_Obj.Add(0);
                 list_x_Pos_Obj.Add(x_Pos_Block);
                 list_y_Pos_Obj.Add(y_Pos_Block);
 
                 y_Pos_Block += 24;
 
-                list_Typ_Obj.Add(4);
+                list_Typ_Obj.Add(0);
                 list_x_Pos_Obj.Add(x_Pos_Block);
                 list_y_Pos_Obj.Add(y_Pos_Block);
 
@@ -505,109 +508,10 @@ namespace GDI_Malario
                 y_Pos_Block -= 24;
                 x_Pos_Block += 24;
                 Blockzähler += 24;
-            } while (Blockzähler < 20000);
+            } while (Blockzähler < 960);
 
 
 
-            x_Pos_Block = 96;
-            y_Pos_Block = (this.Height - 39 - 48 - 24);
-
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-
-            x_Pos_Block = 288;
-            y_Pos_Block = (this.Height - 39 - 48 - 24);
-
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            y_Pos_Block -= 24;
-            x_Pos_Block -= 24;
-
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            y_Pos_Block -= 24;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-
-            y_Pos_Block -= 96;
-            x_Pos_Block -= 150;
-
-
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            y_Pos_Block -= 24;
-
-            x_Pos_Block -= 48;
-            list_Typ_Obj.Add(4);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-
-            // Pipe
-            /*
-            x_Pos_Block = 100;
-            y_Pos_Block = (this.Height - 38 - 50 - 72);
-
-            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
-            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
-            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
-            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 2;
-            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
-            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
-            
-            x_Pos_Block += 24;
-
-            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
-            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
-            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
-            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 99999;
-            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
-            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
-
-            
-            x_Pos_Block -= 24;
-            y_Pos_Block += 48;
-
-            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
-            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
-            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
-            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 3;
-            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
-            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
-            x_Pos_Block += 24;
-
-            Array.Resize(ref list_x_Pos_Obj, list_x_Pos_Obj.Count + 1);
-            Array.Resize(ref list_y_Pos_Obj, list_y_Pos_Obj.Count + 1);
-            Array.Resize(ref list_Typ_Obj, list_Typ_Obj.Count + 1);
-            list_Typ_Obj[list_x_Pos_Obj.Count - 1] = 9999;
-            list_x_Pos_Obj[list_x_Pos_Obj.Count - 1] = x_Pos_Block;
-            list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
-            */
-            // Pipe
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(200);
@@ -647,7 +551,50 @@ namespace GDI_Malario
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
+            if (laufzähler >= 960)
+            {
+                Random random = new Random();
+                int abstand_ist_da = random.Next(1, 3),
+                    xabstand = random.Next(0, 3),
+                    yabstand = random.Next(-5, 6),
+                    boden_x;
 
+
+                int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
+                do if (list_x_Pos_Obj.Count > 0)
+                    {
+                        x_Value1 = list_x_Pos_Obj[Zähler0];
+                        if (x_Value0 < x_Value1) x_Value0 = x_Value1;
+                        Zähler0++;
+                    } while (Zähler0 < list_x_Pos_Obj.Count);
+                //x Position der letzten Blockreihe
+                boden_x = x_Value0;
+
+
+                if (abstand_ist_da >= 1)
+                {
+                    generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                    boden_x += 24;
+
+                    if (bodenhöhe + 24 * yabstand < 480)
+                    {
+                        if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
+                        else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
+                        else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
+                        else if (yabstand <= -5) boden_x += 24 * 5;
+                        else if (yabstand <= -4) boden_x += 24 * 7;
+                        else if (yabstand >= 5) boden_x += 24 * 10;
+
+                        bodenhöhe += yabstand * 24;
+                        generiert_Rechteck(boden_x, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        boden_x += 24;
+                    }
+                }
+                generiert_BodenAbschnitt(bodenhöhe, 48, boden_x);
+
+
+                laufzähler = 0;
+            }
         }
         private void generiert_BodenAbschnitt(int boden_Höhe, int boden_Länge, int x_Coor)
         {
@@ -711,16 +658,43 @@ namespace GDI_Malario
                 Zähler0 = 0;
                 do
                 {
-                    y_Pos_Block += 24;
                     list_Typ_Obj.Add(blockArt);
                     list_x_Pos_Obj.Add(x_Pos_Block);
                     list_y_Pos_Obj.Add(y_Pos_Block);
+                    y_Pos_Block += 24;
                     Zähler0++;
                 } while (Zähler0 < block_Höhe);
                 y_Pos_Block -= 24 * block_Höhe;
                 x_Pos_Block -= 24;
                 Zähler1++;
             } while (Zähler1 < block_Breite);
+        }
+        //Links = 1 / 0 == 1= y;0=n
+        private void generiert_Treppe(int x_Coor, int y_Choor, int Links, int treppen_Höhe)
+        {
+            int x_Pos_Block = x_Coor,
+            y_Pos_Block = y_Choor,
+            höhenZähler = 0,
+            breitenZähler = 0;
+
+            x_Pos_Block += (Links * 24 * treppen_Höhe);
+            do
+            {
+                höhenZähler++;
+                breitenZähler = 0;
+                do
+                {
+                    list_Typ_Obj.Add(4);
+                    list_x_Pos_Obj.Add(x_Pos_Block);
+                    list_y_Pos_Obj.Add(y_Pos_Block);
+                    x_Pos_Block += 24;
+
+                    breitenZähler++;
+                } while (breitenZähler < höhenZähler);
+                y_Pos_Block += 24;
+                x_Pos_Block += (-1 * 24 * (breitenZähler + Links));
+            } while (höhenZähler <= treppen_Höhe);
+
         }
     }
 }
