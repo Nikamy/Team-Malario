@@ -29,8 +29,8 @@ namespace GDI_Malario
         int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2;
 
         //Items
-        bool Energy, Laser = false;
-        int Lives;
+        bool I_Energy, I_Laser = false;
+        int M_Lives;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -38,16 +38,10 @@ namespace GDI_Malario
             base.OnPaint(e);
 
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
-            label1.Text = Convert.ToString(leftlimit);
+            label1.Text = Convert.ToString(M_Lives);
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
-            Items.malen_Heart(graphics, 10, 10);
-
-            label1counter.Text = Convert.ToString(rightlimit);
-            label1.Text = Convert.ToString(Lives);
-            label2.Text = Convert.ToString(M_Anziehungskraft);
-            label3.Text = Convert.ToString(C_Right);
 
 
 
