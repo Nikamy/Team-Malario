@@ -61,11 +61,11 @@ namespace GDI_Malario
                 int nextBlock = 0;
                 if (M_Richtung == false)
                 {
-                    nextBlock = (rightlimit - x_Pos_Malario) - 24;
+                    nextBlock = rightlimit - 27;
                 }
                else if (M_Richtung == true)
                 {
-                    nextBlock = (x_Pos_Malario - leftlimit) + 8;
+                    nextBlock = leftlimit + 2;
                 }
                 Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, nextBlock, M_Richtung);
             }
@@ -263,7 +263,7 @@ namespace GDI_Malario
 
                 i++;
             } while (i < list_x_Pos_Obj.Count);
-            fall_Limit = UnderneathValue0 - 34;
+            fall_Limit = UnderneathValue0 - 29;
             sprung_Limit = AboveValue0;
             rightlimit = RightValue0;
             leftlimit = LeftValue0;
@@ -631,7 +631,7 @@ namespace GDI_Malario
         }
         private void c_Underneath(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor + char_Breite  >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe / 2 <= obj_y_Koor)
+            if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe / 2 <= obj_y_Koor)
             {
                 C_Underneath = true;
             }
