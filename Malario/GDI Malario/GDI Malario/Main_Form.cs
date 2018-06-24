@@ -30,7 +30,7 @@ namespace GDI_Malario
 
         //Items
         bool I_Energy, I_Laser = false;
-        int M_Lives;
+        int M_Lives = 3;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -42,8 +42,25 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
+            //Item Wirkung
+            if (I_Energy == true)
+            {
+                M_Laufgeschwindigkeit = 6;
+            }
 
+            else if (I_Energy == false)
+            {
+                M_Laufgeschwindigkeit = 4;
+            }
 
+            if (I_Laser == true)
+            {
+
+            }
+            else if (I_Laser == false)
+            {
+
+            }
 
             if (M_Left == true || M_Right == true)
             {
