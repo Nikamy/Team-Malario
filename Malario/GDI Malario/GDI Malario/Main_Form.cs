@@ -23,13 +23,13 @@ namespace GDI_Malario
         List<int> list_Typ_Enemys = new List<int>();
         List<bool> list_RichtungLinks_Enemys = new List<bool>();
 
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
+        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -37,6 +37,7 @@ namespace GDI_Malario
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
             I_Laser = true;
+            I_Energy = true;
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(I_LaserActive);
             label2.Text = Convert.ToString(x_Pos_Malario);
@@ -46,12 +47,12 @@ namespace GDI_Malario
             //Energy
             if (I_Energy == true)
             {
-                M_Laufgeschwindigkeit = 6;
+                M_Laufgeschwindigkeit = 9;
             }
 
             else if (I_Energy == false)
             {
-                M_Laufgeschwindigkeit = 4;
+                M_Laufgeschwindigkeit = 6;
             }
             //Laser
 
