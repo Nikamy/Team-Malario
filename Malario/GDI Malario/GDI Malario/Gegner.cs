@@ -16,23 +16,24 @@ namespace GDI_Malario
         {
             int x_Pos = x_Koordinate, y_Pos = y_Koordinate, Bit_Multiplier0 = 2;
             Color colour = Color.SaddleBrown;
-
-            y_Pos = y_Pos + (Bit_Multiplier0 * 15);
             Grundmethoden grundmethoden = new Grundmethoden();
-
+            x_Pos = x_Koordinate + 5 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, Bit_Multiplier0, 4 * Bit_Multiplier0);
+            y_Pos = y_Koordinate + 1 * Bit_Multiplier0;
+            x_Pos = x_Koordinate + 3 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, Bit_Multiplier0, Bit_Multiplier0);
 
             //Nächste Zeile und verschiedene Augen je nach Richtung in die er läuft
             if (direction == 'r')
             {
-                
+
 
             }
             else if (direction == 'l')
             {
-                
+
             }
-            
-            }
+
         }
     }
 }
