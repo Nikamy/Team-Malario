@@ -41,13 +41,8 @@ namespace GDI_Malario
             base.OnPaint(e);
             I_Laser = true;
             I_Energy = false;
-<<<<<<< HEAD
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(M_Lives);
-=======
-            label1counter.Text = Convert.ToString(list_Typ_Obj.Count);
-            label1.Text = Convert.ToString(laufzähler);
->>>>>>> master
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
@@ -173,12 +168,7 @@ namespace GDI_Malario
                     bool Richtung_Gegner = list_RichtungLinks_Enemys[Zähler];
                     if (list_Typ_Enemys[Zähler] == 0 && x_Pos_Block < 504 && x_Pos_Block > -60)
                     {
-<<<<<<< HEAD
-                        Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block+4, Richtung_Gegner);
-=======
                         Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block + 4, Richtung_Gegner);
->>>>>>> master
-
                     }
                     else if (list_Typ_Enemys[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
                     {
@@ -414,11 +404,7 @@ namespace GDI_Malario
                     c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                     if (C_Underneath == true)
                     {
-<<<<<<< HEAD
-                        UnderneathValue1 = list_y_Pos_Obj[i]-8;
-=======
                         UnderneathValue1 = list_y_Pos_Obj[i] - 8;
->>>>>>> master
                         if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
                     }
                     if (C_Right == true)
@@ -439,10 +425,6 @@ namespace GDI_Malario
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
-<<<<<<< HEAD
-=======
-
->>>>>>> master
                     if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
@@ -452,12 +434,7 @@ namespace GDI_Malario
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
-<<<<<<< HEAD
-                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit +26)
-=======
-
                     if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
->>>>>>> master
                     {
                         list_RichtungLinks_Enemys[j] = false;
                     }
@@ -477,7 +454,7 @@ namespace GDI_Malario
                         Goethe_AnziehungskraftBool = false;
                     }
                 }
-                #endregion
+
                 else if (list_Typ_Enemys[j] == 1)
                 {
                     if (list_RichtungLinks_Enemys[j] == false)
@@ -493,7 +470,7 @@ namespace GDI_Malario
                 list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
                 j++;
             } while (j < list_Typ_Enemys.Count);
-
+                #endregion
             Block_Zähler = list_Typ_Enemys.Count - 1;
             do
             {
@@ -663,13 +640,6 @@ namespace GDI_Malario
             if (char_x_Koor + char_Breite >= obj_x_Koor && char_x_Koor <= obj_x_Koor + obj_Breite && char_y_Koor + char_Höhe / 2 <= obj_y_Koor)
             {
                 C_Underneath = true;
-            }
-        }
-        private void c_Malario(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int M_x_Koor, int M_y_Koor, int M_Breite, int M_Höhe)
-        {
-            if ((char_x_Koor + char_Breite < M_x_Koor && char_y_Koor + char_Höhe > M_y_Koor && char_y_Koor < M_y_Koor + M_Höhe) || (char_x_Koor >= M_x_Koor + M_Breite && char_y_Koor + char_Höhe >= M_y_Koor && char_y_Koor <= M_y_Koor + M_Höhe) || (char_y_Koor >= M_y_Koor && char_x_Koor + char_Breite > M_x_Koor && char_x_Koor < M_x_Koor + M_Breite + char_Breite / 4) || (char_x_Koor + char_Breite >= M_x_Koor && char_x_Koor <= M_x_Koor + M_Breite && char_y_Koor + char_Höhe / 2 <= M_y_Koor))
-            {
-                M_Lives--;
             }
         }
         //CollisionPunkt_Abfragen_Stop
