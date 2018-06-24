@@ -287,7 +287,7 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-                if (M_Right == true && x_Pos_Malario < 255)
+                if (M_Right == true && x_Pos_Malario < 200)
                 {
                     M_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
@@ -551,7 +551,7 @@ namespace GDI_Malario
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
-            if (laufzähler >= 960)
+            if (laufzähler >= 96)
             {
                 Random random = new Random();
                 int abstand_ist_da = random.Next(1, 3),
@@ -575,7 +575,7 @@ namespace GDI_Malario
                 {
                     generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
                     boden_x += 24;
-
+                    if (bodenhöhe < 312) bodenhöhe += 6 * 24;
                     if (bodenhöhe + 24 * yabstand < 480)
                     {
                         if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
@@ -590,7 +590,7 @@ namespace GDI_Malario
                         boden_x += 24;
                     }
                 }
-                generiert_BodenAbschnitt(bodenhöhe, 48, boden_x);
+                generiert_BodenAbschnitt(bodenhöhe, 24 * 9, boden_x);
 
 
                 laufzähler = 0;
