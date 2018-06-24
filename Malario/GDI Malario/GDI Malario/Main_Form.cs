@@ -28,6 +28,9 @@ namespace GDI_Malario
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
         int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4;
 
+        //Items
+        bool Energy, Laser = false;
+        int Lives;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -42,6 +45,11 @@ namespace GDI_Malario
 
             Items.malen_Heart(graphics, 10, 10);
 =======
+            label1counter.Text = Convert.ToString(rightlimit);
+            label1.Text = Convert.ToString(Lives);
+            label2.Text = Convert.ToString(M_Anziehungskraft);
+            label3.Text = Convert.ToString(C_Right);
+
 >>>>>>> Jan
             if (M_Left == true || M_Right == true)
             {
