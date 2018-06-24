@@ -12,8 +12,25 @@ namespace GDI_Malario
 {
     class Items : Grundmethoden
     {
-
-        public static void malen_Heart(Graphics graphics, int x_Pos0, int y_Pos0)
+        public static void malen_Laser(Graphics graphics, int x_Pos0, int y_Pos0, int Laser_länge0, bool Richtung)
+        {
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
+            int xLänge = Laser_länge0 , yLänge;
+            Color color1 = Color.OrangeRed;
+            Grundmethoden grundmethoden = new Grundmethoden();
+            if (Richtung == false)
+            {
+                x_Pos += 27;
+            }
+            if (Richtung == true)
+            {
+                x_Pos -= Laser_länge0 - 27;
+            }
+            y_Pos += 9;
+            yLänge = 2;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xLänge, yLänge);
+        }
+            public static void malen_Heart(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
             int xLänge, yLänge;
