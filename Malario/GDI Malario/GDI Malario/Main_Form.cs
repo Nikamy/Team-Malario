@@ -23,7 +23,7 @@ namespace GDI_Malario
         List<int> list_Typ_Enemys = new List<int>();
         List<bool> list_RichtungLinks_Enemys = new List<bool>();
 
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
 
@@ -37,6 +37,7 @@ namespace GDI_Malario
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
             I_Laser = true;
+            I_Energy = true;
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(I_LaserActive);
             label2.Text = Convert.ToString(x_Pos_Malario);
