@@ -41,7 +41,7 @@ namespace GDI_Malario
             label3.Text = Convert.ToString(C_Right);
 
             Items.malen_Heart(graphics, 10, 10);
-
+            Gegner.malen_Goethe(graphics, 50, 35, 'l');
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
