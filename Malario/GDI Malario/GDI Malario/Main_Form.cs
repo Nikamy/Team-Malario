@@ -26,10 +26,10 @@ namespace GDI_Malario
         bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = true, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
-        int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2;
+        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2;
 
         //Items
-        bool I_Energy, I_Laser, I_LaserActive= false;
+        bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
         int M_Lives = 3;
         
         protected override void OnPaint(PaintEventArgs e)
@@ -54,7 +54,7 @@ namespace GDI_Malario
                 M_Laufgeschwindigkeit = 4;
             }
             //Laser
-            if (I_LaserActive == true )
+            if (I_LaserAnimation == true )
             {
                 Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, 50, M_Richtung);
             }
@@ -178,7 +178,7 @@ namespace GDI_Malario
             switch (e.KeyCode)
             {
                 case Keys.F:
-                    if (I_Laser == true)
+                    if (I_Laser == true && I_LaserActive == false)
                     {
                         I_LaserActive = true;
                     }
@@ -203,12 +203,6 @@ namespace GDI_Malario
         {
             switch (e.KeyCode)
             {
-                case Keys.F:
-                    if (I_Laser == true)
-                    {
-                        I_LaserActive = false;
-                    }
-                    break;
                 case Keys.D:
                     M_Right = false;
                     break;
@@ -349,6 +343,23 @@ namespace GDI_Malario
             {
                 M_Gehend = false;
                 animation_ms = 0;
+            }
+
+            //Laser Animation
+            if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 130)
+            {
+                LaserAnimation_ms += 17;
+                I_LaserAnimation = true;
+            }
+            else if (LaserAnimation_ms < 130)
+            {
+                I_LaserAnimation = false;
+                LaserAnimation_ms += 17;
+                if (LaserAnimation_ms > 190)
+                {
+                    I_LaserActive = false;
+                    LaserAnimation_ms = 0;
+                }
             }
             #endregion
             ////////////////////////////////////////////////////////////////////////////////////////////
