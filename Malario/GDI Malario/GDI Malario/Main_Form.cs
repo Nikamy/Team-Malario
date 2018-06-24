@@ -29,16 +29,16 @@ namespace GDI_Malario
         int animation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2;
 
         //Items
-        bool I_Energy, I_Laser = false;
+        bool I_Energy, I_Laser, I_LaserActive= false;
         int M_Lives = 3;
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-
+            I_Laser = true;
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
-            label1.Text = Convert.ToString(M_Lives);
+            label1.Text = Convert.ToString(I_LaserActive);
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
@@ -54,13 +54,14 @@ namespace GDI_Malario
                 M_Laufgeschwindigkeit = 4;
             }
             //Laser
-            if (I_Laser == true)
+            if (I_LaserActive == true )
             {
-
+                Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, 50, M_Richtung);
             }
-            else if (I_Laser == false)
+            //Leben
+            if (M_Lives == 0)
             {
-
+                //Respawn und neu Laden
             }
             //Item Wirkung Ende
 
@@ -176,6 +177,12 @@ namespace GDI_Malario
         {
             switch (e.KeyCode)
             {
+                case Keys.F:
+                    if (I_Laser == true)
+                    {
+                        I_LaserActive = true;
+                    }
+                    break;
                 case Keys.D:
                     M_Right = true;
                     M_Richtung = false;
@@ -196,6 +203,12 @@ namespace GDI_Malario
         {
             switch (e.KeyCode)
             {
+                case Keys.F:
+                    if (I_Laser == true)
+                    {
+                        I_LaserActive = false;
+                    }
+                    break;
                 case Keys.D:
                     M_Right = false;
                     break;
