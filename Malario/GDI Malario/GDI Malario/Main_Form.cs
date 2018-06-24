@@ -56,7 +56,16 @@ namespace GDI_Malario
             //Laser
             if (I_LaserAnimation == true )
             {
-                Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, 50, M_Richtung);
+                int nextBlock = 0;
+                if (M_Richtung == false)
+                {
+                    nextBlock = rightlimit - 27;
+                }
+               else if (M_Richtung == true)
+                {
+                    nextBlock = leftlimit + 2;
+                }
+                Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, nextBlock, M_Richtung);
             }
             //Leben
             if (M_Lives == 0)
