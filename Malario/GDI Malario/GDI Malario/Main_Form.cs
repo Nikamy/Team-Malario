@@ -29,7 +29,7 @@ namespace GDI_Malario
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
+        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -47,12 +47,12 @@ namespace GDI_Malario
             //Energy
             if (I_Energy == true)
             {
-                M_Laufgeschwindigkeit = 6;
+                M_Laufgeschwindigkeit = 9;
             }
 
             else if (I_Energy == false)
             {
-                M_Laufgeschwindigkeit = 4;
+                M_Laufgeschwindigkeit = 6;
             }
             //Laser
 
