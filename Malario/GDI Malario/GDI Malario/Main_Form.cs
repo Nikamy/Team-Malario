@@ -62,11 +62,11 @@ namespace GDI_Malario
                 int nextBlock = 0;
                 if (M_Richtung == false)
                 {
-                    nextBlock = rightlimit - 27;
+                    nextBlock = rightlimit - x_Pos_Malario;
                 }
                else if (M_Richtung == true)
                 {
-                    nextBlock = leftlimit + 2;
+                    nextBlock = (x_Pos_Malario - leftlimit) + 8;
                 }
                 Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, nextBlock, M_Richtung);
             }
