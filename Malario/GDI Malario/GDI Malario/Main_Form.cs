@@ -320,17 +320,16 @@ namespace GDI_Malario
             {
 
                 i = 0;
-
                 do
                 {
                     C_Above = false;
                     C_Underneath = false;
                     C_Right = false;
                     C_Left = false;
-                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Above(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Above(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                     if (C_Underneath == true)
                     {
                         UnderneathValue1 = list_y_Pos_Obj[i];
@@ -351,7 +350,6 @@ namespace GDI_Malario
                         LeftValue1 = list_x_Pos_Obj[i] + 24;
                         if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
                     }
-
                     i++;
                 } while (i < list_x_Pos_Obj.Count);
                 fall_Limit = UnderneathValue0 - 29;
@@ -388,13 +386,13 @@ namespace GDI_Malario
 
                     }
                 }
-                else if (list_Typ_Enemys[i] == 1)
+                else if (list_Typ_Enemys[j] == 1)
                 {
-                    if (list_Richtung_Enemys[i] == false)
+                    if (list_Richtung_Enemys[j] == false)
                     {
 
                     }
-                    else if (list_Richtung_Enemys[i] == true)
+                    else if (list_Richtung_Enemys[j] == true)
                     {
 
                     }
@@ -407,9 +405,6 @@ namespace GDI_Malario
         {
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 38 - 50);
-
-
-
 
             int Blockzähler = 0;
             do
@@ -531,6 +526,10 @@ namespace GDI_Malario
             list_y_Pos_Obj[list_x_Pos_Obj.Count - 1] = y_Pos_Block;
             */
             // Pipe
+            list_Typ_Enemys.Add(0);
+            list_Richtung_Enemys.Add(false);
+            list_x_Pos_Enemys.Add(140);
+            list_y_Pos_Enemys.Add(200);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
