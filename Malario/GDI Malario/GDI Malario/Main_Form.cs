@@ -412,26 +412,28 @@ namespace GDI_Malario
                     }
                     i++;
                 } while (i < list_x_Pos_Obj.Count);
-                fall_Limit = UnderneathValue0 - 29;
+                fall_Limit = UnderneathValue0 - 32;
                 sprung_Limit = AboveValue0;
                 rightlimit = RightValue0;
                 leftlimit = LeftValue0;
-
+                #region Goethe
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
                     if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 30 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
+                        list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
                     else
                     {
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit && x_Pos_Malario < Width / 2)
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit && list_y_Pos_Enemys[j] == fall_Limit)
                     {
                         list_RichtungLinks_Enemys[j] = false;
+                        list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     else
                     {
@@ -448,7 +450,8 @@ namespace GDI_Malario
                         Goethe_AnziehungskraftInt = 0;
                         Goethe_AnziehungskraftBool = false;
                     }
-                }
+               }
+#endregion
                 else if (list_Typ_Enemys[j] == 1)
                 {
                     if (list_RichtungLinks_Enemys[j] == false)
@@ -460,6 +463,7 @@ namespace GDI_Malario
 
                     }
                 }
+
                 list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
                 j++;
             } while (j < list_Typ_Enemys.Count);
@@ -601,7 +605,7 @@ namespace GDI_Malario
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(140);
-            list_y_Pos_Enemys.Add(200);
+            list_y_Pos_Enemys.Add(390);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
