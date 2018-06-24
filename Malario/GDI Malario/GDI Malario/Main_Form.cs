@@ -29,11 +29,7 @@ namespace GDI_Malario
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-<<<<<<< HEAD
-        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
-=======
         int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
->>>>>>> master
         int M_Lives = 3;
 
         //Level_Generator
@@ -45,13 +41,8 @@ namespace GDI_Malario
             base.OnPaint(e);
             I_Laser = true;
             I_Energy = false;
-<<<<<<< HEAD
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(M_Lives);
-=======
-            label1counter.Text = Convert.ToString(list_Typ_Obj.Count);
-            label1.Text = Convert.ToString(I_LaserActive);
->>>>>>> Leon
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
@@ -241,10 +232,7 @@ namespace GDI_Malario
             C_Left = false;
             C_Above = false;
             C_Underneath = false;
-<<<<<<< HEAD
             #region Malario
-=======
->>>>>>> master
             do
             {
                 C_Above = false;
@@ -387,12 +375,11 @@ namespace GDI_Malario
                     LaserAnimation_ms = 0;
                 }
             }
+            #endregion
             ////////////////////////////////////////////////////////////////////////////////////////////
             //nach Rechts bewegen = false
             //nach Links bewegen = true
-<<<<<<< HEAD
             #region Goethe
-=======
             i = 0;
             UnderneathValue0 = 480;
             UnderneathValue1 = 480;
@@ -400,7 +387,6 @@ namespace GDI_Malario
             RightValue1 = 480;
             LeftValue0 = 0;
             LeftValue1 = 0;
->>>>>>> master
             int j = 0;
             do
             {
@@ -436,7 +422,7 @@ namespace GDI_Malario
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] +34 >= rightlimit)
+                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
@@ -446,7 +432,7 @@ namespace GDI_Malario
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit +24)
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit +26)
                     {
                         list_RichtungLinks_Enemys[j] = false;
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
