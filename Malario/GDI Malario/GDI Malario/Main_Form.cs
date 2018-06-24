@@ -43,6 +43,7 @@ namespace GDI_Malario
             label3.Text = Convert.ToString(y_Pos_Malario);
 
             //Item Wirkung
+            //Energy
             if (I_Energy == true)
             {
                 M_Laufgeschwindigkeit = 6;
@@ -52,7 +53,7 @@ namespace GDI_Malario
             {
                 M_Laufgeschwindigkeit = 4;
             }
-
+            //Laser
             if (I_Laser == true)
             {
 
@@ -61,6 +62,7 @@ namespace GDI_Malario
             {
 
             }
+            //Item Wirkung Ende
 
             if (M_Left == true || M_Right == true)
             {
