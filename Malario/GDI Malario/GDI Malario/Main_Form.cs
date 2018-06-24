@@ -29,7 +29,7 @@ namespace GDI_Malario
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-        int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -45, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
+        int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
 
         //Level_Generator
@@ -168,7 +168,7 @@ namespace GDI_Malario
                     bool Richtung_Gegner = list_RichtungLinks_Enemys[Zähler];
                     if (list_Typ_Enemys[Zähler] == 0 && x_Pos_Block < 504 && x_Pos_Block > -60)
                     {
-                        Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block, Richtung_Gegner);
+                        Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block + 4, Richtung_Gegner);
 
                     }
                     else if (list_Typ_Enemys[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
@@ -397,12 +397,12 @@ namespace GDI_Malario
                     C_Underneath = false;
                     C_Right = false;
                     C_Left = false;
-                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                     if (C_Underneath == true)
                     {
-                        UnderneathValue1 = list_y_Pos_Obj[i];
+                        UnderneathValue1 = list_y_Pos_Obj[i] - 8;
                         if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
                     }
                     if (C_Right == true)
@@ -423,27 +423,27 @@ namespace GDI_Malario
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 34 >= rightlimit)
+
+                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
-                        list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
                     else if (list_RichtungLinks_Enemys[j] == false)
                     {
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
+
                     if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
                     {
                         list_RichtungLinks_Enemys[j] = false;
-                        list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     else if (list_RichtungLinks_Enemys[j] == true)
                     {
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
                     //Goethe fällt
-                    if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] < fall_Limit)
+                    if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
                     {
                         Goethe_AnziehungskraftInt++;
                         Goethe_AnziehungskraftBool = true;
@@ -611,7 +611,7 @@ namespace GDI_Malario
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(200);
-            list_y_Pos_Enemys.Add(480 - 80 - 32);
+            list_y_Pos_Enemys.Add(380 - 48 - 32);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
