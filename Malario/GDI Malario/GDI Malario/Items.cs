@@ -24,7 +24,7 @@ namespace GDI_Malario
             }
             if (Richtung == true)
             {
-                x_Pos -= Laser_länge0 - 27;
+                x_Pos -= Laser_länge0 -2;
             }
             y_Pos += 9;
             yLänge = 2;

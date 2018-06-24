@@ -346,16 +346,16 @@ namespace GDI_Malario
             }
 
             //Laser Animation
-            if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 130)
+            if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 30)
             {
                 LaserAnimation_ms += 17;
                 I_LaserAnimation = true;
             }
-            else if (LaserAnimation_ms < 130)
+            else if (LaserAnimation_ms > 30)
             {
                 I_LaserAnimation = false;
                 LaserAnimation_ms += 17;
-                if (LaserAnimation_ms > 190)
+                if (LaserAnimation_ms > 300)
                 {
                     I_LaserActive = false;
                     LaserAnimation_ms = 0;
