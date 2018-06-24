@@ -60,7 +60,7 @@ namespace GDI_Malario
                 int nextBlock = 0;
                 if (M_Richtung == false)
                 {
-                    nextBlock = rightlimit - x_Pos_Malario;
+                    nextBlock = (rightlimit - x_Pos_Malario) - 24;
                 }
                else if (M_Richtung == true)
                 {
