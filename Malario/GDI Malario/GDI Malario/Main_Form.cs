@@ -261,7 +261,6 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-
                 if (M_Right == true && x_Pos_Malario < (Width / 2))
                 {
                     M_Bewegungskraft = M_Laufgeschwindigkeit;
