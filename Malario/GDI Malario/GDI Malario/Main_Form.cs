@@ -29,7 +29,7 @@ namespace GDI_Malario
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
+        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 4, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -228,7 +228,7 @@ namespace GDI_Malario
             C_Left = false;
             C_Above = false;
             C_Underneath = false;
-            #region
+            #region Malario
             do
             {
                 C_Above = false;
@@ -375,6 +375,7 @@ namespace GDI_Malario
             ////////////////////////////////////////////////////////////////////////////////////////////
             //nach Rechts bewegen = false
             //nach Links bewegen = true
+            #region Goethe
             int j = 0;
             do
             {
@@ -415,7 +416,6 @@ namespace GDI_Malario
                 sprung_Limit = AboveValue0;
                 rightlimit = RightValue0;
                 leftlimit = LeftValue0;
-                #region Goethe
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
