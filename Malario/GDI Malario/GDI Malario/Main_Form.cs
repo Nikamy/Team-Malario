@@ -328,7 +328,10 @@ namespace GDI_Malario
             if (y_Pos_Malario < fall_Limit)
             {
                 M_Jump = true;
-                anziehungskraft += 3;
+                if (anziehungskraft < 15)
+                {
+                    anziehungskraft++;
+                }
                 M_Anziehungskraft = true;
             }
             //Malario Boden Collision erkannt und behandelt
