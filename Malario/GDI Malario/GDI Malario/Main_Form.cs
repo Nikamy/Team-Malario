@@ -41,8 +41,13 @@ namespace GDI_Malario
             base.OnPaint(e);
             I_Laser = true;
             I_Energy = false;
+<<<<<<< HEAD
             label1counter.Text = Convert.ToString(list_Typ_Obj.Count);
             label1.Text = Convert.ToString(laufzähler);
+=======
+            label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
+            label1.Text = Convert.ToString(M_Lives);
+>>>>>>> Marvin
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
@@ -232,6 +237,7 @@ namespace GDI_Malario
             C_Left = false;
             C_Above = false;
             C_Underneath = false;
+            #region Malario
             do
             {
                 C_Above = false;
@@ -375,9 +381,11 @@ namespace GDI_Malario
                     LaserAnimation_ms = 0;
                 }
             }
+            #endregion
             ////////////////////////////////////////////////////////////////////////////////////////////
             //nach Rechts bewegen = false
             //nach Links bewegen = true
+            #region Goethe
             i = 0;
             UnderneathValue0 = 480;
             UnderneathValue1 = 480;
@@ -417,11 +425,14 @@ namespace GDI_Malario
                 fall_Limit = UnderneathValue0 - 34;
                 rightlimit = RightValue0;
                 leftlimit = LeftValue0;
-                #region Goethe
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
+<<<<<<< HEAD
                     if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 34 >= rightlimit)
+=======
+                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
+>>>>>>> Marvin
                     {
                         list_RichtungLinks_Enemys[j] = true;
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
@@ -431,7 +442,11 @@ namespace GDI_Malario
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
+<<<<<<< HEAD
                     if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 24)
+=======
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit +26)
+>>>>>>> Marvin
                     {
                         list_RichtungLinks_Enemys[j] = false;
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
