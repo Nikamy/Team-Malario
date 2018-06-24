@@ -23,13 +23,13 @@ namespace GDI_Malario
         List<int> list_Typ_Enemys = new List<int>();
         List<bool> list_RichtungLinks_Enemys = new List<bool>();
 
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = false;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = true;
         //Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
 
         //Items
         bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
-        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 400, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 2, Goethe_AnziehungskraftInt = 0;
+        int animation_ms,LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -37,7 +37,7 @@ namespace GDI_Malario
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
             I_Laser = true;
-            I_Energy = true;
+            I_Energy = false;
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
             label1.Text = Convert.ToString(M_Lives);
             label2.Text = Convert.ToString(x_Pos_Malario);
@@ -376,29 +376,29 @@ namespace GDI_Malario
             ////////////////////////////////////////////////////////////////////////////////////////////
             //nach Rechts bewegen = false
             //nach Links bewegen = true
+            i = 0;
+            UnderneathValue0 = 480;
+            UnderneathValue1 = 480;
+            RightValue0 = 480;
+            RightValue1 = 480;
+            LeftValue0 = 0;
+            LeftValue1 = 0;
             int j = 0;
             do
             {
                 i = 0;
                 do
                 {
-                    C_Above = false;
                     C_Underneath = false;
                     C_Right = false;
                     C_Left = false;
-                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Above(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 30, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                     if (C_Underneath == true)
                     {
                         UnderneathValue1 = list_y_Pos_Obj[i];
                         if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
-                    }
-                    if (C_Above == true)
-                    {
-                        AboveValue1 = list_y_Pos_Obj[i] + 24;
-                        if (AboveValue0 <= AboveValue1 && AboveValue1 > UnderneathValue1) AboveValue0 = AboveValue1;
                     }
                     if (C_Right == true)
                     {
@@ -407,35 +407,34 @@ namespace GDI_Malario
                     }
                     if (C_Left == true)
                     {
-                        LeftValue1 = list_x_Pos_Obj[i] + 24;
+                        LeftValue1 = list_x_Pos_Obj[i];
                         if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
                     }
                     i++;
                 } while (i < list_x_Pos_Obj.Count);
-                fall_Limit = UnderneathValue0 - 32;
-                sprung_Limit = AboveValue0;
+                fall_Limit = UnderneathValue0 - 34;
                 rightlimit = RightValue0;
                 leftlimit = LeftValue0;
                 #region Goethe
                 if (list_Typ_Enemys[j] == 0)
                 {
                     //Rechts-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 30 >= rightlimit)
+                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] +34 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
-                    else
+                    else if (list_RichtungLinks_Enemys[j] == false)
                     {
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
                     //Links-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit && list_y_Pos_Enemys[j] == fall_Limit)
+                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit +24)
                     {
                         list_RichtungLinks_Enemys[j] = false;
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
-                    else
+                    else if (list_RichtungLinks_Enemys[j] == true)
                     {
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
@@ -604,8 +603,8 @@ namespace GDI_Malario
             // Pipe
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
-            list_x_Pos_Enemys.Add(140);
-            list_y_Pos_Enemys.Add(390);
+            list_x_Pos_Enemys.Add(200);
+            list_y_Pos_Enemys.Add(480-48-32);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
