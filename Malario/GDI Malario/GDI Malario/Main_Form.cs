@@ -53,7 +53,7 @@ namespace GDI_Malario
             label1.Text = Convert.ToString(getöteteGegner_Counter) + " Gegner getötet";
             label2.Text = Convert.ToString(M_Lives) + " Leben";
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
-            
+
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
@@ -414,14 +414,14 @@ namespace GDI_Malario
             #endregion
             #region Laser Reichweite bestimmen
 
-                if (M_Richtung == false)
-                {
-                    nextBlock = rightlimit - x_Pos_Malario;
-                }
-                else if (M_Richtung == true)
-                {
+            if (M_Richtung == false)
+            {
+                nextBlock = rightlimit - x_Pos_Malario;
+            }
+            else if (M_Richtung == true)
+            {
 
-                    nextBlock = (x_Pos_Malario - leftlimit);
+                nextBlock = (x_Pos_Malario - leftlimit);
             }
 
             #endregion
@@ -440,56 +440,60 @@ namespace GDI_Malario
             #region Malario stirbt (respawn)
             if (M_Lives == 0)
             {
-                    laufzähler = 950;
-                    x_Pos_Malario = 0;
-                    y_Pos_Malario = 397;
-                    list_x_Pos_Obj.Clear();
-                    list_y_Pos_Obj.Clear();
-                    list_Typ_Obj.Clear();
-                    list_x_Pos_Items.Clear();
-                    list_y_Pos_Items.Clear();
-                    list_Typ_Items.Clear();
-                    list_x_Pos_Enemys.Clear();
-                    list_y_Pos_Enemys.Clear();
-                    list_Typ_Enemys.Clear();
-                    list_RichtungLinks_Enemys.Clear();
-                    M_Lives = 3;
-                    Startbildschirm = true;
-                    M_Right = false;
-                    M_Left = false;
-                    M_Richtung = false;
-                    M_Jump = false;
-                    Startbildschirm = true;
-                    M_Gehend = false;
-                    M_Anziehungskraft = false;
-                    Goethe_AnziehungskraftBool = true;
-                    C_Right = false;
-                    C_Left = false;
-                    C_Above = false;
-                    C_Underneath = false;
-                    I_Energy = false;
-                    I_Laser = false;
-                    I_LaserActive = false;
-                    I_LaserAnimation = false;
-                    M_Bewegungskraft = 0;
-                    Block_Bewegungskraft = 0;
-                    anziehungskraft = 0;
-                    anziehungskraft_Steigen = -15;
-                    x_Pos_Malario = 0;
-                    y_Pos_Malario = 397;
-                    x_Pos_Block = 0;
-                    y_Pos_Block = 0;
-                    fall_Limit = 480;
-                    sprung_Limit = 0;
-                    rightlimit = 480;
-                    leftlimit = 0;
-                    M_Laufgeschwindigkeit = 6;
-                    Goethe_Geschwindigkeit = 3;
-                    list_Anziehungskraft_Enemys.Clear();
-                    nextBlock = 0;
-                    M_Lives = 3;
-                    CoinCounter = 0;
-                    bodenhöhe = 432;
+
+                M_Lives = 3;
+                CoinCounter = 0;
+                getöteteGegner_Counter = 0;
+                laufzähler = 950;
+                x_Pos_Malario = 0;
+                y_Pos_Malario = 397;
+                list_x_Pos_Obj.Clear();
+                list_y_Pos_Obj.Clear();
+                list_Typ_Obj.Clear();
+                list_x_Pos_Items.Clear();
+                list_y_Pos_Items.Clear();
+                list_Typ_Items.Clear();
+                list_x_Pos_Enemys.Clear();
+                list_y_Pos_Enemys.Clear();
+                list_Typ_Enemys.Clear();
+                list_RichtungLinks_Enemys.Clear();
+                M_Lives = 3;
+                Startbildschirm = true;
+                M_Right = false;
+                M_Left = false;
+                M_Richtung = false;
+                M_Jump = false;
+                Startbildschirm = true;
+                M_Gehend = false;
+                M_Anziehungskraft = false;
+                Goethe_AnziehungskraftBool = true;
+                C_Right = false;
+                C_Left = false;
+                C_Above = false;
+                C_Underneath = false;
+                I_Energy = false;
+                I_Laser = false;
+                I_LaserActive = false;
+                I_LaserAnimation = false;
+                M_Bewegungskraft = 0;
+                Block_Bewegungskraft = 0;
+                anziehungskraft = 0;
+                anziehungskraft_Steigen = -15;
+                x_Pos_Malario = 0;
+                y_Pos_Malario = 397;
+                x_Pos_Block = 0;
+                y_Pos_Block = 0;
+                fall_Limit = 480;
+                sprung_Limit = 0;
+                rightlimit = 480;
+                leftlimit = 0;
+                M_Laufgeschwindigkeit = 6;
+                Goethe_Geschwindigkeit = 3;
+                list_Anziehungskraft_Enemys.Clear();
+                nextBlock = 0;
+                M_Lives = 3;
+                CoinCounter = 0;
+                bodenhöhe = 432;
             }
             #endregion
             #region Malario stirbt durch zu tiefes fallen
