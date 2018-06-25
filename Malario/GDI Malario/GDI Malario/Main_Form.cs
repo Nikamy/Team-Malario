@@ -32,7 +32,7 @@ namespace GDI_Malario
         int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
         int nextBlock = 0;
-        int Coin = 0;
+        int CoinCounter = 0;
         //Level_Generator
         int bodenhöhe = 432, bodenabstand, laufzähler = 950;
 
@@ -233,6 +233,10 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (CoinCounter >= 100 && M_Lives <= 2)
+            {
+                M_Lives++;
+            }
             int i = 0, UnderneathValue0 = 600, UnderneathValue1 = 600, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Block_Zähler = list_x_Pos_Obj.Count - 1;
             C_Right = false;
             C_Left = false;
