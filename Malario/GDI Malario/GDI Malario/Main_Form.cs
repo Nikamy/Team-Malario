@@ -231,7 +231,7 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = 0, UnderneathValue0 = 480, UnderneathValue1 = 480, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Block_Zähler = list_x_Pos_Obj.Count - 1;
+            int i = 0, UnderneathValue0 = 600, UnderneathValue1 = 600, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 480, RightValue1 = 480, LeftValue0 = 0, LeftValue1 = 0, Block_Zähler = list_x_Pos_Obj.Count - 1;
             C_Right = false;
             C_Left = false;
             C_Above = false;
@@ -325,7 +325,7 @@ namespace GDI_Malario
                 M_Jump = true;
                 if (anziehungskraft < 15)
                 {
-                    anziehungskraft--;
+                    anziehungskraft++;
                 }
                 M_Anziehungskraft = true;
             }
@@ -389,8 +389,8 @@ namespace GDI_Malario
             //nach Links bewegen = true
             #region Goethe
             i = 0;
-            UnderneathValue0 = 480;
-            UnderneathValue1 = 480;
+            UnderneathValue0 = 600;
+            UnderneathValue1 = 600;
             RightValue0 = 960;
             RightValue1 = 960;
             LeftValue0 = -480;
@@ -399,6 +399,7 @@ namespace GDI_Malario
             do
             {
                 i = 0;
+                #region Kollisionsabfragen des Gegners j
                 do
                 {
                     C_Underneath = false;
@@ -424,12 +425,16 @@ namespace GDI_Malario
                     }
                     i++;
                 } while (i < list_x_Pos_Obj.Count);
+                #endregion
+                //Die jeweiligen Limits werden gespeichert für 
+                //die Weiterverarbeitung der Bewegungen des Gegners j
                 fall_Limit = UnderneathValue0 - 34;
                 rightlimit = RightValue0;
                 leftlimit = LeftValue0;
+                #region Gegner Typ 0 aka. Goethe
                 if (list_Typ_Enemys[j] == 0)
                 {
-                    //Rechts-Bewegungen von Goethe
+                    #region Rechts-Bewegungen von Goethe
                     if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
@@ -438,7 +443,8 @@ namespace GDI_Malario
                     {
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
-                    //Links-Bewegungen von Goethe
+                    #endregion
+                    #region Links-Bewegungen von Goethe
                     if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
                     {
                         list_RichtungLinks_Enemys[j] = false;
@@ -447,7 +453,9 @@ namespace GDI_Malario
                     {
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
-                    //Goethe fällt
+                    #endregion
+                    #region Goethe fällt
+
                     if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
                     {
                         Goethe_AnziehungskraftInt++;
@@ -461,21 +469,17 @@ namespace GDI_Malario
                         Goethe_AnziehungskraftInt = 0;
                         Goethe_AnziehungskraftBool = false;
                     }
-                }
+                    #endregion
+                    list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
 
+                }
+                #endregion
+                #region Gegner Typ 1
                 else if (list_Typ_Enemys[j] == 1)
                 {
-                    if (list_RichtungLinks_Enemys[j] == false)
-                    {
 
-                    }
-                    else if (list_RichtungLinks_Enemys[j] == true)
-                    {
-
-                    }
                 }
-
-                list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
+                #endregion
                 j++;
             } while (j < list_Typ_Enemys.Count);
             #endregion
@@ -485,7 +489,6 @@ namespace GDI_Malario
                 list_x_Pos_Enemys[Block_Zähler] -= Block_Bewegungskraft;
                 Block_Zähler--;
             } while (Block_Zähler > 0);
-
             Invalidate();
         }
         private void malen_Startmenü()
@@ -555,7 +558,7 @@ namespace GDI_Malario
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
-            if (laufzähler >= 96)
+            if (laufzähler >= 960)
             {
                 Random random = new Random();
                 int abstand_ist_da = random.Next(0, 3),
@@ -582,7 +585,7 @@ namespace GDI_Malario
                 {
                     if (pyramide_ist_da == 0)
                     {
-                        int pyramidenhöhe0;
+                        int pyramidenhöhe0 = 0;
                         if (yabstand >= 0)
                         {
                             pyramidenhöhe0 = ((yabstand + pyramide_Höhe) * 24);
@@ -592,31 +595,31 @@ namespace GDI_Malario
                             pyramidenhöhe0 = (((-yabstand) + pyramide_Höhe) * 24);
                         }
                         generiert_Treppe(boden_x - pyramidenhöhe0 + 24, bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
-                        generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        generiert_Rechteck(boden_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                         boden_x += 24 * pyramide_Höhe;
                         boden_x_lücke += pyramide_Höhe;
                     }
                     else
                     {
-                        generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        generiert_Rechteck(boden_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                     }
                     boden_x += 24;
                     boden_x_lücke++;
-                    if (bodenhöhe <= 360) yabstand = 2;
-                    if (bodenhöhe >= 456)
+                    if (bodenhöhe + (24 * yabstand)<= 360) yabstand = 2 ;
+                    if (bodenhöhe  + (yabstand * 24)> 456)
                     {
                         yabstand = -2;
                     }
-                    if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
-                    else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
-                    else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
-                    else if (yabstand <= -5) boden_x += 24 * 5;
-                    else if (yabstand <= -4) boden_x += 24 * 7;
-                    else if (yabstand >= 5) boden_x += 24 * 10;
+                        if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
+                        else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
+                        else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
+                        else if (yabstand <= -5) boden_x += 24 * 5;
+                        else if (yabstand <= -4) boden_x += 24 * 7;
+                        else if (yabstand >= 5) boden_x += 24 * 10;
 
-                    bodenhöhe += yabstand * 24;
-                    generiert_Rechteck(boden_x, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
-                    boden_x += 24;
+                        bodenhöhe += yabstand * 24;
+                        generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                        boden_x += 24;
                     boden_x_lücke++;
 
                 }
