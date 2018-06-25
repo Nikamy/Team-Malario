@@ -519,6 +519,18 @@ namespace GDI_Malario
             list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(200);
             list_y_Pos_Enemys.Add(380 - 48 - 32);
+            list_Typ_Enemys.Add(0);
+            list_RichtungLinks_Enemys.Add(false);
+            list_x_Pos_Enemys.Add(250);
+            list_y_Pos_Enemys.Add(380 - 48 - 32);
+            list_Typ_Enemys.Add(0);
+            list_RichtungLinks_Enemys.Add(false);
+            list_x_Pos_Enemys.Add(300);
+            list_y_Pos_Enemys.Add(380 - 48 - 32);
+            list_Typ_Enemys.Add(0);
+            list_RichtungLinks_Enemys.Add(false);
+            list_x_Pos_Enemys.Add(350);
+            list_y_Pos_Enemys.Add(380 - 48 - 32);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
@@ -557,16 +569,19 @@ namespace GDI_Malario
             if (laufzähler >= 960)
             {
                 Random random = new Random();
-                int abstand_ist_da = random.Next(0, 3),
+                int abstand_ist_da = random.Next(1, 2),
                     pyramide_ist_da = random.Next(0, 3),
                     pyramide_Höhe = random.Next(1, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-4, 4),
+                    bodenTahl_ist_da = random.Next(2, 2),
+                    bodenTahl_anzahl = random.Next(1, 2),
                     boden_x,
                     boden_x_lücke = 0;
 
 
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
+                //Coordinaten des rechtesten Blockes ermitteln
                 do if (list_x_Pos_Obj.Count > 0)
                     {
                         x_Value1 = list_x_Pos_Obj[Zähler0];
@@ -576,7 +591,7 @@ namespace GDI_Malario
                 //x Position der letzten Blockreihe
                 boden_x = x_Value0;
 
-
+                //Halbe Pyramide 1/4 Chance und Sprunggraben
                 if (abstand_ist_da >= 1)
                 {
                     if (pyramide_ist_da == 0)
@@ -601,129 +616,137 @@ namespace GDI_Malario
                     }
                     boden_x += 24;
                     boden_x_lücke++;
-                    if (bodenhöhe + (24 * yabstand)<= 360) yabstand = 2 ;
-                    if (bodenhöhe  + (yabstand * 24)> 456)
+                    if (bodenhöhe + (24 * yabstand) <= 360) yabstand = 2;
+                    if (bodenhöhe + (yabstand * 24) > 456)
                     {
                         yabstand = -2;
                     }
-                        if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
-                        else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
-                        else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
-                        else if (yabstand <= -5) boden_x += 24 * 5;
-                        else if (yabstand <= -4) boden_x += 24 * 7;
-                        else if (yabstand >= 5) boden_x += 24 * 10;
+                    if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
+                    else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
+                    else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 9;
+                    else if (yabstand <= -5) boden_x += 24 * 5;
+                    else if (yabstand <= -4) boden_x += 24 * 7;
+                    else if (yabstand >= 5) boden_x += 24 * 10;
 
-                        bodenhöhe += yabstand * 24;
-                        generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
-                        boden_x += 24;
+                    bodenhöhe += yabstand * 24;
+                    generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                    boden_x += 24;
                     boden_x_lücke++;
 
                 }
-                generiert_BodenAbschnitt(bodenhöhe, 24 * (40 - boden_x_lücke), boden_x);
 
 
-                laufzähler = 0;
+                
+                    generiert_BodenAbschnitt(bodenhöhe, 24 * (40 - boden_x_lücke), boden_x);
+                    boden_x += 24 * (40 - boden_x_lücke);
+                
+
+
+
+
+
+                    laufzähler = 0;
+                }
             }
-        }
-        private void generiert_BodenAbschnitt(int boden_Höhe, int boden_Länge, int x_Coor)
-        {
-            int x_Pos_Block = x_Coor,
-            y_Pos_Block = 456;
-            do
+            private void generiert_BodenAbschnitt(int boden_Höhe, int boden_Länge, int x_Coor)
             {
-                int Blockzähler = 0;
+                int x_Pos_Block = x_Coor,
+                y_Pos_Block = 456;
                 do
                 {
-                    list_Typ_Obj.Add(0);
-                    list_x_Pos_Obj.Add(x_Pos_Block);
-                    list_y_Pos_Obj.Add(y_Pos_Block);
-                    x_Pos_Block += 24;
-                    Blockzähler += 24;
-                } while (Blockzähler < boden_Länge);
-                x_Pos_Block -= boden_Länge;
-                y_Pos_Block -= 24;
-            } while (y_Pos_Block >= boden_Höhe);
-        }
-        private void generiert_Röhre(int röhren_Höhe, int boden_Höhe, int x_Coor)
-        {
-            int x_Pos_Block = x_Coor,
-            y_Pos_Block = röhren_Höhe;
-
-
-            list_Typ_Obj.Add(2);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(99);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            x_Pos_Block -= 24;
-            y_Pos_Block += 24;
-            x_Pos_Block += 24;
-            list_Typ_Obj.Add(99);
-            list_x_Pos_Obj.Add(x_Pos_Block);
-            list_y_Pos_Obj.Add(y_Pos_Block);
-            do
+                    int Blockzähler = 0;
+                    do
+                    {
+                        list_Typ_Obj.Add(0);
+                        list_x_Pos_Obj.Add(x_Pos_Block);
+                        list_y_Pos_Obj.Add(y_Pos_Block);
+                        x_Pos_Block += 24;
+                        Blockzähler += 24;
+                    } while (Blockzähler < boden_Länge);
+                    x_Pos_Block -= boden_Länge;
+                    y_Pos_Block -= 24;
+                } while (y_Pos_Block >= boden_Höhe);
+            }
+            private void generiert_Röhre(int röhren_Höhe, int boden_Höhe, int x_Coor)
             {
-                x_Pos_Block -= 24;
-                y_Pos_Block += 24;
-                list_Typ_Obj.Add(3);
+                int x_Pos_Block = x_Coor,
+                y_Pos_Block = röhren_Höhe;
+
+
+                list_Typ_Obj.Add(2);
                 list_x_Pos_Obj.Add(x_Pos_Block);
                 list_y_Pos_Obj.Add(y_Pos_Block);
                 x_Pos_Block += 24;
                 list_Typ_Obj.Add(99);
                 list_x_Pos_Obj.Add(x_Pos_Block);
                 list_y_Pos_Obj.Add(y_Pos_Block);
-            } while (y_Pos_Block < boden_Höhe);
-        }
-        private void generiert_Rechteck(int x_Coor, int y_Choor, int blockArt, int block_Höhe, int block_Breite)
-        {
-            int x_Pos_Block = x_Coor,
-            y_Pos_Block = y_Choor;
-            int Zähler0 = 0,
-                Zähler1 = 0;
-            do
-            {
-                Zähler0 = 0;
-                do
-                {
-                    list_Typ_Obj.Add(blockArt);
-                    list_x_Pos_Obj.Add(x_Pos_Block);
-                    list_y_Pos_Obj.Add(y_Pos_Block);
-                    y_Pos_Block += 24;
-                    Zähler0++;
-                } while (Zähler0 < block_Höhe);
-                y_Pos_Block -= 24 * block_Höhe;
                 x_Pos_Block -= 24;
-                Zähler1++;
-            } while (Zähler1 < block_Breite);
-        }
-        //Links = 1 / 0 == 1= y;0=n
-        private void generiert_Treppe(int x_Coor, int y_Choor, int Links, int treppen_Höhe)
-        {
-            int x_Pos_Block = x_Coor,
-            y_Pos_Block = y_Choor,
-            höhenZähler = 0,
-            breitenZähler = 0;
-
-            x_Pos_Block += (Links * 24 * treppen_Höhe);
-            do
-            {
-                höhenZähler++;
-                breitenZähler = 0;
+                y_Pos_Block += 24;
+                x_Pos_Block += 24;
+                list_Typ_Obj.Add(99);
+                list_x_Pos_Obj.Add(x_Pos_Block);
+                list_y_Pos_Obj.Add(y_Pos_Block);
                 do
                 {
-                    list_Typ_Obj.Add(4);
+                    x_Pos_Block -= 24;
+                    y_Pos_Block += 24;
+                    list_Typ_Obj.Add(3);
                     list_x_Pos_Obj.Add(x_Pos_Block);
                     list_y_Pos_Obj.Add(y_Pos_Block);
                     x_Pos_Block += 24;
+                    list_Typ_Obj.Add(99);
+                    list_x_Pos_Obj.Add(x_Pos_Block);
+                    list_y_Pos_Obj.Add(y_Pos_Block);
+                } while (y_Pos_Block < boden_Höhe);
+            }
+            private void generiert_Rechteck(int x_Coor, int y_Choor, int blockArt, int block_Höhe, int block_Breite)
+            {
+                int x_Pos_Block = x_Coor,
+                y_Pos_Block = y_Choor;
+                int Zähler0 = 0,
+                    Zähler1 = 0;
+                do
+                {
+                    Zähler0 = 0;
+                    do
+                    {
+                        list_Typ_Obj.Add(blockArt);
+                        list_x_Pos_Obj.Add(x_Pos_Block);
+                        list_y_Pos_Obj.Add(y_Pos_Block);
+                        y_Pos_Block += 24;
+                        Zähler0++;
+                    } while (Zähler0 < block_Höhe);
+                    y_Pos_Block -= 24 * block_Höhe;
+                    x_Pos_Block -= 24;
+                    Zähler1++;
+                } while (Zähler1 < block_Breite);
+            }
+            //Links = 1 / 0 == 1= y;0=n
+            private void generiert_Treppe(int x_Coor, int y_Choor, int Links, int treppen_Höhe)
+            {
+                int x_Pos_Block = x_Coor,
+                y_Pos_Block = y_Choor,
+                höhenZähler = 0,
+                breitenZähler = 0;
 
-                    breitenZähler++;
-                } while (breitenZähler < höhenZähler);
-                y_Pos_Block += 24;
-                x_Pos_Block += (-1 * 24 * (breitenZähler + Links));
-            } while (höhenZähler <= treppen_Höhe);
+                x_Pos_Block += (Links * 24 * treppen_Höhe);
+                do
+                {
+                    höhenZähler++;
+                    breitenZähler = 0;
+                    do
+                    {
+                        list_Typ_Obj.Add(4);
+                        list_x_Pos_Obj.Add(x_Pos_Block);
+                        list_y_Pos_Obj.Add(y_Pos_Block);
+                        x_Pos_Block += 24;
 
+                        breitenZähler++;
+                    } while (breitenZähler < höhenZähler);
+                    y_Pos_Block += 24;
+                    x_Pos_Block += (-1 * 24 * (breitenZähler + Links));
+                } while (höhenZähler <= treppen_Höhe);
+
+            }
         }
     }
-}
