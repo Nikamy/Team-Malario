@@ -396,7 +396,7 @@ namespace GDI_Malario
             RightValue1 = 960;
             LeftValue0 = -480;
             LeftValue1 = -480;
-            int j = 0;
+            int k = 0;
             do if (list_Typ_Enemys.Count > 0)
                 {
                     i = 0;
@@ -426,20 +426,20 @@ namespace GDI_Malario
 
                     //If bedingungen
                     //Rechts
-                    if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario + rightlimit && list_Typ_Enemys[j] == 0)
+                    if (list_x_Pos_Enemys[k] > x_Pos_Malario && list_x_Pos_Enemys[k] < x_Pos_Malario + rightlimit && list_Typ_Enemys[k] == 0)
                     {
-                        kill_Gegner(j);
+                        kill_Gegner(k);
                     }
 
                     //Links
-                    if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario - leftlimit && list_Typ_Enemys[j] == 0)
+                    if (list_x_Pos_Enemys[k] > x_Pos_Malario && list_x_Pos_Enemys[k] < x_Pos_Malario - leftlimit && list_Typ_Enemys[k] == 0)
                     {
-                        kill_Gegner(j);
+                        kill_Gegner(k);
                     }
 
 
-                    j++;
-                } while (j < list_Typ_Enemys.Count);
+                    k++;
+                } while (k < list_Typ_Enemys.Count);
             #endregion
             #endregion
             ////////////////////////////////////////////////////////////////////////////////////////////
