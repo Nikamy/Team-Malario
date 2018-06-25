@@ -398,6 +398,7 @@ namespace GDI_Malario
             do
             {
                 i = 0;
+                #region Kollisionsabfragen des Gegners j
                 do
                 {
                     C_Underneath = false;
@@ -423,12 +424,16 @@ namespace GDI_Malario
                     }
                     i++;
                 } while (i < list_x_Pos_Obj.Count);
+                #endregion
+                //Die jeweiligen Limits werden gespeichert für 
+                //die Weiterverarbeitung der Bewegungen des Gegners j
                 fall_Limit = UnderneathValue0 - 34;
                 rightlimit = RightValue0;
                 leftlimit = LeftValue0;
+                #region Gegner Typ 0 aka. Goethe
                 if (list_Typ_Enemys[j] == 0)
                 {
-                    //Rechts-Bewegungen von Goethe
+                    #region Rechts-Bewegungen von Goethe
                     if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
                     {
                         list_RichtungLinks_Enemys[j] = true;
@@ -437,7 +442,8 @@ namespace GDI_Malario
                     {
                         list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
                     }
-                    //Links-Bewegungen von Goethe
+                    #endregion
+                    #region Links-Bewegungen von Goethe
                     if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
                     {
                         list_RichtungLinks_Enemys[j] = false;
@@ -446,7 +452,9 @@ namespace GDI_Malario
                     {
                         list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
                     }
-                    //Goethe fällt
+                    #endregion
+                    #region Goethe fällt
+
                     if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
                     {
                         Goethe_AnziehungskraftInt++;
@@ -460,21 +468,17 @@ namespace GDI_Malario
                         Goethe_AnziehungskraftInt = 0;
                         Goethe_AnziehungskraftBool = false;
                     }
-                }
+                    #endregion
+                    list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
 
+                }
+                #endregion
+                #region Gegner Typ 1
                 else if (list_Typ_Enemys[j] == 1)
                 {
-                    if (list_RichtungLinks_Enemys[j] == false)
-                    {
 
-                    }
-                    else if (list_RichtungLinks_Enemys[j] == true)
-                    {
-
-                    }
                 }
-
-                list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
+                #endregion
                 j++;
             } while (j < list_Typ_Enemys.Count);
             #endregion
@@ -484,7 +488,6 @@ namespace GDI_Malario
                 list_x_Pos_Enemys[Block_Zähler] -= Block_Bewegungskraft;
                 Block_Zähler--;
             } while (Block_Zähler > 0);
-
             Invalidate();
         }
         private void malen_Startmenü()
