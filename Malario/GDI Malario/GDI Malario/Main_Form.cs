@@ -370,7 +370,7 @@ namespace GDI_Malario
 
 
             #endregion
-            #region
+            #region Laser
             //Laser Animation
             if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 30)
             {
@@ -387,6 +387,60 @@ namespace GDI_Malario
                     LaserAnimation_ms = 0;
                 }
             }
+
+            #region Laser Kollision
+            i = 0;
+            UnderneathValue0 = 600;
+            UnderneathValue1 = 600;
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
+            int j = 0;
+            do if (list_Typ_Enemys.Count > 0)
+                {
+                    i = 0;
+                    do if (list_Typ_Enemys.Count > 0)
+                        {
+                            C_Right = false;
+                            C_Left = false;
+                            c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            if (C_Right == true)
+                            {
+                                RightValue1 = list_x_Pos_Obj[i];
+                                if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                            }
+                            if (C_Left == true)
+                            {
+                                LeftValue1 = list_x_Pos_Obj[i];
+                                if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                            }
+                            i++;
+                        } while (i < list_x_Pos_Obj.Count);
+                    //Die jeweiligen Limits werden gespeichert für 
+                    //die Weiterverarbeitung der Bewegungen des Gegners j
+                    fall_Limit = UnderneathValue0 - 34;
+                    rightlimit = RightValue0;
+                    leftlimit = LeftValue0;
+
+                    //If bedingungen
+                    //Rechts
+                    if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario + rightlimit && list_Typ_Enemys[j] == 0)
+                    {
+                        kill_Goethe(j);
+                    }
+
+                    //Links
+                    if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario - leftlimit && list_Typ_Enemys[j] == 0)
+                    {
+                        kill_Goethe(j);
+                    }
+
+
+                    j++;
+                } while (j < list_Typ_Enemys.Count);
+            #endregion
             #endregion
             ////////////////////////////////////////////////////////////////////////////////////////////
             //nach Rechts bewegen = false
