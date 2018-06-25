@@ -400,99 +400,109 @@ namespace GDI_Malario
             LeftValue0 = -480;
             LeftValue1 = -480;
             int j = 0;
-            do
-            {
-                i = 0;
-                #region Kollisionsabfragen des Gegners j
-                do
+            do if (list_Typ_Enemys.Count > 0)
                 {
-                    C_Underneath = false;
-                    C_Right = false;
-                    C_Left = false;
-                    c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                    if (C_Underneath == true)
+                    i = 0;
+                    #region Kollisionsabfragen des Gegners j
+                    do if (list_Typ_Enemys.Count > 0)
+                        {
+                            C_Underneath = false;
+                            C_Right = false;
+                            C_Left = false;
+                            c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            if (C_Underneath == true)
+                            {
+                                UnderneathValue1 = list_y_Pos_Obj[i] - 8;
+                                if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
+                            }
+                            if (C_Right == true)
+                            {
+                                RightValue1 = list_x_Pos_Obj[i];
+                                if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                            }
+                            if (C_Left == true)
+                            {
+                                LeftValue1 = list_x_Pos_Obj[i];
+                                if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                            }
+                            i++;
+                        } while (i < list_x_Pos_Obj.Count);
+                    //Die jeweiligen Limits werden gespeichert für 
+                    //die Weiterverarbeitung der Bewegungen des Gegners j
+                    fall_Limit = UnderneathValue0 - 34;
+                    rightlimit = RightValue0;
+                    leftlimit = LeftValue0;
+                    #endregion
+                    #region Gegner Typ 0 aka. Goethe
+                    if (list_Typ_Enemys[j] == 0)
                     {
-                        UnderneathValue1 = list_y_Pos_Obj[i] - 8;
-                        if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
-                    }
-                    if (C_Right == true)
-                    {
-                        RightValue1 = list_x_Pos_Obj[i];
-                        if (RightValue0 > RightValue1) RightValue0 = RightValue1;
-                    }
-                    if (C_Left == true)
-                    {
-                        LeftValue1 = list_x_Pos_Obj[i];
-                        if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
-                    }
-                    i++;
-                } while (i < list_x_Pos_Obj.Count);
-                #endregion
-                //Die jeweiligen Limits werden gespeichert für 
-                //die Weiterverarbeitung der Bewegungen des Gegners j
-                fall_Limit = UnderneathValue0 - 34;
-                rightlimit = RightValue0;
-                leftlimit = LeftValue0;
-                #region Gegner Typ 0 aka. Goethe
-                if (list_Typ_Enemys[j] == 0)
-                {
-                    #region Rechts-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
-                    {
-                        list_RichtungLinks_Enemys[j] = true;
-                    }
-                    else if (list_RichtungLinks_Enemys[j] == false)
-                    {
-                        list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
+                        #region Rechts-Bewegungen von Goethe
+                        if (list_RichtungLinks_Enemys[j] == false && list_x_Pos_Enemys[j] + 32 >= rightlimit)
+                        {
+                            list_RichtungLinks_Enemys[j] = true;
+                        }
+                        else if (list_RichtungLinks_Enemys[j] == false)
+                        {
+                            list_x_Pos_Enemys[j] += Goethe_Geschwindigkeit;
+                        }
+                        #endregion
+                        #region Links-Bewegungen von Goethe
+                        if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
+                        {
+                            list_RichtungLinks_Enemys[j] = false;
+                        }
+                        else if (list_RichtungLinks_Enemys[j] == true)
+                        {
+                            list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
+                        }
+                        #endregion
+                        #region Goethe fällt
+
+                        if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
+                        {
+                            Goethe_AnziehungskraftInt++;
+                        }
+                        else if (Goethe_AnziehungskraftBool == false && list_y_Pos_Enemys[j] <= fall_Limit)
+                        {
+                            Goethe_AnziehungskraftBool = true;
+                        }
+                        else
+                        {
+                            Goethe_AnziehungskraftInt = 0;
+                            Goethe_AnziehungskraftBool = false;
+                        }
+                        #endregion
+                        list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
+                        if (list_y_Pos_Enemys[j] >= 500)
+                        {
+                            list_y_Pos_Enemys.RemoveAt(j);
+                            list_x_Pos_Enemys.RemoveAt(j);
+                            list_Typ_Enemys.RemoveAt(j);
+                            list_RichtungLinks_Enemys.RemoveAt(j);
+                        }
+                        else if ()
+                        {
+
+                        }
                     }
                     #endregion
-                    #region Links-Bewegungen von Goethe
-                    if (list_RichtungLinks_Enemys[j] == true && list_x_Pos_Enemys[j] <= leftlimit + 26)
+                    #region Gegner Typ 1
+                    else if (list_Typ_Enemys[j] == 1)
                     {
-                        list_RichtungLinks_Enemys[j] = false;
-                    }
-                    else if (list_RichtungLinks_Enemys[j] == true)
-                    {
-                        list_x_Pos_Enemys[j] -= Goethe_Geschwindigkeit;
+
                     }
                     #endregion
-                    #region Goethe fällt
-
-                    if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
-                    {
-                        Goethe_AnziehungskraftInt++;
-                    }
-                    else if (Goethe_AnziehungskraftBool == false && list_y_Pos_Enemys[j] <= fall_Limit)
-                    {
-                        Goethe_AnziehungskraftBool = true;
-                    }
-                    else
-                    {
-                        Goethe_AnziehungskraftInt = 0;
-                        Goethe_AnziehungskraftBool = false;
-                    }
-                    #endregion
-                    list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
-
-                }
-                #endregion
-                #region Gegner Typ 1
-                else if (list_Typ_Enemys[j] == 1)
-                {
-
-                }
-                #endregion
-                j++;
-            } while (j < list_Typ_Enemys.Count);
+                    j++;
+                } while (j < list_Typ_Enemys.Count);
             #endregion
-            Block_Zähler = list_Typ_Enemys.Count - 1;
-            do
-            {
-                list_x_Pos_Enemys[Block_Zähler] -= Block_Bewegungskraft;
-                Block_Zähler--;
-            } while (Block_Zähler > 0);
+            Block_Zähler = list_Typ_Enemys.Count-1;
+            do if (Block_Zähler != -1)
+                {
+                    list_x_Pos_Enemys[Block_Zähler] -= Block_Bewegungskraft;
+                    Block_Zähler--;
+                } while (Block_Zähler > 0);
             Invalidate();
         }
         private void malen_Startmenü()
@@ -609,21 +619,21 @@ namespace GDI_Malario
                     }
                     boden_x += 24;
                     boden_x_lücke++;
-                    if (bodenhöhe + (24 * yabstand)<= 360) yabstand = 2 ;
-                    if (bodenhöhe  + (yabstand * 24)> 456)
+                    if (bodenhöhe + (24 * yabstand) <= 360) yabstand = 2;
+                    if (bodenhöhe + (yabstand * 24) > 456)
                     {
                         yabstand = -2;
                     }
-                        if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
-                        else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
-                        else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
-                        else if (yabstand <= -5) boden_x += 24 * 5;
-                        else if (yabstand <= -4) boden_x += 24 * 7;
-                        else if (yabstand >= 5) boden_x += 24 * 10;
+                    if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
+                    else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
+                    else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
+                    else if (yabstand <= -5) boden_x += 24 * 5;
+                    else if (yabstand <= -4) boden_x += 24 * 7;
+                    else if (yabstand >= 5) boden_x += 24 * 10;
 
-                        bodenhöhe += yabstand * 24;
-                        generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
-                        boden_x += 24;
+                    bodenhöhe += yabstand * 24;
+                    generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                    boden_x += 24;
                     boden_x_lücke++;
 
                 }
