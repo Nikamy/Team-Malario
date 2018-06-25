@@ -450,6 +450,9 @@ namespace GDI_Malario
                     if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
                     {
                         Goethe_AnziehungskraftInt++;
+                    }
+                    else if (Goethe_AnziehungskraftBool == false && list_y_Pos_Enemys[j] <= fall_Limit)
+                    {
                         Goethe_AnziehungskraftBool = true;
                     }
                     else
@@ -474,7 +477,7 @@ namespace GDI_Malario
                 list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
                 j++;
             } while (j < list_Typ_Enemys.Count);
-                #endregion
+            #endregion
             Block_Zähler = list_Typ_Enemys.Count - 1;
             do
             {
@@ -598,6 +601,7 @@ namespace GDI_Malario
                     }
                     boden_x += 24;
                     boden_x_lücke++;
+<<<<<<< HEAD
                     if (bodenhöhe + (24 * yabstand)<= 360) yabstand = 2 ;
                     if (bodenhöhe  + (yabstand * 24)> 456)
                     {
@@ -613,10 +617,27 @@ namespace GDI_Malario
                         bodenhöhe += yabstand * 24;
                         generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                         boden_x += 24;
+=======
+                    if (bodenhöhe <= 360) yabstand = 2;
+                    if (bodenhöhe >= 456)
+                    {
+                        yabstand = -2;
+                    }
+                    if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
+                    else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
+                    else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
+                    else if (yabstand <= -5) boden_x += 24 * 5;
+                    else if (yabstand <= -4) boden_x += 24 * 7;
+                    else if (yabstand >= 5) boden_x += 24 * 10;
+
+                    bodenhöhe += yabstand * 24;
+                    generiert_Rechteck(boden_x, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                    boden_x += 24;
+>>>>>>> master
                     boden_x_lücke++;
-                    
+
                 }
-                generiert_BodenAbschnitt(bodenhöhe, 24 * (40-boden_x_lücke), boden_x);
+                generiert_BodenAbschnitt(bodenhöhe, 24 * (40 - boden_x_lücke), boden_x);
 
 
                 laufzähler = 0;
