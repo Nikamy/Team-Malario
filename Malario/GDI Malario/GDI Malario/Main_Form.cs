@@ -367,6 +367,9 @@ namespace GDI_Malario
                 animation_ms = 0;
             }
 
+
+            #endregion
+            #region
             //Laser Animation
             if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 30)
             {
