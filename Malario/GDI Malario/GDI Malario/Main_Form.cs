@@ -578,7 +578,7 @@ namespace GDI_Malario
                 {
                     if (pyramide_ist_da == 0)
                     {
-                        int pyramidenhöhe0;
+                        int pyramidenhöhe0 = 0;
                         if (yabstand >= 0)
                         {
                             pyramidenhöhe0 = ((yabstand + pyramide_Höhe) * 24);
@@ -588,18 +588,18 @@ namespace GDI_Malario
                             pyramidenhöhe0 = (((-yabstand) + pyramide_Höhe) * 24);
                         }
                         generiert_Treppe(boden_x - pyramidenhöhe0 + 24, bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
-                        generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        generiert_Rechteck(boden_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                         boden_x += 24 * pyramide_Höhe;
                         boden_x_lücke += pyramide_Höhe;
                     }
                     else
                     {
-                        generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        generiert_Rechteck(boden_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                     }
                     boden_x += 24;
                     boden_x_lücke++;
-                    if (bodenhöhe <= 360) yabstand = 2 ;
-                    if (bodenhöhe >= 456)
+                    if (bodenhöhe + (24 * yabstand)<= 360) yabstand = 2 ;
+                    if (bodenhöhe  + (yabstand * 24)> 456)
                     {
                         yabstand = -2;
                     }
@@ -611,7 +611,7 @@ namespace GDI_Malario
                         else if (yabstand >= 5) boden_x += 24 * 10;
 
                         bodenhöhe += yabstand * 24;
-                        generiert_Rechteck(boden_x, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                         boden_x += 24;
                     boden_x_lücke++;
                     
