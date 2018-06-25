@@ -454,7 +454,6 @@ namespace GDI_Malario
                         }
                         #endregion
                         #region Goethe fällt
-
                         if (Goethe_AnziehungskraftBool == true && list_y_Pos_Enemys[j] <= fall_Limit)
                         {
                             Goethe_AnziehungskraftInt++;
@@ -470,17 +469,16 @@ namespace GDI_Malario
                         }
                         #endregion
                         list_y_Pos_Enemys[j] += Goethe_AnziehungskraftInt;
+                        #region Todesbedingungen
                         if (list_y_Pos_Enemys[j] >= 500)
                         {
-                            list_y_Pos_Enemys.RemoveAt(j);
-                            list_x_Pos_Enemys.RemoveAt(j);
-                            list_Typ_Enemys.RemoveAt(j);
-                            list_RichtungLinks_Enemys.RemoveAt(j);
+                            kill_Gegner(j);
                         }
-                        else if ()
-                        {
+                        //else if ()
+                        //{
 
-                        }
+                        //}
+                        #endregion
                     }
                     #endregion
                     #region Gegner Typ 1
@@ -492,7 +490,7 @@ namespace GDI_Malario
                     j++;
                 } while (j < list_Typ_Enemys.Count);
             #endregion
-            Block_Zähler = list_Typ_Enemys.Count-1;
+            Block_Zähler = list_Typ_Enemys.Count - 1;
             do if (Block_Zähler != -1)
                 {
                     list_x_Pos_Enemys[Block_Zähler] -= Block_Bewegungskraft;
@@ -563,7 +561,13 @@ namespace GDI_Malario
             }
         }
         //CollisionPunkt_Abfragen_Stop
-
+        private void kill_Gegner(int j)
+        {
+            list_y_Pos_Enemys.RemoveAt(j);
+            list_x_Pos_Enemys.RemoveAt(j);
+            list_Typ_Enemys.RemoveAt(j);
+            list_RichtungLinks_Enemys.RemoveAt(j);
+        }
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
