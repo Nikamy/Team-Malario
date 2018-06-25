@@ -367,8 +367,6 @@ namespace GDI_Malario
                 M_Gehend = false;
                 animation_ms = 0;
             }
-
-
             #endregion
             #region Laser
             //Laser Animation
