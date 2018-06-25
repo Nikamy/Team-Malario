@@ -28,10 +28,11 @@ namespace GDI_Malario
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
 
         //Items
-        bool I_Energy, I_Laser, I_LaserActive, I_LaserAnimation = false;
+        bool I_Energy = false, I_Laser = false, I_LaserActive = false, I_LaserAnimation = false;
         int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3, Goethe_AnziehungskraftInt = 0;
         int M_Lives = 3;
-
+        int nextBlock = 0;
+        int Coin = 0;
         //Level_Generator
         int bodenhöhe = 432, bodenabstand, laufzähler = 950;
 
@@ -42,7 +43,7 @@ namespace GDI_Malario
             I_Laser = true;
             I_Energy = false;
             label1counter.Text = Convert.ToString(list_x_Pos_Enemys.Count);
-            label1.Text = Convert.ToString(M_Lives);
+            label1.Text = Convert.ToString(I_LaserActive);
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
@@ -62,7 +63,7 @@ namespace GDI_Malario
 
             if (I_LaserAnimation == true)
             {
-                int nextBlock = 0;
+
                 if (M_Richtung == false)
                 {
                     nextBlock += rightlimit;
@@ -70,7 +71,7 @@ namespace GDI_Malario
                 else if (M_Richtung == true)
                 {
 
-                    nextBlock += (x_Pos_Malario-leftlimit);
+                    nextBlock += (x_Pos_Malario - leftlimit);
                 }
                 Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, nextBlock, M_Richtung);
             }
@@ -368,6 +369,9 @@ namespace GDI_Malario
                 animation_ms = 0;
             }
             #endregion
+            #region Energy Kollision
+
+            #endregion
             #region Laser
             //Laser Animation
             if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 30)
@@ -387,57 +391,29 @@ namespace GDI_Malario
             }
 
             #region Laser Kollision
-            i = 0;
             UnderneathValue0 = 600;
             UnderneathValue1 = 600;
             RightValue0 = 960;
             RightValue1 = 960;
             LeftValue0 = -480;
             LeftValue1 = -480;
-            int j = 0;
-            do if (list_Typ_Enemys.Count > 0)
+            int k = 0;
+            do if (I_LaserAnimation == true && list_Typ_Enemys.Count > 0)
                 {
-                    i = 0;
-                    do if (list_Typ_Enemys.Count > 0)
-                        {
-                            C_Right = false;
-                            C_Left = false;
-                            c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                            c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                            if (C_Right == true)
-                            {
-                                RightValue1 = list_x_Pos_Obj[i];
-                                if (RightValue0 > RightValue1) RightValue0 = RightValue1;
-                            }
-                            if (C_Left == true)
-                            {
-                                LeftValue1 = list_x_Pos_Obj[i];
-                                if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
-                            }
-                            i++;
-                        } while (i < list_x_Pos_Obj.Count);
-                    //Die jeweiligen Limits werden gespeichert für 
-                    //die Weiterverarbeitung der Bewegungen des Gegners j
-                    fall_Limit = UnderneathValue0 - 34;
-                    rightlimit = RightValue0;
-                    leftlimit = LeftValue0;
-
-                    //If bedingungen
-                    //Rechts
-                    if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario + rightlimit && list_Typ_Enemys[j] == 0)
+                    C_Right = false;
+                    C_Left = false;
+                    c_Right(x_Pos_Malario, y_Pos_Malario, nextBlock, 30, list_x_Pos_Enemys[k], list_y_Pos_Enemys[k], 27, 30);
+                    c_Left(x_Pos_Malario, y_Pos_Malario, nextBlock, 30, list_x_Pos_Enemys[k], list_y_Pos_Enemys[k], 27, 30);
+                    if (C_Right == true && list_Typ_Enemys[k] == 0)
                     {
-                        kill_Gegner(j);
+                        kill_Gegner(k);
                     }
-
-                    //Links
-                    if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario - leftlimit && list_Typ_Enemys[j] == 0)
+                    else if (C_Left == true && list_Typ_Enemys[k] == 0)
                     {
-                        kill_Gegner(j);
+                        kill_Gegner(k);
                     }
-
-
-                    j++;
-                } while (j < list_Typ_Enemys.Count);
+                    k++;
+                } while (I_LaserAnimation == true && k < list_Typ_Enemys.Count);
             #endregion
             #endregion
             ////////////////////////////////////////////////////////////////////////////////////////////
