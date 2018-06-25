@@ -428,13 +428,13 @@ namespace GDI_Malario
                     //Rechts
                     if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario + rightlimit && list_Typ_Enemys[j] == 0)
                     {
-                        kill_Goethe(j);
+                        kill_Gegner(j);
                     }
 
                     //Links
                     if (list_x_Pos_Enemys[j] > x_Pos_Malario && list_x_Pos_Enemys[j] < x_Pos_Malario - leftlimit && list_Typ_Enemys[j] == 0)
                     {
-                        kill_Goethe(j);
+                        kill_Gegner(j);
                     }
 
 
