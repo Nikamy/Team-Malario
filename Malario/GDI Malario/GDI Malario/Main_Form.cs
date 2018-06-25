@@ -46,6 +46,7 @@ namespace GDI_Malario
             label2.Text = Convert.ToString(x_Pos_Malario);
             label3.Text = Convert.ToString(y_Pos_Malario);
 
+            I_Energy = true;
             //Item Wirkung
             //Energy
             if (I_Energy == true)
@@ -366,6 +367,9 @@ namespace GDI_Malario
                 animation_ms = 0;
             }
 
+
+            #endregion
+            #region
             //Laser Animation
             if (I_LaserActive == true && I_Laser == true && LaserAnimation_ms < 30)
             {
