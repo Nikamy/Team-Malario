@@ -404,8 +404,8 @@ namespace GDI_Malario
                         {
                             C_Right = false;
                             C_Left = false;
-                            c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                            c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 30, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Right(x_Pos_Malario, y_Pos_Malario, rightlimit - x_Pos_Malario, 30, list_x_Pos_Enemys[i], list_y_Pos_Enemys[i], 27, 30);
+                            c_Left(x_Pos_Malario, y_Pos_Malario, x_Pos_Malario - leftlimit, 30, list_x_Pos_Enemys[i], list_y_Pos_Enemys[i], 27, 30);
                             if (C_Right == true)
                             {
                                 RightValue1 = list_x_Pos_Obj[i];
