@@ -324,7 +324,7 @@ namespace GDI_Malario
                 M_Jump = true;
                 if (anziehungskraft < 15)
                 {
-                    anziehungskraft++;
+                    anziehungskraft--;
                 }
                 M_Anziehungskraft = true;
             }
@@ -554,10 +554,13 @@ namespace GDI_Malario
             if (laufzähler >= 96)
             {
                 Random random = new Random();
-                int abstand_ist_da = random.Next(1, 3),
+                int abstand_ist_da = random.Next(0, 3),
+                    pyramide_ist_da = random.Next(0, 3),
+                    pyramide_Höhe = random.Next(1, 3),
                     xabstand = random.Next(0, 3),
-                    yabstand = random.Next(-5, 6),
-                    boden_x;
+                    yabstand = random.Next(-4, 4),
+                    boden_x,
+                    boden_x_lücke = 0;
 
 
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -573,11 +576,33 @@ namespace GDI_Malario
 
                 if (abstand_ist_da >= 1)
                 {
-                    generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
-                    boden_x += 24;
-                    if (bodenhöhe < 312) bodenhöhe += 6 * 24;
-                    if (bodenhöhe + 24 * yabstand < 480)
+                    if (pyramide_ist_da == 0)
                     {
+                        int pyramidenhöhe0;
+                        if (yabstand >= 0)
+                        {
+                            pyramidenhöhe0 = ((yabstand + pyramide_Höhe) * 24);
+                        }
+                        else
+                        {
+                            pyramidenhöhe0 = (((-yabstand) + pyramide_Höhe) * 24);
+                        }
+                        generiert_Treppe(boden_x - pyramidenhöhe0 + 24, bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
+                        generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                        boden_x += 24 * pyramide_Höhe;
+                        boden_x_lücke += pyramide_Höhe;
+                    }
+                    else
+                    {
+                        generiert_Rechteck(boden_x + 24, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
+                    }
+                    boden_x += 24;
+                    boden_x_lücke++;
+                    if (bodenhöhe <= 360) yabstand = 2 ;
+                    if (bodenhöhe >= 456)
+                    {
+                        yabstand = -2;
+                    }
                         if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
                         else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
                         else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 10;
@@ -588,9 +613,10 @@ namespace GDI_Malario
                         bodenhöhe += yabstand * 24;
                         generiert_Rechteck(boden_x, bodenhöhe, 4, (480 - bodenhöhe) / 24, 1);
                         boden_x += 24;
-                    }
+                    boden_x_lücke++;
+                    
                 }
-                generiert_BodenAbschnitt(bodenhöhe, 24 * 9, boden_x);
+                generiert_BodenAbschnitt(bodenhöhe, 24 * (40-boden_x_lücke), boden_x);
 
 
                 laufzähler = 0;
