@@ -208,10 +208,12 @@ namespace GDI_Malario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            #region Heilung
             if (CoinCounter >= 100 && M_Lives <= 2)
             {
                 M_Lives++;
             }
+            #endregion
             int i = 0, UnderneathValue0 = 600, UnderneathValue1 = 600, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 960, RightValue1 = 960, LeftValue0 = -480, LeftValue1 = -480, Block_Zähler = list_x_Pos_Obj.Count - 1;
             C_Right = false;
             C_Left = false;
@@ -358,6 +360,35 @@ namespace GDI_Malario
                 animation_ms = 0;
             }
             #endregion
+            #region Malariokollision mit Gegner
+            int lmao = 0;
+            do if (list_Typ_Enemys.Count > 0)
+                {
+                    c_Above(x_Pos_Malario, y_Pos_Malario, 30, 28, list_x_Pos_Enemys[lmao], list_y_Pos_Enemys[lmao], 30, 32); //char_y_Koor >= obj_y_Koor
+                    c_Underneath(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[lmao], list_y_Pos_Enemys[lmao], 30, 64); //char_y_Koor + char_Höhe / 2 <= obj_y_Koor
+
+                    if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] && y_Pos_Malario < list_y_Pos_Enemys[lmao])
+                    {
+                        kill_Gegner(lmao);
+                    }
+                    else if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] + 32 && y_Pos_Malario < list_y_Pos_Enemys[lmao] + 32)
+                    {
+                        M_Lives--;
+                        kill_Gegner(lmao);
+                    }
+                    else if (y_Pos_Malario + 30 >= list_y_Pos_Enemys[lmao] && y_Pos_Malario <= list_y_Pos_Enemys[lmao] + 32 && x_Pos_Malario + 30 > list_x_Pos_Enemys[lmao] && x_Pos_Malario + 30 < list_x_Pos_Enemys[lmao] + 30)
+                    {
+                        M_Lives--;
+                        kill_Gegner(lmao);
+                    }
+                    else if (y_Pos_Malario + 30 >= list_y_Pos_Enemys[lmao] && y_Pos_Malario <= list_y_Pos_Enemys[lmao] + 32 && x_Pos_Malario + 30 > list_x_Pos_Enemys[lmao] + 30 && x_Pos_Malario < list_x_Pos_Enemys[lmao])
+                    {
+                        M_Lives--;
+                        kill_Gegner(lmao);
+                    }
+                    lmao++;
+                } while (lmao < list_x_Pos_Enemys.Count);
+            #endregion
             #endregion
             #region Energy Kollision
 
@@ -440,7 +471,6 @@ namespace GDI_Malario
             #region Malario stirbt (respawn)
             if (M_Lives == 0)
             {
-
                 M_Lives = 3;
                 CoinCounter = 0;
                 getöteteGegner_Counter = 0;
