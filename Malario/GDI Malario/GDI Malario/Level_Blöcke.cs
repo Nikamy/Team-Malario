@@ -76,151 +76,74 @@ namespace GDI_Malario
             Color color1 = Color.LightGray;
             Color color2 = Color.DarkGray;
             Grundmethoden grundmethoden = new Grundmethoden();
+            xlänge = 24;
+            ylänge = 24;
+            x_Pos += 0;
+            y_Pos += 0;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
+
+            xlänge = 6;
+            ylänge = 6;
+            x_Pos += 0;
+            y_Pos += 18;
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
+
             xlänge = 3;
             ylänge = 3;
-            //Oberste Zeile
-            y_Pos += 21;
-            x_Pos += 0;
+            x_Pos += 6;
+            y_Pos += 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            //2.Zeile
+
+            xlänge = 3;
+            ylänge = 6;
+            x_Pos += 15;
             y_Pos -= 3;
-            x_Pos -= 21;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            //3.Zeile
+
+            xlänge = 15;
+            ylänge = 3;
+            x_Pos -= 18;
             y_Pos -= 3;
-            x_Pos -= 21;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            //4.Zeile
+
+            xlänge = 6;
+            ylänge = 3;
+            x_Pos += 9;
             y_Pos -= 3;
-            x_Pos -= 21;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            //5.Zeile
+
+            xlänge = 3;
+            ylänge = 3;
+            x_Pos -= 9;
             y_Pos -= 3;
-            x_Pos -= 21;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
+
+            xlänge = 3;
+            ylänge = 3;
             x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            //6.Zeile
             y_Pos -= 3;
-            x_Pos -= 21;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            //7.Zeile
+
+            xlänge = 3;
+            ylänge = 3;
+            x_Pos -= 6;
             y_Pos -= 3;
-            x_Pos -= 21;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
+
+            xlänge = 9;
+            ylänge = 3;
+            x_Pos += 15;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            //8.Zeile
+
+            xlänge = 9;
+            ylänge = 3;
+            x_Pos -= 15;
             y_Pos -= 3;
-            x_Pos -= 21;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
-            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color2, color2, xlänge, ylänge);
-            x_Pos += 3;
+
+            xlänge = 3;
+            ylänge = 3;
+            x_Pos += 21;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, color1, color1, xlänge, ylänge);
         }
         public static void malen_RöhrenBlock_Kopf(Graphics graphics, int x_Pos0, int y_Pos0)
