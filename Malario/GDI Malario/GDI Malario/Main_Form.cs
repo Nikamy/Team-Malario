@@ -81,23 +81,23 @@ namespace GDI_Malario
                     x_Pos_Block = list_x_Pos_Obj[Zähler];
                     y_Pos_Block = list_y_Pos_Obj[Zähler];
 
-                    if (list_Typ_Obj[Zähler] == 0 && x_Pos_Block < 600 && x_Pos_Block > -60)
+                    if (list_Typ_Obj[Zähler] == 0 && x_Pos_Block < 528 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 1 && x_Pos_Block < 600 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 1 && x_Pos_Block < 528 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_MauerBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 2 && x_Pos_Block < 600 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 2 && x_Pos_Block < 528 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_RöhrenBlock_Kopf(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 3 && x_Pos_Block < 600 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 3 && x_Pos_Block < 528 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_RöhrenBlock_Hals(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < 600 && x_Pos_Block > -60)
+                    else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < 528 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_StahlBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
@@ -509,15 +509,15 @@ namespace GDI_Malario
             //nach Rechts bewegen = false
             //nach Links bewegen = true
             i = 0;
-            UnderneathValue0 = 600;
-            UnderneathValue1 = 600;
-            RightValue0 = 960;
-            RightValue1 = 960;
-            LeftValue0 = -480;
-            LeftValue1 = -480;
             int j = 0;
             do if (list_Typ_Enemys.Count > 0)
                 {
+                    UnderneathValue0 = 600;
+                    UnderneathValue1 = 600;
+                    RightValue0 = 960;
+                    RightValue1 = 960;
+                    LeftValue0 = -480;
+                    LeftValue1 = -480;
                     i = 0;
                     #region Kollisionsabfragen des Gegners j
                     do if (list_Typ_Enemys.Count > 0)
