@@ -390,9 +390,7 @@ namespace GDI_Malario
                 } while (lmao < list_x_Pos_Enemys.Count);
             #endregion
             #endregion
-            #region Energy Kollision
 
-            #endregion
             #region Items
             #region Laser
             #region Laser Animation
@@ -456,7 +454,6 @@ namespace GDI_Malario
             }
 
             #endregion
-            #endregion
             #region Energy Drink
             if (I_Energy == true)
             {
@@ -466,6 +463,195 @@ namespace GDI_Malario
             {
                 M_Laufgeschwindigkeit = 6;
             }
+            #endregion
+            #region EnergyItem Kollision
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
+            AboveValue0 = 0;
+            AboveValue1 = 0;
+            int n = 0;
+            do if (I_Energy == false && list_Typ_Items.Count > 0)
+                {
+                    C_Right = false;
+                    C_Left = false;
+                    C_Above = false;
+                    c_Right(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    if (C_Right == true) RightValue1 = list_x_Pos_Items[n];
+                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[n];
+                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[n];
+                    if (AboveValue0 > AboveValue1) AboveValue0 = AboveValue1;
+
+                    if (RightValue0 < rightlimit && list_Typ_Items[n] == 1)
+                    {
+                        I_Energy = true;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (LeftValue0 > leftlimit && list_Typ_Items[n] == 1)
+                    {
+                        I_Energy = true;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[n] == 1)
+                    {
+                        I_Energy = true;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    k++;
+                } while (I_Energy == false && n < list_Typ_Items.Count);
+            #endregion
+            #region Coin Collision
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
+            AboveValue0 = 0;
+            AboveValue1 = 0;
+            n = 0;
+            do if (list_Typ_Items.Count > 0)
+                {
+                    C_Right = false;
+                    C_Left = false;
+                    C_Above = false;
+                    c_Right(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    if (C_Right == true) RightValue1 = list_x_Pos_Items[n];
+                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[n];
+                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[n];
+                    if (AboveValue0 > AboveValue1) AboveValue0 = AboveValue1;
+
+                    if (RightValue0 < rightlimit && list_Typ_Items[n] == 0)
+                    {
+                        CoinCounter++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (LeftValue0 > leftlimit && list_Typ_Items[n] == 0)
+                    {
+                        CoinCounter++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[n] == 0)
+                    {
+                        CoinCounter++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    k++;
+                } while (n < list_Typ_Items.Count);
+            #endregion
+            #region heart Collison
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
+            AboveValue0 = 0;
+            AboveValue1 = 0;
+            n = 0;
+            do if (list_Typ_Items.Count > 0)
+                {
+                    C_Right = false;
+                    C_Left = false;
+                    C_Above = false;
+                    c_Right(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    if (C_Right == true) RightValue1 = list_x_Pos_Items[n];
+                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[n];
+                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[n];
+                    if (AboveValue0 > AboveValue1) AboveValue0 = AboveValue1;
+
+                    if (RightValue0 < rightlimit && list_Typ_Items[n] == 0)
+                    {
+                        M_Lives++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (LeftValue0 > leftlimit && list_Typ_Items[n] == 0)
+                    {
+                        M_Lives++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[n] == 0)
+                    {
+                        M_Lives++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    k++;
+                } while (n < list_Typ_Items.Count);
+            #endregion
+            #region Lasergun Collision
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
+            AboveValue0 = 0;
+            AboveValue1 = 0;
+            n = 0;
+            do if (list_Typ_Items.Count > 0)
+                {
+                    C_Right = false;
+                    C_Left = false;
+                    C_Above = false;
+                    c_Right(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    if (C_Right == true) RightValue1 = list_x_Pos_Items[n];
+                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[n];
+                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[n];
+                    if (AboveValue0 > AboveValue1) AboveValue0 = AboveValue1;
+
+                    if (RightValue0 < rightlimit && list_Typ_Items[n] == 0)
+                    {
+                        M_Lives++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (LeftValue0 > leftlimit && list_Typ_Items[n] == 0)
+                    {
+                        M_Lives++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[n] == 0)
+                    {
+                        M_Lives++;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
+                    }
+                    k++;
+                } while (n < list_Typ_Items.Count);
+            #endregion
             #endregion
             #region Leben
             #region Malario stirbt (respawn)
@@ -547,7 +733,7 @@ namespace GDI_Malario
                     RightValue0 = 960;
                     RightValue1 = 960;
                     LeftValue0 = -480;
-                    LeftValue1 = -480;
+                    LeftValue1 = -480; 
                     i = 0;
                     #region Kollisionsabfragen des Gegners j
                     do if (list_Typ_Enemys.Count > 0)
