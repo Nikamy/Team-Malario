@@ -39,7 +39,7 @@ namespace GDI_Malario
             CoinCounter = 0,
             getöteteGegner_Counter = 0;
         #endregion
-        int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 6, Goethe_Geschwindigkeit = 3;
+        int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 0, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
         int nextBlock = 0;
         #region Level_Generator
         int bodenhöhe = 432, bodenabstand, laufzähler = 950;
