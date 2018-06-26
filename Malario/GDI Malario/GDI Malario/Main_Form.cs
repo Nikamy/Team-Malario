@@ -359,9 +359,7 @@ namespace GDI_Malario
             }
             #endregion
             #endregion
-            #region Energy Kollision
 
-            #endregion
             #region Items
             #region Laser
             #region Laser Animation
@@ -435,6 +433,45 @@ namespace GDI_Malario
             {
                 M_Laufgeschwindigkeit = 6;
             }
+            #endregion
+            #region Energy Kollision
+            RightValue0 = 960;
+            RightValue1 = 960;
+            LeftValue0 = -480;
+            LeftValue1 = -480;
+            int n = 0;
+            do if (I_Energy == false && list_Typ_Items.Count > 0)
+                {
+                    C_Right = false;
+                    C_Left = false;
+                    C_Above = false;
+                    c_Right(list_x_Pos_Items[k], list_y_Pos_Items[k], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Left(list_x_Pos_Items[k], list_y_Pos_Items[k], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Above(list_x_Pos_Items[k], list_y_Pos_Items[k], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    if (C_Right == true) RightValue1 = list_x_Pos_Items[k];
+                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
+                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[k];
+                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
+                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[k];
+                    if (AboveValue0 > AboveValue1) AboveValue0 = AboveValue1;
+
+                    if (RightValue0 < rightlimit && list_Typ_Items[k] == 0)
+                    {
+                        I_Energy = true;
+                    }
+                    else if (LeftValue0 > leftlimit && list_Typ_Items[k] == 0)
+                    {
+                        I_Energy = true;
+                    }
+                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[k] == 0)
+                    {
+                        I_Energy = true;
+                        list_y_Pos_Items.RemoveAt(k);
+                        list_x_Pos_Items.RemoveAt(k);
+                        list_Typ_Items.RemoveAt(k);
+                    }
+                    k++;
+                } while (I_Energy == false && k < list_Typ_Items.Count);
             #endregion
             #region Leben
             #region Malario stirbt (respawn)
