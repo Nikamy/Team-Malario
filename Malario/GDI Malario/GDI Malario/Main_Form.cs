@@ -445,33 +445,39 @@ namespace GDI_Malario
                     C_Right = false;
                     C_Left = false;
                     C_Above = false;
-                    c_Right(list_x_Pos_Items[k], list_y_Pos_Items[k], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
-                    c_Left(list_x_Pos_Items[k], list_y_Pos_Items[k], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
-                    c_Above(list_x_Pos_Items[k], list_y_Pos_Items[k], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
-                    if (C_Right == true) RightValue1 = list_x_Pos_Items[k];
+                    c_Right(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
+                    if (C_Right == true) RightValue1 = list_x_Pos_Items[n];
                     if (RightValue0 > RightValue1) RightValue0 = RightValue1;
-                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[k];
+                    if (C_Left == true) LeftValue1 = list_x_Pos_Items[n];
                     if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
-                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[k];
+                    if (C_Above == true) AboveValue1 = list_x_Pos_Items[n];
                     if (AboveValue0 > AboveValue1) AboveValue0 = AboveValue1;
 
-                    if (RightValue0 < rightlimit && list_Typ_Items[k] == 0)
+                    if (RightValue0 < rightlimit && list_Typ_Items[n] == 0)
                     {
                         I_Energy = true;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
                     }
-                    else if (LeftValue0 > leftlimit && list_Typ_Items[k] == 0)
+                    else if (LeftValue0 > leftlimit && list_Typ_Items[n] == 0)
                     {
                         I_Energy = true;
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
                     }
-                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[k] == 0)
+                    else if (AboveValue0 < sprung_Limit && list_Typ_Items[n] == 0)
                     {
                         I_Energy = true;
-                        list_y_Pos_Items.RemoveAt(k);
-                        list_x_Pos_Items.RemoveAt(k);
-                        list_Typ_Items.RemoveAt(k);
+                        list_y_Pos_Items.RemoveAt(n);
+                        list_x_Pos_Items.RemoveAt(n);
+                        list_Typ_Items.RemoveAt(n);
                     }
                     k++;
-                } while (I_Energy == false && k < list_Typ_Items.Count);
+                } while (I_Energy == false && n < list_Typ_Items.Count);
             #endregion
             #region Leben
             #region Malario stirbt (respawn)
