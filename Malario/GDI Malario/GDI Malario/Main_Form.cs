@@ -848,11 +848,9 @@ namespace GDI_Malario
 
 
 
-            list_Typ_Enemys.Add(0);
-            list_RichtungLinks_Enemys.Add(false);
-            list_x_Pos_Enemys.Add(200);
-            list_y_Pos_Enemys.Add(380 - 18 - 32);
-            list_Anziehungskraft_Enemys.Add(1);
+            list_Typ_Items.Add(0);
+            list_x_Pos_Items.Add(200);
+            list_y_Pos_Items.Add(480 - 48 - 24);
 
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
