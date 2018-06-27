@@ -370,6 +370,9 @@ namespace GDI_Malario
                     if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] && y_Pos_Malario < list_y_Pos_Enemys[lmao])
                     {
                         kill_Gegner(lmao);
+                        getöteteGegner_Counter++;
+                        CoinCounter += 5;
+
                     }
                     else if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] + 32 && y_Pos_Malario < list_y_Pos_Enemys[lmao] + 32)
                     {
@@ -847,11 +850,11 @@ namespace GDI_Malario
             } while (Blockzähler < 960);
 
 
-
+            
             list_Typ_Items.Add(0);
             list_x_Pos_Items.Add(200);
-            list_y_Pos_Items.Add(480 - 48 - 24);
-
+            list_y_Pos_Items.Add(480 - 48 - 300);
+            
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(350);
