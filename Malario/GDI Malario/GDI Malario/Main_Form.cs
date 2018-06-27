@@ -480,7 +480,7 @@ namespace GDI_Malario
                     c_Right(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
                     c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
                     c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
-´+
+
 
                     if (C_Right == true && list_Typ_Items[n] == 1)
                     {
@@ -489,14 +489,14 @@ namespace GDI_Malario
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Left == true && && list_Typ_Items[n] == 1)
+                    else if (C_Left == true  && list_Typ_Items[n] == 1)
                     {
                         I_Energy = true;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Above== true && && list_Typ_Items[n] == 1)
+                    else if (C_Above== true &&  list_Typ_Items[n] == 1)
                     {
                         I_Energy = true;
                         list_y_Pos_Items.RemoveAt(n);
@@ -523,21 +523,21 @@ namespace GDI_Malario
                     c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
                     c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
 
-                    if (C_Right == true && && list_Typ_Items[n] == 0)
+                    if (C_Right == true &&  list_Typ_Items[n] == 0)
                     {
                         CoinCounter++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Left == true && && list_Typ_Items[n] == 0)
+                    else if (C_Left == true &&  list_Typ_Items[n] == 0)
                     {
                         CoinCounter++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Above == true && && list_Typ_Items[n] == 0)
+                    else if (C_Above == true  && list_Typ_Items[n] == 0)
                     {
                         CoinCounter++;
                         list_y_Pos_Items.RemoveAt(n);
@@ -564,21 +564,21 @@ namespace GDI_Malario
                     c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
                     c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
 
-                    if (C_Right == true && && list_Typ_Items[n] == 0)
+                    if (C_Right == true &&  list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Left == true && && list_Typ_Items[n] == 0)
+                    else if (C_Left == true && list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Above == true && && list_Typ_Items[n] == 0)
+                    else if (C_Above == true && list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
@@ -606,21 +606,21 @@ namespace GDI_Malario
                     c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
 
 
-                    if (C_Right == true && && list_Typ_Items[n] == 0)
+                    if (C_Right == true && list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Left == true && && list_Typ_Items[n] == 0)
+                    else if (C_Left == true && list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Above == true && && list_Typ_Items[n] == 0)
+                    else if (C_Above == true && list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
