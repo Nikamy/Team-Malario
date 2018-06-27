@@ -454,6 +454,7 @@ namespace GDI_Malario
             }
 
             #endregion
+            #endregion
             #region Energy Drink
             if (I_Energy == true)
             {
@@ -651,7 +652,6 @@ namespace GDI_Malario
                     }
                     k++;
                 } while (n < list_Typ_Items.Count);
-            #endregion
             #endregion
             #region Leben
             #region Malario stirbt (respawn)
