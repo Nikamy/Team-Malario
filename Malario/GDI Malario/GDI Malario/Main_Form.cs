@@ -503,7 +503,7 @@ namespace GDI_Malario
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    k++;
+                    n++;
                 } while (I_Energy == false && n < list_Typ_Items.Count);
             #endregion
             #region Coin Collision
@@ -544,7 +544,7 @@ namespace GDI_Malario
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    k++;
+                    n++;
                 } while (n < list_Typ_Items.Count);
             #endregion
             #region heart Collison
@@ -585,7 +585,7 @@ namespace GDI_Malario
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    k++;
+                    n++;
                 } while (n < list_Typ_Items.Count);
             #endregion
             #region Lasergun Collision
@@ -627,7 +627,7 @@ namespace GDI_Malario
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    k++;
+                    n++;
                 } while (n < list_Typ_Items.Count);
             #endregion
             #region Leben
