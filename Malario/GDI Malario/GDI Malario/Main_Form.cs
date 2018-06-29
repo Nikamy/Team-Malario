@@ -909,17 +909,16 @@ namespace GDI_Malario
             {
                 Random random = new Random();
                 int abstand_ist_da = random.Next(1, 2),
-                    pyramide_ist_da = random.Next(0, 3),
-                    pyramide_Höhe = random.Next(1, 3),
+                    obj_vor_lücke = random.Next(1, 1),
+                    pyramide_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
-                    yabstand = random.Next(-4, 4),
+                    yabstand = random.Next(-2, 2),
                     bodenTahl_ist_da = random.Next(2, 2),
-                    bodenTahl_anzahl = random.Next(1, 2),
-                    boden_x,
-                    boden_x_lücke = 0;
+                    letzter_Block_x;
 
 
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
+                #region Letzter Block ermitteln (X-Coordinate)
                 //Coordinaten des rechtesten Blockes ermitteln
                 do if (list_x_Pos_Obj.Count > 0)
                     {
@@ -928,64 +927,57 @@ namespace GDI_Malario
                         Zähler0++;
                     } while (Zähler0 < list_x_Pos_Obj.Count);
                 //x Position der letzten Blockreihe
-                boden_x = x_Value0;
-
-                //Halbe Pyramide 1/4 Chance und Sprunggraben
+                letzter_Block_x = x_Value0;
+                #endregion
                 if (abstand_ist_da >= 1)
                 {
-                    if (pyramide_ist_da == 0)
+                    #region Kein Objekt vor der Lücke
+                    if (obj_vor_lücke == 0)
                     {
-                        int pyramidenhöhe0 = 0;
+                        generiert_Rechteck(letzter_Block_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                    }
+                    letzter_Block_x += 24;
+                    #endregion
+                    #region Halbe Pyramide vor dem Graben
+                    if (obj_vor_lücke == 1)
+                    {
+                        int pyramidenhöhe0 = 4 * 24;
                         if (yabstand >= 0)
                         {
                             pyramidenhöhe0 = ((yabstand + pyramide_Höhe) * 24);
                         }
-                        else
-                        {
-                            pyramidenhöhe0 = (((-yabstand) + pyramide_Höhe) * 24);
-                        }
-                        generiert_Treppe(boden_x - pyramidenhöhe0 + 24, bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
-                        generiert_Rechteck(boden_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
-                        boden_x += 24 * pyramide_Höhe;
-                        boden_x_lücke += pyramide_Höhe;
+                        generiert_Treppe(letzter_Block_x - pyramidenhöhe0 , bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
+                        generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                        //letzter_Block_x += 24 * pyramide_Höhe;
                     }
-                    else
+                    #endregion
+                    #region Röhre vor der Lücke
+                    if (obj_vor_lücke == 2)
                     {
-                        generiert_Rechteck(boden_x + 24, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                        generiert_Rechteck(letzter_Block_x, bodenhöhe, 0, (480 - bodenhöhe) / 24, 1);
+                        generiert_Röhre(bodenhöhe - (24 * pyramide_Höhe), 480, letzter_Block_x);
                     }
-                    boden_x += 24;
-                    boden_x_lücke++;
-                    if (bodenhöhe + (24 * yabstand) <= 360) yabstand = 2;
-                    if (bodenhöhe + (yabstand * 24) > 456)
-                    {
-                        yabstand = -2;
-                    }
-                    if (yabstand == 0 || yabstand == 1) boden_x += 24 * 9;
-                    else if (yabstand <= -1 && yabstand >= -3) boden_x += 24 * 8;
-                    else if (yabstand >= 2 && yabstand <= 4) boden_x += 24 * 9;
-                    else if (yabstand <= -5) boden_x += 24 * 5;
-                    else if (yabstand <= -4) boden_x += 24 * 7;
-                    else if (yabstand >= 5) boden_x += 24 * 10;
-
+                    letzter_Block_x += 24;
+                    #endregion
+                    #region Überprüft ob der Boden im Gewünschten Bereich liegt, wenn nein dann wird er verändert
+                    if (bodenhöhe + (24 * yabstand) < 408) yabstand = 1;
+                    if (bodenhöhe + (yabstand * 24) > 456) yabstand = -1;
+                    #endregion
+                    #region Spalten Arten
+                    if (yabstand == 0 || yabstand == 1) letzter_Block_x += 24 * 8;
+                    else if (yabstand <= -1 && yabstand >= -3) letzter_Block_x += 24 * 7;
+                    else if (yabstand >= 2 && yabstand <= 4) letzter_Block_x += 24 * 8;
+                    else if (yabstand <= -5) letzter_Block_x += 24 * 4;
+                    else if (yabstand <= -4) letzter_Block_x += 24 * 6;
+                    else if (yabstand >= 5) letzter_Block_x += 24 * 8;
+                    #endregion
                     bodenhöhe += yabstand * 24;
-                    generiert_Rechteck(boden_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
-                    boden_x += 24;
-                    boden_x_lücke++;
+                    generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                    letzter_Block_x += 24;
 
                 }
-
-                boden_x_lücke = 0;
-                laufzähler = 0;
-
-
-                generiert_BodenAbschnitt(bodenhöhe, 24 * (40 - boden_x_lücke), boden_x);
-                boden_x += 24 * (40 - boden_x_lücke);
-
-
-
-
-
-
+                generiert_BodenAbschnitt(bodenhöhe, 24 * (40), letzter_Block_x);
+                letzter_Block_x += 24 * (40);
                 laufzähler = 0;
             }
         }
@@ -1027,7 +1019,7 @@ namespace GDI_Malario
             list_Typ_Obj.Add(99);
             list_x_Pos_Obj.Add(x_Pos_Block);
             list_y_Pos_Obj.Add(y_Pos_Block);
-            do
+            do 
             {
                 x_Pos_Block -= 24;
                 y_Pos_Block += 24;
