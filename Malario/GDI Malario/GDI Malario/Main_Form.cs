@@ -855,6 +855,13 @@ namespace GDI_Malario
             list_Typ_Enemys.RemoveAt(j);
             list_RichtungLinks_Enemys.RemoveAt(j);
         }
+        private void generiert_Gegner(int Art,int x_Coor, int y_Coor, bool richtung)
+        {
+            list_y_Pos_Enemys.Add(y_Coor);
+            list_x_Pos_Enemys.Add(x_Coor);
+            list_Typ_Enemys.Add(Art);
+            list_RichtungLinks_Enemys.Add(richtung);
+        }
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
@@ -1042,6 +1049,7 @@ namespace GDI_Malario
             } while (höhenZähler <= treppen_Höhe);
 
         }
+
     }
 }
 
