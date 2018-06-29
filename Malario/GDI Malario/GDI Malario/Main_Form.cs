@@ -40,7 +40,9 @@ namespace GDI_Malario
             ScoreZähler = 0;
         #endregion
         int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
-        int nextBlock = 0;
+        int nextBlock = 0,
+            Block_y_bewegung,
+            Bild_Höhen_Zähler;
         #region Level_Generator
         int bodenhöhe = 432, bodenabstand, laufzähler = 950;
         #endregion
@@ -214,7 +216,7 @@ namespace GDI_Malario
                 M_Lives++;
             }
             #endregion
-            int i = 0, UnderneathValue0 = 600, UnderneathValue1 = 600, AboveValue0 = 0, AboveValue1 = 0, RightValue0 = 960, RightValue1 = 960, LeftValue0 = -480, LeftValue1 = -480, Block_Zähler = list_x_Pos_Obj.Count - 1;
+            int i = 0, UnderneathValue0 = 600, UnderneathValue1 = 600, AboveValue0 = -480, AboveValue1 = -480, RightValue0 = 960, RightValue1 = 960, LeftValue0 = -480, LeftValue1 = -480, Block_Zähler = list_x_Pos_Obj.Count - 1;
             C_Right = false;
             C_Left = false;
             C_Above = false;
@@ -307,17 +309,46 @@ namespace GDI_Malario
                 }
             }
             #endregion
+            //#region Malario bewegt sich zu weit nach oben
+            //if (y_Pos_Malario < 384)
+            //{
+            //    y_Pos_Malario -= 6;
+            //    Block_y_bewegung -= 6;
+            //    Bild_Höhen_Zähler += 6;
+            //}
+            //#endregion
+            //#region Malario bewegt sich zu weit nach unten
+            //if (y_Pos_Malario > 100 && Bild_Höhen_Zähler >= 0)
+            //{
+            //    y_Pos_Malario -= 6;
+            //    Block_y_bewegung -= 6;
+            //    Bild_Höhen_Zähler += 6;
+            //}
+            //#endregion
             #region Malarios bewegugnskraft wird angewändet
             x_Pos_Malario += M_Bewegungskraft;
+            #region Objekte erhalten Bewegungskraft
             do if (list_Typ_Obj.Count > 0)
                 {
                     list_x_Pos_Obj[Block_Zähler] += Block_Bewegungskraft;
+                    list_y_Pos_Obj[Block_Zähler] += Block_y_bewegung;
                     Block_Zähler--;
                 } while (Block_Zähler >= 0);
-            Block_Zähler = list_Typ_Enemys.Count - 1;
+            #endregion
+            #region Items erhalten Bewegungskraft
+            do if (list_Typ_Items.Count > 0)
+                {
+                    list_x_Pos_Items[Block_Zähler] += Block_Bewegungskraft;
+                    list_y_Pos_Items[Block_Zähler] += Block_y_bewegung;
+                    Block_Zähler--;
+                } while (Block_Zähler >= 0);
+
+            #endregion
+            #region Gegner erhalten Bewegungskraft
             do if (Block_Zähler != -1)
                 {
                     list_x_Pos_Enemys[Block_Zähler] += Block_Bewegungskraft;
+                    list_y_Pos_Enemys[Block_Zähler] += Block_y_bewegung;
                     Block_Zähler--;
                 } while (Block_Zähler >= 0);
             #endregion
@@ -331,6 +362,7 @@ namespace GDI_Malario
                 }
                 M_Anziehungskraft = true;
             }
+            #endregion
             #endregion
             #region Malario Boden Collision erkannt und behandelt
             else if (M_Anziehungskraft == true && y_Pos_Malario >= fall_Limit)
@@ -862,6 +894,12 @@ namespace GDI_Malario
             list_Typ_Enemys.Add(Art);
             list_RichtungLinks_Enemys.Add(richtung);
         }
+        private void generiert_Item(int Art, int x_Coor, int y_Coor)
+        {
+            list_y_Pos_Items.Add(y_Coor);
+            list_x_Pos_Items.Add(x_Coor);
+            list_Typ_Items.Add(Art);
+        }
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
@@ -870,7 +908,7 @@ namespace GDI_Malario
                 #region Randomisor
                 Random random = new Random();
                 int abstand_ist_da = random.Next(1, 2),
-                    obj_vor_lücke = random.Next(1, 1),
+                    obj_vor_lücke = random.Next(0, 3),
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
@@ -891,6 +929,7 @@ namespace GDI_Malario
                 #endregion
                 if (abstand_ist_da == 1)
                 {
+                    #region Objekte vor den Lücken
                     #region Kein Objekt vor der Lücke
                     if (obj_vor_lücke == 0)
                     {
@@ -919,7 +958,16 @@ namespace GDI_Malario
                     }
                     letzter_Block_x += 24;
                     #endregion
-                    #region Überprüft ob der Boden im Gewünschten Bereich liegt, wenn nein dann wird er verändert
+                    #region Rechteck vor der Lücke
+                    if(obj_vor_lücke == 3)
+                    {
+                        generiert_Rechteck(letzter_Block_x - 144,bodenhöhe - 24 * obj_Höhe,4,obj_Höhe, 1);
+                        generiert_Rechteck(letzter_Block_x - 120, bodenhöhe - 24 * obj_Höhe, 0, obj_Höhe, 4);
+                        generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 24 * obj_Höhe , 1, obj_Höhe + 4, 1); 
+                    }
+                    #endregion
+                    #endregion
+                    #region Überprüft ob die neue Bodenhöhe im Gewünschten Bereich liegt, wenn nein dann wird er verändert
                     if (bodenhöhe + (24 * yabstand) < 408) yabstand = 1;
                     if (bodenhöhe + (yabstand * 24) > 456) yabstand = -1;
                     #endregion
@@ -934,18 +982,49 @@ namespace GDI_Malario
                     #endregion
                     generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                     letzter_Block_x += 24;
-
                 }
+                #region Levelarten
+                #region Leveltyp 1
                 if(lvlabschnitt_Art == 0)
                 {
+                    int Blockbreite = random.Next(1,6),
+                        BlockAbstand = random.Next(1,4);
                     generiert_BodenAbschnitt(bodenhöhe, 24 * 40, letzter_Block_x);
-                    //Rechteck am Anfang
-                    generiert_Rechteck(letzter_Block_x +24, bodenhöhe - 96, 1, 4, 1);
+                    #region  Rechteck am Anfang
+                    generiert_Rechteck(letzter_Block_x + 24, bodenhöhe - 96, 4, 4, 1);
                     generiert_Rechteck(letzter_Block_x + 48, bodenhöhe - 96, 0, 4, 4);
-                    generiert_Rechteck(letzter_Block_x + 144, bodenhöhe - 96, 1, 4, 1);
+                    generiert_Rechteck(letzter_Block_x + 144, bodenhöhe - 96, 4, 4, 1);
+                    #endregion
+                    #region Ebene 1
+                    generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 120, 4, 1, Blockbreite * 2);
+                    generiert_Rechteck(letzter_Block_x + 528, bodenhöhe - 120, 4, 1, Blockbreite + (12 - Blockbreite));
+                    #endregion
+                    #region Ebene 2
+                    generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
+                    Blockbreite = 6 - Blockbreite;
+                    generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite * 2);
+                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + Blockbreite)), bodenhöhe - 216, 4, 1, Blockbreite);
+                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
+                    #endregion
+                    #region Ebene 2
+                    generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
+                    Blockbreite = 6 - Blockbreite;
+                    generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite * 2);
+                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + Blockbreite)), bodenhöhe - 216, 4, 1, Blockbreite);
+                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
+                    #endregion
+                    #region Ebene 3
+                    generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
+                    Blockbreite = 6 - Blockbreite;
+                    generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 312, 4, 1, 4 + (Blockbreite * 2));
+                    generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 336, 4, 1, 1);
+                    generiert_Rechteck(letzter_Block_x + 144 + (24 * (BlockAbstand + 3 + (Blockbreite * 2))), bodenhöhe - 336, 4, 1, 1);
+                    generiert_Rechteck(letzter_Block_x + 144 + (48 * (BlockAbstand + 1 + (Blockbreite * 2))), bodenhöhe - 360, 4, 1, 5);
+                    #endregion
                 }
-                generiert_BodenAbschnitt(bodenhöhe, 24 * (40), letzter_Block_x);
-                letzter_Block_x += 24 * (40);
+                #endregion
+                #endregion
+                letzter_Block_x += 24 * 40;
                 laufzähler = 0;
             }
         }
