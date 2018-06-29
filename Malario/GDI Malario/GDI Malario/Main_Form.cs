@@ -53,10 +53,9 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-            label1.Text = Convert.ToString(list_x_Pos_Enemys.Count) + " Gegner getötet";
+            label1.Text = Convert.ToString(list_x_Pos_Obj.Count) + " Gegner getötet";
             label2.Text = Convert.ToString(M_Lives) + " Leben";
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
-
             if (M_Left == true || M_Right == true)
             {
                 Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
@@ -267,7 +266,7 @@ namespace GDI_Malario
             M_Bewegungskraft = 0;
             Block_Bewegungskraft = 0;
             #region Rechts
-            if (x_Pos_Malario + 30 >= rightlimit && M_Right == true)
+            if (x_Pos_Malario + 35 >= rightlimit && M_Right == true)
             {
                 M_Bewegungskraft = 0;
                 Block_Bewegungskraft = 0;
@@ -290,7 +289,7 @@ namespace GDI_Malario
             }
             #endregion
             #region Links
-            if (x_Pos_Malario <= leftlimit + 30 && M_Left == true)
+            if (x_Pos_Malario <= leftlimit + 35 && M_Left == true)
             {
                 M_Bewegungskraft = 0;
                 Block_Bewegungskraft = 0;
@@ -889,11 +888,12 @@ namespace GDI_Malario
             list_RichtungLinks_Enemys.Add(richtung);
             list_Anziehungskraft_Enemys.Add(0);
         }
-        private void generiert_Item(int Art, int x_Coor, int y_Coor)
+        private void generiert_Item(int x_Coor, int y_Coor)
         {
+            Random random = new Random();
             list_y_Pos_Items.Add(y_Coor);
             list_x_Pos_Items.Add(x_Coor);
-            list_Typ_Items.Add(Art);
+            list_Typ_Items.Add(random.Next(-1, 3));
         }
         //LevelGenerator
         private void generiert_LevelAbschnitt()
@@ -907,7 +907,7 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(0, 2),
+                    lvlabschnitt_Art = random.Next(0, 0),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -1005,9 +1005,10 @@ namespace GDI_Malario
                     #region Ebene 3
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
                     Blockbreite = 6 - Blockbreite + 1;
-                    generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 312, 4, 1, 4 + (Blockbreite * 2));
+                    generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 312, 4, 1, 4 + (Blockbreite));
                     generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 336, 4, 1, 1);
-                    generiert_Rechteck(letzter_Block_x + 144 + (48 * (BlockAbstand + (Blockbreite * 2))), bodenhöhe - 360, 4, 1, 6);
+                    generiert_Rechteck(letzter_Block_x + 144 + (48 * (BlockAbstand + 2 +(Blockbreite))), bodenhöhe - 360, 4, 1, 6);
+                    generiert_Item(letzter_Block_x + 144 + (48 * (BlockAbstand + 4 + (Blockbreite))),bodenhöhe - 360 - 24);
                     #endregion
                     #region Generiert GeistSpawner
                     generiert_Gegner(1, letzter_Block_x + 144 + (24 * BlockAbstand), -24, true);
@@ -1133,7 +1134,7 @@ namespace GDI_Malario
                 Zähler1++;
             } while (Zähler1 < block_Breite);
         }
-        //Links = 1 / 0 == 1= y;0=n
+        //Links = 1;0  ===  1=y;0=n
         private void generiert_Treppe(int x_Coor, int y_Choor, int Links, int treppen_Höhe)
         {
             int x_Pos_Block = x_Coor,
