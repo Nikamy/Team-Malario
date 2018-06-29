@@ -213,6 +213,7 @@ namespace GDI_Malario
             #region Heilung
             if (CoinCounter >= 100 && M_Lives <= 2)
             {
+                CoinCounter -= 100;
                 M_Lives++;
             }
             #endregion
