@@ -15,8 +15,8 @@ namespace GDI_Malario
         public static void malen_Malario(Graphics graphics, int x_Pos_Malario, int y_Pos_Malario, bool Sichtrichtung, bool gehen_Animation)
         {
             int x_Bit_Multiplier0 = 2, y_Bit_Multiplier0 = 2;
-            Color füllfarbe = Color.Yellow;
-            Color stiftfarbe = Color.Yellow;
+            Color füllfarbe = Color.GreenYellow;
+            Color stiftfarbe = Color.GreenYellow;
             Grundmethoden grundmethoden = new Grundmethoden();
 
             if (Sichtrichtung == true)
@@ -131,8 +131,8 @@ namespace GDI_Malario
                 y_Pos_Malario += (2 * y_Bit_Multiplier0);
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 1 * x_Bit_Multiplier0, 2 * y_Bit_Multiplier0);
                 //Roter Wangenpunkt
-                füllfarbe = Color.Red;
-                stiftfarbe = Color.Red;
+                füllfarbe = Color.DarkBlue;
+                stiftfarbe = Color.DarkBlue;
                 x_Pos_Malario += (5 * x_Bit_Multiplier0);
                 y_Pos_Malario += (1 * y_Bit_Multiplier0);
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 1 * x_Bit_Multiplier0, 1 * y_Bit_Multiplier0);
@@ -153,8 +153,8 @@ namespace GDI_Malario
                 if (gehen_Animation == true)
                 {
 
-                    füllfarbe = Color.Yellow;
-                    stiftfarbe = Color.Yellow;
+                    füllfarbe = Color.GreenYellow;
+                    stiftfarbe = Color.GreenYellow;
                     x_Pos_Malario -= (8 * x_Bit_Multiplier0);
                     y_Pos_Malario += (3 * y_Bit_Multiplier0);
                     grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 10 * x_Bit_Multiplier0, 1 * y_Bit_Multiplier0);
@@ -198,8 +198,8 @@ namespace GDI_Malario
             {
                 //RECHTS
                 //Körper_Stehend_Rechts_Gelb
-                füllfarbe = Color.Yellow;
-                stiftfarbe = Color.Yellow;
+                füllfarbe = Color.GreenYellow;
+                stiftfarbe = Color.GreenYellow;
 
                 if (gehen_Animation == true)
                 {
@@ -310,8 +310,8 @@ namespace GDI_Malario
                 grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 1 * x_Bit_Multiplier0, 2 * y_Bit_Multiplier0);
 
                 //Roter_Wangen_Punkt
-                füllfarbe = Color.Red;
-                stiftfarbe = Color.Red;
+                füllfarbe = Color.DarkBlue;
+                stiftfarbe = Color.DarkBlue;
 
                 x_Pos_Malario -= (4 * x_Bit_Multiplier0);
                 y_Pos_Malario += (3 * y_Bit_Multiplier0);
@@ -334,8 +334,8 @@ namespace GDI_Malario
 
                 if (gehen_Animation == true)
                 {
-                    füllfarbe = Color.Yellow;
-                    stiftfarbe = Color.Yellow;
+                    füllfarbe = Color.GreenYellow;
+                    stiftfarbe = Color.GreenYellow;
 
                     x_Pos_Malario += (1 * x_Bit_Multiplier0);
                     y_Pos_Malario += (2 * y_Bit_Multiplier0);
