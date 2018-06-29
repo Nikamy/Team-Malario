@@ -733,7 +733,7 @@ namespace GDI_Malario
 
             //nach Rechts bewegen = false
             //nach Links bewegen = true
-            interwall_GegnerSpawner += 10;
+            interwall_GegnerSpawner += 100;
             i = 0;
             int j = 0;
             do if (list_Typ_Enemys.Count > 0)
