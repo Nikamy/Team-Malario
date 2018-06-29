@@ -817,7 +817,7 @@ namespace GDI_Malario
                         {
                             list_Anziehungskraft_Enemys[j]++;
                         }
-                        else
+                        else if (list_y_Pos_Enemys[j] >= fall_Limit)
                         {
                             list_Anziehungskraft_Enemys[j] = 0;
                         }
@@ -844,6 +844,7 @@ namespace GDI_Malario
         }
         private void malen_Startmenü()
         {
+            generiert_Gegner(0, 50, 80, false);
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
 
@@ -893,6 +894,7 @@ namespace GDI_Malario
             list_x_Pos_Enemys.Add(x_Coor);
             list_Typ_Enemys.Add(Art);
             list_RichtungLinks_Enemys.Add(richtung);
+            list_Anziehungskraft_Enemys.Add(0);
         }
         private void generiert_Item(int Art, int x_Coor, int y_Coor)
         {
