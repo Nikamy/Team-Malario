@@ -372,6 +372,7 @@ namespace GDI_Malario
                         kill_Gegner(lmao);
                         getöteteGegner_Counter++;
                         CoinCounter += 5;
+                        anziehungskraft = -8;
 
                     }
                     else if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] + 32 && y_Pos_Malario < list_y_Pos_Enemys[lmao] + 32)
@@ -828,28 +829,22 @@ namespace GDI_Malario
 
 
             
-            list_Typ_Items.Add(0);
-            list_x_Pos_Items.Add(200);
-            list_y_Pos_Items.Add(480 - 48 - 300);
+            //list_Typ_Items.Add(0);
+            //list_x_Pos_Items.Add(200);
+            //list_y_Pos_Items.Add(480 - 48 - 30);
             
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
-            list_x_Pos_Enemys.Add(350);
+            list_x_Pos_Enemys.Add(100);
             list_y_Pos_Enemys.Add(380 - 48 - 32);
             list_Anziehungskraft_Enemys.Add(1);
 
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
             list_x_Pos_Enemys.Add(300);
-            list_y_Pos_Enemys.Add(380 - 58 - 32);
+            list_y_Pos_Enemys.Add(380 - 48 - 32);
             list_Anziehungskraft_Enemys.Add(1);
 
-
-            list_Typ_Enemys.Add(0);
-            list_RichtungLinks_Enemys.Add(false);
-            list_x_Pos_Enemys.Add(250);
-            list_y_Pos_Enemys.Add(380 - 28 - 32);
-            list_Anziehungskraft_Enemys.Add(1);
 
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
@@ -857,9 +852,10 @@ namespace GDI_Malario
             list_y_Pos_Enemys.Add(380 - 48 - 32);
             list_Anziehungskraft_Enemys.Add(1);
 
+
             list_Typ_Enemys.Add(0);
             list_RichtungLinks_Enemys.Add(false);
-            list_x_Pos_Enemys.Add(300);
+            list_x_Pos_Enemys.Add(150);
             list_y_Pos_Enemys.Add(380 - 48 - 32);
             list_Anziehungskraft_Enemys.Add(1);
 
