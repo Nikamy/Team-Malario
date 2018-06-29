@@ -45,6 +45,7 @@ namespace GDI_Malario
             Bild_Höhen_Zähler;
         #region Level_Generator
         int bodenhöhe = 432, bodenabstand, laufzähler = 950;
+        bool lvlGenerator_PipeLvl =false;
         #endregion
         #endregion
 
@@ -671,7 +672,7 @@ namespace GDI_Malario
                 CoinCounter = 0;
                 getöteteGegner_Counter = 0;
                 laufzähler = 950;
-                x_Pos_Malario = 0;
+                x_Pos_Malario = 48;
                 y_Pos_Malario = 397;
                 list_x_Pos_Obj.Clear();
                 list_y_Pos_Obj.Clear();
@@ -705,8 +706,6 @@ namespace GDI_Malario
                 Block_Bewegungskraft = 0;
                 anziehungskraft = 0;
                 anziehungskraft_Steigen = -15;
-                x_Pos_Malario = 0;
-                y_Pos_Malario = 397;
                 x_Pos_Block = 0;
                 y_Pos_Block = 0;
                 fall_Limit = 480;
@@ -734,9 +733,10 @@ namespace GDI_Malario
 
             //nach Rechts bewegen = false
             //nach Links bewegen = true
-            interwall_GegnerSpawner += 100;
+            interwall_GegnerSpawner += 4;
             i = 0;
             int j = 0;
+            bool Interwall_zurücksetzen = false;
             do if (list_Typ_Enemys.Count > 0)
                 {
                     UnderneathValue0 = 600;
@@ -821,33 +821,28 @@ namespace GDI_Malario
                     }
                     #endregion
                     #region Gegner-Typ 1 GegnerSpawner
-                    if (list_Typ_Enemys[j] == 1 && interwall_GegnerSpawner >= 300)
+                    else if (list_Typ_Enemys[j] == 1 && interwall_GegnerSpawner >= 300)
                     {
-                        interwall_GegnerSpawner = 0;
+                        Interwall_zurücksetzen = true;
                         generiert_Gegner(0,list_x_Pos_Enemys[j], list_y_Pos_Enemys[j],list_RichtungLinks_Enemys[j]);
                     }
                     #endregion
                     #region Gegner Typ 1
-                    else if (list_Typ_Enemys[j] == 1)
-                    {
 
-                    }
                     #endregion
                     j++;
                 } while (j < list_Typ_Enemys.Count);
+            if (Interwall_zurücksetzen == true) interwall_GegnerSpawner = 0;
             #endregion
             Invalidate();
         }
         private void malen_Startmenü()
         {
-            generiert_Gegner(0, 50, 80, false);
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
 
             generiert_Rechteck(-216, 0, 1, 20, 10);
             generiert_BodenAbschnitt(432, 960, 24);
-            generiert_Gegner(1, 240, 24, false);
-            generiert_Gegner(0, 100, 0, false);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
@@ -912,7 +907,7 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(0, 0),
+                    lvlabschnitt_Art = random.Next(0, 2),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -927,7 +922,7 @@ namespace GDI_Malario
                 //x Position der letzten Blockreihe
                 letzter_Block_x = x_Value0;
                 #endregion
-                if (abstand_ist_da == 1)
+                if (abstand_ist_da == 1 && lvlGenerator_PipeLvl == false)
                 {
                     #region Objekte vor den Lücken
                     #region Kein Objekt vor der Lücke
@@ -989,7 +984,8 @@ namespace GDI_Malario
                 {
                     int Blockbreite = random.Next(1, 6),
                         BlockAbstand = random.Next(1, 4);
-                    generiert_BodenAbschnitt(bodenhöhe, 24 * 40, letzter_Block_x);
+                    generiert_BodenAbschnitt(bodenhöhe, 24 * 20, letzter_Block_x);
+                    generiert_BodenAbschnitt(bodenhöhe, 24 * 16, letzter_Block_x + (24 * 24));
                     #region  Rechteck am Anfang
                     generiert_Rechteck(letzter_Block_x + 24, bodenhöhe - 96, 4, 4, 1);
                     generiert_Rechteck(letzter_Block_x + 48, bodenhöhe - 96, 0, 4, 4);
@@ -1001,9 +997,9 @@ namespace GDI_Malario
                     #endregion
                     #region Ebene 2
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
-                    Blockbreite = 6 - Blockbreite;
-                    generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite * 2);
-                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + Blockbreite)), bodenhöhe - 216, 4, 1, Blockbreite);
+                    Blockbreite = 6 - Blockbreite + 1;
+                    generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite +1 * 2);
+                    generiert_Rechteck(letzter_Block_x + 240 + (24 * (Blockbreite + 6)), bodenhöhe - 216, 4, 1, 1);
                     generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
                     #endregion
                     #region Ebene 3
@@ -1011,9 +1007,52 @@ namespace GDI_Malario
                     Blockbreite = 6 - Blockbreite + 1;
                     generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 312, 4, 1, 4 + (Blockbreite * 2));
                     generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 336, 4, 1, 1);
-                    generiert_Rechteck(letzter_Block_x + 144 + (24 * (BlockAbstand + 3 + (Blockbreite * 2))), bodenhöhe - 336, 4, 1, 1);
-                    generiert_Rechteck(letzter_Block_x + 144 + (48 * (BlockAbstand + 1 + (Blockbreite * 2))), bodenhöhe - 360, 4, 1, 5);
+                    generiert_Rechteck(letzter_Block_x + 144 + (48 * (BlockAbstand + (Blockbreite * 2))), bodenhöhe - 360, 4, 1, 6);
                     #endregion
+                    #region Generiert GeistSpawner
+                    generiert_Gegner(1, letzter_Block_x + 144 + (24 * BlockAbstand), -24, true);
+                    generiert_Gegner(1, letzter_Block_x + 144 + (24 * BlockAbstand), -24, false);
+                    #endregion
+                    lvlGenerator_PipeLvl = false;
+                }
+                #endregion
+                #region Leveltyp 2
+                else if(lvlabschnitt_Art == 1)
+                {
+                    generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
+                    generiert_Röhre(bodenhöhe, 480, letzter_Block_x);
+                    int Zähler = 0;
+                    Zähler0 = 1;
+                    do
+                    {
+                        yabstand = random.Next(-4, 3);
+                        #region Überprüft ob die neue Bodenhöhe im Gewünschten Bereich liegt, wenn nein dann wird er verändert
+                        if (bodenhöhe + (24 * yabstand) < 200) yabstand = 1;
+                        if (bodenhöhe + (yabstand * 24) > 456) yabstand = -1;
+                        #endregion
+                        #region Spalten Arten
+                        if (yabstand == 0 || yabstand == 1) letzter_Block_x += 24 * 7;
+                        else if (yabstand <= -1 && yabstand >= -3) letzter_Block_x += 24 * 6;
+                        else if (yabstand >= 2 && yabstand <= 4) letzter_Block_x += 24 * 7;
+                        else if (yabstand <= -4) letzter_Block_x += 48;
+                        else if (yabstand >= 5) letzter_Block_x += 24 * 7;
+                        bodenhöhe += yabstand * 24;
+                        #endregion
+                        if (Zähler0 == random.Next(2,3))
+                        {
+                            generiert_Rechteck(letzter_Block_x,bodenhöhe,4,1,3);
+                            letzter_Block_x += 24 * 3;
+                            Zähler0 = 0;
+                        }
+                        else
+                        {
+                            generiert_Röhre(bodenhöhe, 480, letzter_Block_x);
+                        }
+                        Zähler0++;
+                        Zähler += 48 + (24 * yabstand);
+                    } while (Zähler <= 960);
+                    generiert_Röhre(bodenhöhe, 480, letzter_Block_x);
+                    lvlGenerator_PipeLvl = true;
                 }
                 #endregion
                 #endregion
