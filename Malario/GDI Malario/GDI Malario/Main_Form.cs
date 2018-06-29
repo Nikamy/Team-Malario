@@ -39,7 +39,7 @@ namespace GDI_Malario
             getöteteGegner_Counter = 0,
             ScoreZähler = 0;
         #endregion
-        int animation_ms, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
+        int animation_ms,interwall_GegnerSpawner = 300, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
         int nextBlock = 0,
             Block_y_bewegung,
             Bild_Höhen_Zähler;
@@ -52,7 +52,7 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-            label1.Text = Convert.ToString(leftlimit) + " Gegner getötet";
+            label1.Text = Convert.ToString(list_x_Pos_Enemys.Count) + " Gegner getötet";
             label2.Text = Convert.ToString(M_Lives) + " Leben";
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
 
@@ -276,7 +276,7 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-                if (M_Right == true && x_Pos_Malario < 200)
+                if (M_Right == true && x_Pos_Malario < 280)
                 {
                     M_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
@@ -299,7 +299,7 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-                if (M_Left == true && x_Pos_Malario > 200)
+                if (M_Left == true && x_Pos_Malario > 160)
                 {
                     M_Bewegungskraft = -M_Laufgeschwindigkeit;
                 }
@@ -310,25 +310,10 @@ namespace GDI_Malario
                 }
             }
             #endregion
-            //#region Malario bewegt sich zu weit nach oben
-            //if (y_Pos_Malario < 384)
-            //{
-            //    y_Pos_Malario -= 6;
-            //    Block_y_bewegung -= 6;
-            //    Bild_Höhen_Zähler += 6;
-            //}
-            //#endregion
-            //#region Malario bewegt sich zu weit nach unten
-            //if (y_Pos_Malario > 100 && Bild_Höhen_Zähler >= 0)
-            //{
-            //    y_Pos_Malario -= 6;
-            //    Block_y_bewegung -= 6;
-            //    Bild_Höhen_Zähler += 6;
-            //}
-            //#endregion
             #region Malarios bewegugnskraft wird angewändet
             x_Pos_Malario += M_Bewegungskraft;
             #region Objekte erhalten Bewegungskraft
+            Block_Zähler = list_Typ_Obj.Count-1;
             do if (list_Typ_Obj.Count > 0)
                 {
                     list_x_Pos_Obj[Block_Zähler] += Block_Bewegungskraft;
@@ -337,6 +322,7 @@ namespace GDI_Malario
                 } while (Block_Zähler >= 0);
             #endregion
             #region Items erhalten Bewegungskraft
+            Block_Zähler = list_Typ_Items.Count - 1;
             do if (list_Typ_Items.Count > 0)
                 {
                     list_x_Pos_Items[Block_Zähler] += Block_Bewegungskraft;
@@ -346,7 +332,8 @@ namespace GDI_Malario
 
             #endregion
             #region Gegner erhalten Bewegungskraft
-            do if (Block_Zähler != -1)
+            Block_Zähler = list_Typ_Enemys.Count - 1;
+            do if (list_Typ_Enemys.Count > 0)
                 {
                     list_x_Pos_Enemys[Block_Zähler] += Block_Bewegungskraft;
                     list_y_Pos_Enemys[Block_Zähler] += Block_y_bewegung;
@@ -535,14 +522,14 @@ namespace GDI_Malario
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Left == true  && list_Typ_Items[n] == 1)
+                    else if (C_Left == true && list_Typ_Items[n] == 1)
                     {
                         I_Energy = true;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Above== true &&  list_Typ_Items[n] == 1)
+                    else if (C_Above == true && list_Typ_Items[n] == 1)
                     {
                         I_Energy = true;
                         list_y_Pos_Items.RemoveAt(n);
@@ -569,21 +556,21 @@ namespace GDI_Malario
                     c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
                     c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
 
-                    if (C_Right == true &&  list_Typ_Items[n] == 0)
+                    if (C_Right == true && list_Typ_Items[n] == 0)
                     {
                         CoinCounter++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Left == true &&  list_Typ_Items[n] == 0)
+                    else if (C_Left == true && list_Typ_Items[n] == 0)
                     {
                         CoinCounter++;
                         list_y_Pos_Items.RemoveAt(n);
                         list_x_Pos_Items.RemoveAt(n);
                         list_Typ_Items.RemoveAt(n);
                     }
-                    else if (C_Above == true  && list_Typ_Items[n] == 0)
+                    else if (C_Above == true && list_Typ_Items[n] == 0)
                     {
                         CoinCounter++;
                         list_y_Pos_Items.RemoveAt(n);
@@ -610,7 +597,7 @@ namespace GDI_Malario
                     c_Left(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
                     c_Above(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
 
-                    if (C_Right == true &&  list_Typ_Items[n] == 0)
+                    if (C_Right == true && list_Typ_Items[n] == 0)
                     {
                         M_Lives++;
                         list_y_Pos_Items.RemoveAt(n);
@@ -747,6 +734,7 @@ namespace GDI_Malario
 
             //nach Rechts bewegen = false
             //nach Links bewegen = true
+            interwall_GegnerSpawner += 10;
             i = 0;
             int j = 0;
             do if (list_Typ_Enemys.Count > 0)
@@ -756,7 +744,7 @@ namespace GDI_Malario
                     RightValue0 = 960;
                     RightValue1 = 960;
                     LeftValue0 = -480;
-                    LeftValue1 = -480; 
+                    LeftValue1 = -480;
                     i = 0;
                     #region Kollisionsabfragen des Gegners j
                     do if (list_Typ_Enemys.Count > 0)
@@ -832,6 +820,13 @@ namespace GDI_Malario
                         #endregion
                     }
                     #endregion
+                    #region Gegner-Typ 1 GegnerSpawner
+                    if (list_Typ_Enemys[j] == 1 && interwall_GegnerSpawner >= 300)
+                    {
+                        interwall_GegnerSpawner = 0;
+                        generiert_Gegner(0,list_x_Pos_Enemys[j], list_y_Pos_Enemys[j],list_RichtungLinks_Enemys[j]);
+                    }
+                    #endregion
                     #region Gegner Typ 1
                     else if (list_Typ_Enemys[j] == 1)
                     {
@@ -850,7 +845,9 @@ namespace GDI_Malario
             y_Pos_Block = (this.Height - 39 - 48);
 
             generiert_Rechteck(-216, 0, 1, 20, 10);
-            generiert_BodenAbschnitt(432,960,24);
+            generiert_BodenAbschnitt(432, 960, 24);
+            generiert_Gegner(1, 240, 24, false);
+            generiert_Gegner(0, 100, 0, false);
         }
         //CollisionPunkt_Abfragen_Start
         private void c_Right(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
@@ -862,7 +859,7 @@ namespace GDI_Malario
         }
         private void c_Left(int char_x_Koor, int char_y_Koor, int char_Breite, int char_Höhe, int obj_x_Koor, int obj_y_Koor, int obj_Breite, int obj_Höhe)
         {
-            if (char_x_Koor >= obj_x_Koor + (obj_Breite/2) && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
+            if (char_x_Koor >= obj_x_Koor + (obj_Breite / 2) && char_y_Koor + char_Höhe >= obj_y_Koor && char_y_Koor <= obj_y_Koor + obj_Höhe)
             {
                 C_Left = true;
             }
@@ -889,7 +886,7 @@ namespace GDI_Malario
             list_Typ_Enemys.RemoveAt(j);
             list_RichtungLinks_Enemys.RemoveAt(j);
         }
-        private void generiert_Gegner(int Art,int x_Coor, int y_Coor, bool richtung)
+        private void generiert_Gegner(int Art, int x_Coor, int y_Coor, bool richtung)
         {
             list_y_Pos_Enemys.Add(y_Coor);
             list_x_Pos_Enemys.Add(x_Coor);
@@ -948,7 +945,7 @@ namespace GDI_Malario
                         {
                             pyramidenhöhe0 = ((yabstand + obj_Höhe) * 24);
                         }
-                        generiert_Treppe(letzter_Block_x - pyramidenhöhe0 , bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
+                        generiert_Treppe(letzter_Block_x - pyramidenhöhe0, bodenhöhe - pyramidenhöhe0 - 24, 1, pyramidenhöhe0 / 24);
                         generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, (480 - bodenhöhe) / 24, 1);
                         //letzter_Block_x += 24 * obj_Höhe;
                     }
@@ -962,11 +959,11 @@ namespace GDI_Malario
                     letzter_Block_x += 24;
                     #endregion
                     #region Rechteck vor der Lücke
-                    if(obj_vor_lücke == 3)
+                    if (obj_vor_lücke == 3)
                     {
-                        generiert_Rechteck(letzter_Block_x - 144,bodenhöhe - 24 * obj_Höhe,4,obj_Höhe, 1);
+                        generiert_Rechteck(letzter_Block_x - 144, bodenhöhe - 24 * obj_Höhe, 4, obj_Höhe, 1);
                         generiert_Rechteck(letzter_Block_x - 120, bodenhöhe - 24 * obj_Höhe, 0, obj_Höhe, 4);
-                        generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 24 * obj_Höhe , 1, obj_Höhe + 4, 1); 
+                        generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 24 * obj_Höhe, 1, obj_Höhe + 4, 1);
                     }
                     #endregion
                     #endregion
@@ -988,10 +985,10 @@ namespace GDI_Malario
                 }
                 #region Levelarten
                 #region Leveltyp 1
-                if(lvlabschnitt_Art == 0)
+                if (lvlabschnitt_Art == 0)
                 {
-                    int Blockbreite = random.Next(1,6),
-                        BlockAbstand = random.Next(1,4);
+                    int Blockbreite = random.Next(1, 6),
+                        BlockAbstand = random.Next(1, 4);
                     generiert_BodenAbschnitt(bodenhöhe, 24 * 40, letzter_Block_x);
                     #region  Rechteck am Anfang
                     generiert_Rechteck(letzter_Block_x + 24, bodenhöhe - 96, 4, 4, 1);
@@ -999,15 +996,8 @@ namespace GDI_Malario
                     generiert_Rechteck(letzter_Block_x + 144, bodenhöhe - 96, 4, 4, 1);
                     #endregion
                     #region Ebene 1
-                    generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 120, 4, 1, Blockbreite * 2);
+                    generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 120, 4, 1, Blockbreite + 1 * 2);
                     generiert_Rechteck(letzter_Block_x + 528, bodenhöhe - 120, 4, 1, Blockbreite + (12 - Blockbreite));
-                    #endregion
-                    #region Ebene 2
-                    generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
-                    Blockbreite = 6 - Blockbreite;
-                    generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite * 2);
-                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + Blockbreite)), bodenhöhe - 216, 4, 1, Blockbreite);
-                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
                     #endregion
                     #region Ebene 2
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
@@ -1018,7 +1008,7 @@ namespace GDI_Malario
                     #endregion
                     #region Ebene 3
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
-                    Blockbreite = 6 - Blockbreite;
+                    Blockbreite = 6 - Blockbreite + 1;
                     generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 312, 4, 1, 4 + (Blockbreite * 2));
                     generiert_Rechteck(letzter_Block_x + 144 + (24 * BlockAbstand), bodenhöhe - 336, 4, 1, 1);
                     generiert_Rechteck(letzter_Block_x + 144 + (24 * (BlockAbstand + 3 + (Blockbreite * 2))), bodenhöhe - 336, 4, 1, 1);
@@ -1069,7 +1059,7 @@ namespace GDI_Malario
             list_Typ_Obj.Add(99);
             list_x_Pos_Obj.Add(x_Pos_Block);
             list_y_Pos_Obj.Add(y_Pos_Block);
-            do 
+            do
             {
                 x_Pos_Block -= 24;
                 y_Pos_Block += 24;
