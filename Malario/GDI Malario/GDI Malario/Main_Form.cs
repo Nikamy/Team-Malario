@@ -742,7 +742,7 @@ namespace GDI_Malario
             #endregion
             #endregion
             #endregion
-            #region Goethe
+            #region Gegner
 
             //nach Rechts bewegen = false
             //nach Links bewegen = true
@@ -789,7 +789,7 @@ namespace GDI_Malario
                     rightlimit = RightValue0;
                     leftlimit = LeftValue0;
                     #endregion
-                    #region Gegner Typ 0 aka. Goethe
+                    #region Gegner-Typ 0 alias Goethe
                     if (list_Typ_Enemys[j] == 0)
                     {
                         #region Rechts-Bewegungen von Goethe
