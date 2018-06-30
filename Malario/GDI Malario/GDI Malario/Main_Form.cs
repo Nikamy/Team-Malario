@@ -56,15 +56,7 @@ namespace GDI_Malario
             label1.Text = Convert.ToString(list_x_Pos_Obj.Count) + " Gegner getötet";
             label2.Text = Convert.ToString(M_Lives) + " Leben";
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
-            if (M_Left == true || M_Right == true)
-            {
-                Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
-            }
-            else
-            {
-                M_Gehend = false;
-                Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
-            }
+
 
             if (Startbildschirm == true)
             {
@@ -102,6 +94,10 @@ namespace GDI_Malario
                     else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < 528 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_StahlBlock(graphics, x_Pos_Block, y_Pos_Block);
+                    }
+                    else if (list_Typ_Obj[Zähler] == 5 && x_Pos_Block < 528 && x_Pos_Block > -1000)
+                    {
+                        Level_Blöcke.malen_Dungeonhintergrund(graphics, x_Pos_Block, y_Pos_Block);
                     }
                     Zähler++;
                 } while (Zähler < list_Typ_Obj.Count);
@@ -160,6 +156,17 @@ namespace GDI_Malario
             {
 
                 Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, nextBlock, M_Richtung);
+            }
+            #endregion
+            #region Malario wird gemalt
+            if (M_Left == true || M_Right == true)
+            {
+                Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
+            }
+            else
+            {
+                M_Gehend = false;
+                Malario.malen_Malario(graphics, x_Pos_Malario, y_Pos_Malario, M_Richtung, M_Gehend);
             }
             #endregion
         }
@@ -676,18 +683,18 @@ namespace GDI_Malario
 
             //nach Rechts bewegen = false
             //nach Links bewegen = true
-            interwall_GegnerSpawner += 4;
+            interwall_GegnerSpawner += 3;
             i = 0;
             int j = 0;
             bool Interwall_zurücksetzen = false;
             do if (list_Typ_Enemys.Count > 0)
                 {
-                    UnderneathValue0 = 600;
-                    UnderneathValue1 = 600;
-                    RightValue0 = 960;
-                    RightValue1 = 960;
-                    LeftValue0 = -480;
-                    LeftValue1 = -480;
+                    UnderneathValue0 = 6000;
+                    UnderneathValue1 = 6000;
+                    RightValue0 = 9600;
+                    RightValue1 = 9600;
+                    LeftValue0 = -4800;
+                    LeftValue1 = -4800;
                     i = 0;
                     #region Kollisionsabfragen des Gegners j
                     do if (list_Typ_Enemys.Count > 0)
@@ -1022,6 +1029,7 @@ namespace GDI_Malario
                 {
                     bodenhöhe = 456;
                     #region Rahmen des Dungeons
+                    generiert_Rechteck(letzter_Block_x + 120, 0, 5, 1, 1);
                     generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, 1, 20);
                     generiert_Rechteck(letzter_Block_x + (24 * 25), bodenhöhe, 1, 1, 15);
                     generiert_Rechteck(letzter_Block_x + 120, 0, 1, 14, 2);
@@ -1038,7 +1046,7 @@ namespace GDI_Malario
                     generiert_CoinRechteck(letzter_Block_x + +(24 * 25), bodenhöhe - 96, 4, 5);
                     #endregion
                     #region Zweite Ebene
-                    generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 168 + 24, 1, 1, 28);
+                    generiert_Rechteck(letzter_Block_x + 312, bodenhöhe - 168 + 24, 1, 1, 25);
                     generiert_CoinRechteck(letzter_Block_x + 240, bodenhöhe - 336, 2, 20);
                     #endregion
                     #region Dritte Ebene

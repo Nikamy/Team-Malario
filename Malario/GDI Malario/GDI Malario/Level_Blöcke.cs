@@ -361,5 +361,14 @@ namespace GDI_Malario
             x_Pos += (17 * Bit_Multiplier0);
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 1 * Bit_Multiplier0, 1 * Bit_Multiplier0);
         }
+        public static void malen_Dungeonhintergrund(Graphics graphics, int x_Pos0, int y_Pos0)
+        {
+            int x_Pos = x_Pos0, y_Pos = y_Pos0;
+            Color füllfarbe = Color.Black;
+            Color stiftfarbe = Color.Black;
+            Grundmethoden grundmethoden = new Grundmethoden();
+
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, füllfarbe, stiftfarbe, 840, 480);
+        }
     }
 }
