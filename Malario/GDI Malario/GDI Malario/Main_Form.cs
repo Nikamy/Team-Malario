@@ -154,7 +154,6 @@ namespace GDI_Malario
             #region Laser wird gemalt
             if (I_LaserAnimation == true)
             {
-
                 Items.malen_Laser(graphics, x_Pos_Malario, y_Pos_Malario, nextBlock, M_Richtung);
             }
             #endregion
@@ -450,35 +449,47 @@ namespace GDI_Malario
             }
             #endregion
             #region Laser Kollision mit Gegnern
+
+            UnderneathValue0 = 600;
+            UnderneathValue1 = 600;
             RightValue0 = 960;
             RightValue1 = 960;
             LeftValue0 = -480;
             LeftValue1 = -480;
-            int k = 0;
-            do if (I_LaserAnimation == true && list_Typ_Enemys.Count > 0)
+            int n = 0;
+            do if (list_Typ_Enemys.Count > 0 )
                 {
+                    C_Above = false;
+                    C_Underneath = false;
                     C_Right = false;
                     C_Left = false;
-                    c_Right(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[k], list_y_Pos_Enemys[k], 27, 30);
-                    c_Left(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[k], list_y_Pos_Enemys[k], 27, 30);
-                    if (C_Right == true) RightValue1 = list_x_Pos_Enemys[k];
-                    if (RightValue0 > RightValue1) RightValue0 = RightValue1;
-                    if (C_Left == true) LeftValue1 = list_x_Pos_Enemys[k];
-                    if (LeftValue0 < LeftValue1) LeftValue0 = LeftValue1;
-                    if (RightValue0 < rightlimit && list_Typ_Enemys[k] == 0)
+                    c_Above(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[n], list_y_Pos_Enemys[n], 30, 32);
+                    c_Underneath(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[n], list_y_Pos_Enemys[n], 30, 32);
+
+                    //Mario links vom gegner
+                    if (x_Pos_Malario + 30 +nextBlock >= list_x_Pos_Enemys[n] && x_Pos_Malario <= list_x_Pos_Enemys[n] +30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario+30 >= list_y_Pos_Enemys[n])
                     {
-                        kill_Gegner(k);
-                        CoinCounter += 5;
-                        getöteteGegner_Counter++;
+                        if (M_Richtung == false && I_LaserAnimation == true)
+                        {
+                            kill_Gegner(n);
+                            CoinCounter += 5;
+                            getöteteGegner_Counter++;
+                        }
                     }
-                    else if (LeftValue0 > leftlimit && list_Typ_Enemys[k] == 0)
+                    //mario rechts vom gegmer
+                    else if ( x_Pos_Malario - nextBlock <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
                     {
-                        kill_Gegner(k);
-                        CoinCounter += 5;
-                        getöteteGegner_Counter++;
+                        if (M_Richtung == true && I_LaserAnimation == true)
+                        {
+                            kill_Gegner(n);
+                            CoinCounter += 5;
+                            getöteteGegner_Counter++;
+                        }
+
                     }
-                    k++;
-                } while (I_LaserAnimation == true && k < list_Typ_Enemys.Count);
+                    
+                    n++;
+                } while (n < list_Typ_Enemys.Count);
             #endregion
             #region Laser Reichweite bestimmen
 
@@ -511,7 +522,7 @@ namespace GDI_Malario
             RightValue1 = 960;
             LeftValue0 = -480;
             LeftValue1 = -480;
-            int n = 0;
+            n = 0;
             do if (list_Typ_Items.Count > 0)
                 {
                     C_Above = false;
