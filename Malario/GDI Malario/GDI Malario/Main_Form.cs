@@ -53,9 +53,15 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
+            #region Killcounter
             label1.Text = Convert.ToString(list_x_Pos_Obj.Count) + " Gegner getötet";
+            #endregion
+            #region livecounter
             label2.Text = Convert.ToString(M_Lives) + " Leben";
+            #endregion
+            #region Coincounter
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
+            #endregion
 
 
             if (Startbildschirm == true)
