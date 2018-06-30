@@ -790,10 +790,6 @@ namespace GDI_Malario
         {
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
-
-            generiert_Item(100,400);
-            generiert_Item(200, 300);
-            generiert_Item(300, 400);
             generiert_Rechteck(-216, 0, 1, 20, 10);
             generiert_BodenAbschnitt(432, 960, 24);
         }
@@ -1037,8 +1033,8 @@ namespace GDI_Malario
                     generiert_Rechteck(letzter_Block_x + 912, 72, 1, 17, 2);
                     #endregion
                     #region  Rechteck am Anfang
-                    generiert_Rechteck(letzter_Block_x + 24, bodenhöhe - 72, 4, 3, 1);
-                    generiert_Rechteck(letzter_Block_x + 48, bodenhöhe - 72, 1, 4, 4);
+                    generiert_Rechteck(letzter_Block_x, bodenhöhe - 72, 4, 3, 1);
+                    generiert_Rechteck(letzter_Block_x + 24, bodenhöhe - 72, 1, 3, 5);
                     generiert_Rechteck(letzter_Block_x + 144, bodenhöhe - 48, 4, 2, 1);
                     #endregion
                     #region Erste Ebene
