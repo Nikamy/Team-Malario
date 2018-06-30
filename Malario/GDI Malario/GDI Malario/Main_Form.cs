@@ -515,7 +515,7 @@ namespace GDI_Malario
                     c_Underneath(list_x_Pos_Items[n], list_y_Pos_Items[n], 24, 24, x_Pos_Malario, y_Pos_Malario, 30, 30);
 
 
-                    if (x_Pos_Malario + 30 >= list_x_Pos_Items[n] && x_Pos_Malario <= list_x_Pos_Items[n] + 30 && y_Pos_Malario + 30 > list_y_Pos_Items[n] && y_Pos_Malario < list_y_Pos_Enemys[n])
+                    if (x_Pos_Malario + 30 >= list_x_Pos_Items[n] && x_Pos_Malario <= list_x_Pos_Items[n] + 30 && y_Pos_Malario + 30 > list_y_Pos_Items[n] && y_Pos_Malario < list_y_Pos_Items[n])
                     {
                         if (list_Typ_Items[n] == 0)
                         {
@@ -784,7 +784,7 @@ namespace GDI_Malario
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
 
-            generiert_Item(10,10);
+            generiert_Item(100,400);
             generiert_Rechteck(-216, 0, 1, 20, 10);
             generiert_BodenAbschnitt(432, 960, 24);
         }
