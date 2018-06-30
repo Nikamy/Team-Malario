@@ -695,13 +695,13 @@ namespace GDI_Malario
                             C_Underneath = false;
                             C_Right = false;
                             C_Left = false;
-                            c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 27, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                            c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 27, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
-                            c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 27, 27, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Right(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 32, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Left(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 32, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
+                            c_Underneath(list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], 32, 32, list_x_Pos_Obj[i], list_y_Pos_Obj[i], 24, 24);
                             if (C_Underneath == true)
                             {
-                                UnderneathValue1 = list_y_Pos_Obj[i] - 10;
-                                if (UnderneathValue0 > UnderneathValue1 && UnderneathValue1 > AboveValue1) UnderneathValue0 = UnderneathValue1;
+                                UnderneathValue1 = list_y_Pos_Obj[i] - 20;
+                                if (UnderneathValue0 > UnderneathValue1) UnderneathValue0 = UnderneathValue1;
                             }
                             if (C_Right == true)
                             {
@@ -842,6 +842,12 @@ namespace GDI_Malario
             list_x_Pos_Items.Add(x_Coor);
             list_Typ_Items.Add(random.Next(-1, 3));
         }
+        private void generiert_Coin(int x_Coor, int y_Coor)
+        {
+            list_y_Pos_Items.Add(y_Coor);
+            list_x_Pos_Items.Add(x_Coor);
+            list_Typ_Items.Add(0);
+        }
         //LevelGenerator
         private void generiert_LevelAbschnitt()
         {
@@ -854,10 +860,11 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(0, 0),
+                    lvlabschnitt_Art = random.Next(2, 2),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
+
                 #region Letzter Block ermitteln (X-Coordinate)
                 //Coordinaten des rechtesten Blockes ermitteln
                 do if (list_x_Pos_Obj.Count > 0)
@@ -961,6 +968,10 @@ namespace GDI_Malario
                     generiert_Gegner(1, letzter_Block_x + 144 + (24 * BlockAbstand), -24, true);
                     generiert_Gegner(1, letzter_Block_x + 144 + (24 * BlockAbstand), -24, false);
                     #endregion
+                    #region Generiert Coins
+                    generiert_CoinRechteck(letzter_Block_x + 168, bodenhöhe - 96,2,10);
+                    generiert_CoinRechteck(letzter_Block_x + 168 + (24 * BlockAbstand), bodenhöhe - 336, 1, 3 + (Blockbreite));
+                    #endregion
                     lvlGenerator_PipeLvl = false;
                 }
                 #endregion
@@ -986,12 +997,15 @@ namespace GDI_Malario
                         else if (yabstand >= 5) letzter_Block_x += 24 * 7;
                         bodenhöhe += yabstand * 24;
                         #endregion
+                        #region Generiert sichere Insel
                         if (Zähler0 == random.Next(2,3))
                         {
                             generiert_Rechteck(letzter_Block_x,bodenhöhe,4,1,3);
+                            generiert_CoinRechteck(letzter_Block_x,bodenhöhe - 24,1,3);
                             letzter_Block_x += 24 * 3;
                             Zähler0 = 0;
                         }
+                        #endregion
                         else
                         {
                             generiert_Röhre(bodenhöhe, 480, letzter_Block_x);
@@ -1001,6 +1015,43 @@ namespace GDI_Malario
                     } while (Zähler <= 960);
                     generiert_Röhre(bodenhöhe, 480, letzter_Block_x);
                     lvlGenerator_PipeLvl = true;
+                }
+                #endregion
+                #region Leveltyp 3
+                else if(lvlabschnitt_Art == 2)
+                {
+                    bodenhöhe = 456;
+                    #region Rahmen des Dungeons
+                    generiert_Rechteck(letzter_Block_x, bodenhöhe, 1, 1, 20);
+                    generiert_Rechteck(letzter_Block_x + (24 * 25), bodenhöhe, 1, 1, 15);
+                    generiert_Rechteck(letzter_Block_x + 120, 0, 1, 14, 2);
+                    generiert_Rechteck(letzter_Block_x + 216, 0, 1, 1, 31);
+                    generiert_Rechteck(letzter_Block_x + 912, 72, 1, 17, 2);
+                    #endregion
+                    #region  Rechteck am Anfang
+                    generiert_Rechteck(letzter_Block_x + 24, bodenhöhe - 72, 4, 3, 1);
+                    generiert_Rechteck(letzter_Block_x + 48, bodenhöhe - 72, 1, 4, 4);
+                    generiert_Rechteck(letzter_Block_x + 144, bodenhöhe - 48, 4, 2, 1);
+                    #endregion
+                    #region Erste Ebene
+                    generiert_Rechteck(letzter_Block_x + 144, bodenhöhe - 72, 1, 1, 4);
+                    generiert_CoinRechteck(letzter_Block_x + +(24 * 25), bodenhöhe - 96, 4, 5);
+                    #endregion
+                    #region Zweite Ebene
+                    generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 168 + 24, 1, 1, 28);
+                    generiert_CoinRechteck(letzter_Block_x + 240, bodenhöhe - 336, 2, 20);
+                    #endregion
+                    #region Dritte Ebene
+                    generiert_Rechteck(letzter_Block_x + 168, bodenhöhe - 288 + 24, 1, 1, 28);
+                    generiert_CoinRechteck(letzter_Block_x + 240, bodenhöhe - 216, 2, 20);
+                    #endregion
+                    #region Vierte Ebene
+                    generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 408 + 24, 1, 1, 28);
+                    generiert_CoinRechteck(letzter_Block_x + 336, bodenhöhe - 432, 2, 10);
+                    #endregion
+                    #region Generiert GeistSpawner
+                    generiert_Gegner(1, letzter_Block_x + 216, -24, true);
+                    #endregion
                 }
                 #endregion
                 #endregion
@@ -1073,6 +1124,26 @@ namespace GDI_Malario
                     list_Typ_Obj.Add(blockArt);
                     list_x_Pos_Obj.Add(x_Pos_Block);
                     list_y_Pos_Obj.Add(y_Pos_Block);
+                    y_Pos_Block += 24;
+                    Zähler0++;
+                } while (Zähler0 < block_Höhe);
+                y_Pos_Block -= 24 * block_Höhe;
+                x_Pos_Block += 24;
+                Zähler1++;
+            } while (Zähler1 < block_Breite);
+        }
+        private void generiert_CoinRechteck(int x_Coor, int y_Choor, int block_Höhe, int block_Breite)
+        {
+            int x_Pos_Block = x_Coor,
+            y_Pos_Block = y_Choor;
+            int Zähler0 = 0,
+                Zähler1 = 0;
+            do
+            {
+                Zähler0 = 0;
+                do
+                {
+                    generiert_Coin(x_Pos_Block, y_Pos_Block);
                     y_Pos_Block += 24;
                     Zähler0++;
                 } while (Zähler0 < block_Höhe);
