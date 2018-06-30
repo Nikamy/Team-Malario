@@ -409,33 +409,26 @@ namespace GDI_Malario
 
                     if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] && y_Pos_Malario < list_y_Pos_Enemys[lmao])
                     {
-                        if (list_Typ_Enemys[j] == 0)
-                        {
-                            kill_Gegner(lmao);
-                            getöteteGegner_Counter++;
-                            CoinCounter += 5;
-                            anziehungskraft = -8;
-                        }
-                        else if (list_Typ_Enemys[j] == 2)
-                        {
-                            M_Lives--;
-                        }
+                        kill_Gegner(lmao);
+                        getöteteGegner_Counter++;
+                        CoinCounter += 5;
+                        anziehungskraft = -8;
 
                     }
                     else if (x_Pos_Malario + 30 >= list_x_Pos_Enemys[lmao] && x_Pos_Malario <= list_x_Pos_Enemys[lmao] + 30 && y_Pos_Malario + 30 > list_y_Pos_Enemys[lmao] + 32 && y_Pos_Malario < list_y_Pos_Enemys[lmao] + 32)
                     {
                         M_Lives--;
-                        if(list_Typ_Enemys[j] == 0) kill_Gegner(lmao);
+                        kill_Gegner(lmao);
                     }
                     else if (y_Pos_Malario + 30 >= list_y_Pos_Enemys[lmao] && y_Pos_Malario <= list_y_Pos_Enemys[lmao] + 32 && x_Pos_Malario + 30 > list_x_Pos_Enemys[lmao] && x_Pos_Malario + 30 < list_x_Pos_Enemys[lmao] + 30)
                     {
                         M_Lives--;
-                        if (list_Typ_Enemys[j] == 0) kill_Gegner(lmao);
+                        kill_Gegner(lmao);
                     }
                     else if (y_Pos_Malario + 30 >= list_y_Pos_Enemys[lmao] && y_Pos_Malario <= list_y_Pos_Enemys[lmao] + 32 && x_Pos_Malario + 30 > list_x_Pos_Enemys[lmao] + 30 && x_Pos_Malario < list_x_Pos_Enemys[lmao])
                     {
                         M_Lives--;
-                        if (list_Typ_Enemys[j] == 0) kill_Gegner(lmao);
+                        kill_Gegner(lmao);
                     }
                     lmao++;
                 } while (lmao < list_x_Pos_Enemys.Count);
