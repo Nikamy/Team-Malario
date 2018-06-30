@@ -42,7 +42,7 @@ namespace GDI_Malario
         int animation_ms, interwall_GegnerSpawner = 300, interwall_RöhrenLaser,M_unkillable, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
         int nextBlock = 0;
         #region Level_Generator
-        int bodenhöhe = 432, bodenabstand, laufzähler = 950;
+        int bodenhöhe = 432, bodenabstand, laufzähler = 960;
         bool lvlGenerator_PipeLvl = false;
         #endregion
         #region Gegner
@@ -67,7 +67,7 @@ namespace GDI_Malario
             // malen_Startmenü(graphics);
 
             generiert_LevelAbschnitt();
-
+            #region LevelObjekte werden gemalt
             int Zähler = 0;
             if (list_x_Pos_Obj.Count > 0)
             {
@@ -76,34 +76,35 @@ namespace GDI_Malario
                     x_Pos_Block = list_x_Pos_Obj[Zähler];
                     y_Pos_Block = list_y_Pos_Obj[Zähler];
 
-                    if (list_Typ_Obj[Zähler] == 0 && x_Pos_Block < 528 && x_Pos_Block > -50)
+                    if (list_Typ_Obj[Zähler] == 0 && x_Pos_Block < Width + 24 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_BodenBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 1 && x_Pos_Block < 528 && x_Pos_Block > -50)
+                    else if (list_Typ_Obj[Zähler] == 1 && x_Pos_Block < Width + 24 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_MauerBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 2 && x_Pos_Block < 528 && x_Pos_Block > -50)
+                    else if (list_Typ_Obj[Zähler] == 2 && x_Pos_Block < Width + 24 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_RöhrenBlock_Kopf(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 3 && x_Pos_Block < 528 && x_Pos_Block > -50)
+                    else if (list_Typ_Obj[Zähler] == 3 && x_Pos_Block < Width + 24 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_RöhrenBlock_Hals(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < 528 && x_Pos_Block > -50)
+                    else if (list_Typ_Obj[Zähler] == 4 && x_Pos_Block < Width + 24 && x_Pos_Block > -50)
                     {
                         Level_Blöcke.malen_StahlBlock(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Obj[Zähler] == 5 && x_Pos_Block < 528 && x_Pos_Block > -1000)
+                    else if (list_Typ_Obj[Zähler] == 5 && x_Pos_Block < Width + 24 && x_Pos_Block > -1000)
                     {
                         Level_Blöcke.malen_Dungeonhintergrund(graphics, x_Pos_Block, y_Pos_Block);
                     }
                     Zähler++;
                 } while (Zähler < list_Typ_Obj.Count);
             }
-
+            #endregion
+            #region LevelItems werden gemalt
             Zähler = 0;
             if (list_x_Pos_Items.Count > 0)
             {
@@ -112,19 +113,19 @@ namespace GDI_Malario
                     x_Pos_Block = list_x_Pos_Items[Zähler];
                     y_Pos_Block = list_y_Pos_Items[Zähler];
 
-                    if (list_Typ_Items[Zähler] == 0 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    if (list_Typ_Items[Zähler] == 0 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                         Items.malen_Coin(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Items[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Items[Zähler] == 1 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                         Items.malen_Energy(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Items[Zähler] == 2 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Items[Zähler] == 2 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                         Items.malen_LaserGun(graphics, x_Pos_Block, y_Pos_Block);
                     }
-                    else if (list_Typ_Items[Zähler] == 3 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Items[Zähler] == 3 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                         Items.malen_Heart(graphics, x_Pos_Block, y_Pos_Block);
                     }
@@ -132,7 +133,8 @@ namespace GDI_Malario
                     Zähler++;
                 } while (Zähler < list_Typ_Items.Count);
             }
-
+            #endregion
+            #region LevelGegner werden gemalt
             Zähler = 0;
             if (list_x_Pos_Enemys.Count > 0)
             {
@@ -141,14 +143,14 @@ namespace GDI_Malario
                     x_Pos_Block = list_x_Pos_Enemys[Zähler];
                     y_Pos_Block = list_y_Pos_Enemys[Zähler];
                     bool Richtung_Gegner = list_RichtungLinks_Enemys[Zähler];
-                    if (list_Typ_Enemys[Zähler] == 0 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    if (list_Typ_Enemys[Zähler] == 0 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                         Gegner.malen_Goethe(graphics, x_Pos_Block, y_Pos_Block + 4, Richtung_Gegner);
                     }
-                    else if (list_Typ_Enemys[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Enemys[Zähler] == 1 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                     }
-                    else if (list_Typ_Enemys[Zähler] == 2 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    else if (list_Typ_Enemys[Zähler] == 2 && x_Pos_Block < Width + 24 && x_Pos_Block > -60)
                     {
                         Gegner.malen_RöhrenLaser(graphics, x_Pos_Block, y_Pos_Block);
                     }
@@ -156,6 +158,7 @@ namespace GDI_Malario
                     Zähler++;
                 } while (Zähler < list_Typ_Enemys.Count);
             }
+            #endregion
             #region Laser wird gemalt
             if (I_LaserAnimation == true)
             {
@@ -229,11 +232,14 @@ namespace GDI_Malario
                 M_Lives++;
             }
             #endregion
-            int i = 0, UnderneathValue0 = 600, UnderneathValue1 = 600, AboveValue0 = -480, AboveValue1 = -480, RightValue0 = 960, RightValue1 = 960, LeftValue0 = -480, LeftValue1 = -480, Block_Zähler = list_x_Pos_Obj.Count - 1;
+            int i = 0, UnderneathValue0 = 6000, UnderneathValue1 = 6000, AboveValue0 = -4800, AboveValue1 = -4800, RightValue0 = 9600, RightValue1 = 9600, LeftValue0 = -4800, LeftValue1 = -4800, Block_Zähler = list_x_Pos_Obj.Count - 1;
             C_Right = false;
             C_Left = false;
             C_Above = false;
             C_Underneath = false;
+            #region Verhindert das resizen der Höhe
+            Height = 519;
+            #endregion
             #region Malario
             #region Kollisionsdistanzermittlung
             do if (list_Typ_Obj.Count > 0)
@@ -288,7 +294,7 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-                if (M_Right == true && x_Pos_Malario < 280)
+                if (M_Right == true && x_Pos_Malario < Width / 2 -30)
                 {
                     M_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
@@ -311,7 +317,7 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-                if (M_Left == true && x_Pos_Malario > 160)
+                if (M_Left == true && x_Pos_Malario > Width / 2 + 30)
                 {
                     M_Bewegungskraft = -M_Laufgeschwindigkeit;
                 }
@@ -656,7 +662,7 @@ namespace GDI_Malario
                 M_Lives = 3;
                 CoinCounter = 0;
                 getöteteGegner_Counter = 0;
-                laufzähler = 950;
+                laufzähler = 960;
                 x_Pos_Malario = 48;
                 y_Pos_Malario = 397;
                 list_x_Pos_Obj.Clear();
@@ -1017,14 +1023,14 @@ namespace GDI_Malario
                     #endregion
                     #region Ebene 1
                     generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 120, 4, 1, Blockbreite + 1 * 2);
-                    generiert_Rechteck(letzter_Block_x + 528, bodenhöhe - 120, 4, 1, Blockbreite + (12 - Blockbreite));
+                    generiert_Rechteck(letzter_Block_x + Width + 24, bodenhöhe - 120, 4, 1, Blockbreite + (12 - Blockbreite));
                     #endregion
                     #region Ebene 2
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
                     Blockbreite = 6 - Blockbreite + 1;
                     generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite + 1 * 2);
                     generiert_Rechteck(letzter_Block_x + 240 + (24 * (Blockbreite + 6)), bodenhöhe - 216, 4, 1, 1);
-                    generiert_Rechteck(letzter_Block_x + 528 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
+                    generiert_Rechteck(letzter_Block_x + Width + 24 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
                     #endregion
                     #region Ebene 3
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
