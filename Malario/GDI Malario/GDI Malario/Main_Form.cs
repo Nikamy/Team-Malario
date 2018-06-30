@@ -39,7 +39,7 @@ namespace GDI_Malario
             getöteteGegner_Counter = 0,
             ScoreZähler = 0;
         #endregion
-        int animation_ms,interwall_GegnerSpawner = 300, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
+        int animation_ms,interwall_GegnerSpawner = 300,interwall_RöhrenLaser, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
         int nextBlock = 0,
             Block_y_bewegung,
             Bild_Höhen_Zähler;
@@ -146,6 +146,10 @@ namespace GDI_Malario
                     }
                     else if (list_Typ_Enemys[Zähler] == 1 && x_Pos_Block < 504 && x_Pos_Block > -60)
                     {
+                    }
+                    else if (list_Typ_Enemys[Zähler] == 2 && x_Pos_Block < 504 && x_Pos_Block > -60)
+                    {
+                        Gegner.malen_RöhrenLaser(graphics, x_Pos_Block, y_Pos_Block);
                     }
 
                     Zähler++;
@@ -777,6 +781,13 @@ namespace GDI_Malario
                         generiert_Gegner(0,list_x_Pos_Enemys[j], list_y_Pos_Enemys[j],list_RichtungLinks_Enemys[j]);
                     }
                     #endregion
+                    #region Gegner-Typ 1 GegnerSpawner
+                    else if (list_Typ_Enemys[j] == 2 && interwall_GegnerSpawner >= 300)
+                    {
+                        Interwall_zurücksetzen = true;
+                        generiert_Gegner(0, list_x_Pos_Enemys[j], list_y_Pos_Enemys[j], list_RichtungLinks_Enemys[j]);
+                    }
+                    #endregion
                     #region Gegner Typ 1
 
                     #endregion
@@ -863,7 +874,7 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(2, 2),
+                    lvlabschnitt_Art = random.Next(1, 1),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -1087,7 +1098,7 @@ namespace GDI_Malario
             int x_Pos_Block = x_Coor,
             y_Pos_Block = röhren_Höhe;
 
-
+            generiert_Gegner(2,x_Pos_Block,y_Pos_Block,false);
             list_Typ_Obj.Add(2);
             list_x_Pos_Obj.Add(x_Pos_Block);
             list_y_Pos_Obj.Add(y_Pos_Block);

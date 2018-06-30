@@ -269,7 +269,7 @@ namespace GDI_Malario
         public static void malen_RöhrenBlock_Hals(Graphics graphics, int x_Pos0, int y_Pos0)
         {
             int x_Pos = x_Pos0, y_Pos = y_Pos0;
-            int Bit_Multiplier0 = Convert.ToInt32(2.526314);
+            int Bit_Multiplier0 = 3;
             Color füllfarbe = Color.Black;
             Color stiftfarbe = Color.Black;
             Grundmethoden grundmethoden = new Grundmethoden();

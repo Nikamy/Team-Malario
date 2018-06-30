@@ -89,5 +89,18 @@ namespace GDI_Malario
             else if (direction == true) x_Pos = x_Koordinate + 7 * Bit_Multiplier0;
             grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 2 * Bit_Multiplier0, 2 * Bit_Multiplier0);
         }
+        public static void malen_RöhrenLaser(Graphics graphics, int x_Koordinate, int y_Koordinate)
+        {
+            int x_Pos = x_Koordinate + 6, y_Pos = y_Koordinate - 480, Bit_Multiplier0 = 3;
+            Color colour = Color.Black;
+            Grundmethoden grundmethoden = new Grundmethoden();
+            grundmethoden.malen_Bit(graphics, x_Pos, y_Pos, colour, colour, 15 * Bit_Multiplier0, 479);
+            colour = Color.Purple;
+            grundmethoden.malen_Bit(graphics, x_Pos + (1 * Bit_Multiplier0), y_Pos, colour, colour, 13 * Bit_Multiplier0, 479);
+            colour = Color.WhiteSmoke;
+            grundmethoden.malen_Bit(graphics, x_Pos + (4 * Bit_Multiplier0), y_Pos, colour, colour, 7 * Bit_Multiplier0, 479);
+            colour = Color.Black;
+            grundmethoden.malen_Bit(graphics, x_Pos + (10 * Bit_Multiplier0)+1, y_Pos, colour, colour, 1 * Bit_Multiplier0-1, 479);
+        }
     }
 }
