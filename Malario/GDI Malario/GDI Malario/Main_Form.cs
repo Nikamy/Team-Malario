@@ -785,6 +785,8 @@ namespace GDI_Malario
             y_Pos_Block = (this.Height - 39 - 48);
 
             generiert_Item(100,400);
+            generiert_Item(200, 300);
+            generiert_Item(300, 400);
             generiert_Rechteck(-216, 0, 1, 20, 10);
             generiert_BodenAbschnitt(432, 960, 24);
         }
