@@ -33,7 +33,7 @@ namespace GDI_Malario
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
         #endregion
         #region Items
-        bool I_Energy = false, I_Laser = true, I_LaserActive = false, I_LaserAnimation = false;
+        bool I_Energy = false, I_Laser = false, I_LaserActive = false, I_LaserAnimation = false;
         int M_Lives = 3,
             CoinCounter = 0,
             getöteteGegner_Counter = 0,
@@ -54,7 +54,7 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
-            label1.Text = Convert.ToString(list_x_Pos_Obj.Count) + " Gegner getötet";
+            label1.Text = Convert.ToString(getöteteGegner_Counter) + " Gegner getötet";
             label2.Text = Convert.ToString(M_Lives) + " Leben";
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
 
@@ -953,7 +953,7 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(0, 2),
+                    lvlabschnitt_Art = random.Next(0, 3),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -1111,7 +1111,7 @@ namespace GDI_Malario
                 }
                 #endregion
                 #region Leveltyp 3
-                else if (lvlabschnitt_Art == 2)
+                else if (lvlabschnitt_Art >= 2)
                 {
                     bodenhöhe = 456;
                     #region Rahmen des Dungeons
