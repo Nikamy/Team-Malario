@@ -1,0 +1,1 @@
+Es sollten Items im spiel vorkommen wie Laser, um gegner zu töten hertz um leben zu generieren und Coin um Coins zu sammeln.
