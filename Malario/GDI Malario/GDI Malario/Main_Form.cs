@@ -46,7 +46,7 @@ namespace GDI_Malario
         bool lvlGenerator_PipeLvl = false;
         #endregion
         #region Gegner
-        bool RöhrenLaser_ist_da = false;
+        bool RöhrenLaser_ist_da = true;
         #endregion
         #endregion
 
@@ -681,6 +681,7 @@ namespace GDI_Malario
             #region Malario stirbt (respawn)
             if (M_Lives == 0)
             {
+                RöhrenLaser_ist_da = true;
                 M_Lives = 3;
                 CoinCounter = 0;
                 getöteteGegner_Counter = 0;
@@ -848,12 +849,12 @@ namespace GDI_Malario
                         Interwall_RöhrenLaser_zurücksetzen = true;
                         if (RöhrenLaser_ist_da == true)
                         {
-                            list_y_Pos_Enemys[j] += 960;
+                            list_y_Pos_Enemys[j] -= 960;
                             RöhrenLaser_ist_da = false;
                         }
                         else if(RöhrenLaser_ist_da == false)
                         {
-                            list_y_Pos_Enemys[j] -= 960;
+                            list_y_Pos_Enemys[j] += 960;
                             RöhrenLaser_ist_da = true;
                         }
                     }
@@ -864,12 +865,12 @@ namespace GDI_Malario
                         Interwall_RöhrenLaser_zurücksetzen = true;
                         if (RöhrenLaser_ist_da == true)
                         {
-                            list_y_Pos_Enemys[j] += 960;
+                            list_y_Pos_Enemys[j] -= 960;
                             RöhrenLaser_ist_da = false;
                         }
                         else if (RöhrenLaser_ist_da == false)
                         {
-                            list_y_Pos_Enemys[j] -= 960;
+                            list_y_Pos_Enemys[j] += 960;
                             RöhrenLaser_ist_da = true;
                         }
                     }
