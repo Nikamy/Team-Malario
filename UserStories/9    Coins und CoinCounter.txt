@@ -1,1 +1,0 @@
-Coin counter geht hoch wenn man coins erhält, man erhält coins durch sprünge gegen bricks.
