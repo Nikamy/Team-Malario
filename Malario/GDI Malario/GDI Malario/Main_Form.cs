@@ -947,7 +947,7 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(0, 2),
+                    lvlabschnitt_Art = random.Next(0, 3),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -1105,7 +1105,7 @@ namespace GDI_Malario
                 }
                 #endregion
                 #region Leveltyp 3
-                else if (lvlabschnitt_Art == 2)
+                else if (lvlabschnitt_Art >= 2)
                 {
                     bodenhöhe = 456;
                     #region Rahmen des Dungeons
