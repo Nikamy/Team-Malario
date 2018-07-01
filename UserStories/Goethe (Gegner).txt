@@ -1,0 +1,12 @@
+Der Standard Gegner in Malario.
+Das Design ist irrelevant, das kann sich der jeweilige Zuständige selbst aussuchen.
+Kreativität ist gern sehen.
+Das Verhalten von Goethe soll sehr Grundlegend sein. 
+Er läuft nach links oder Rechts bis er ein Mapobjekt trifft. In dem Fall einer Kollision soll Goethe
+seine Laufrichtung ändern.
+Springt der Spielercharakter auf diesen soll er wie bei einer Explosion oder Implusion, ob dort ein
+Effekt erscheint oder nicht ist vorerst auch irrelevant, dies kann bei Wunsch später hinzugefügt werden.
+Außerdem soll dem Spielercharakter bei jedem Treffer außer einem draufspringen von Oben schaden zugefügt werden.
+Falls der Spielercharkter es schafft einen Goethe durch Sprung oder ähnliches zu zerstören, sollen diesem Coins
+gutgeschrieben werden, wie viele genau kann das Team frei später entscheiden je nachdem wie es dem Team
+am sinnvollsten erscheint.

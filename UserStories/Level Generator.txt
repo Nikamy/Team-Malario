@@ -1,1 +1,1 @@
-Es sollte ein Random map generator geben, der eine map zufällig erstellt.
+Es soll eine Map von alleine aus verschiedenen vorgegebenen Abschnitten mit Teils Variablen Teilen generiert werden.

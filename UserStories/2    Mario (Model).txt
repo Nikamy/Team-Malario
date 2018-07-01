@@ -1,1 +1,0 @@
-Ein Mario mit GDI malen, welcher nicht von Copyright geschützt ist und damit frei verwendbar ist.

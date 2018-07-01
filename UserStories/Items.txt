@@ -1,1 +1,4 @@
-Es sollten Items im spiel vorkommen wie Laser, um gegner zu töten hertz um leben zu generieren und Coin um Coins zu sammeln.
+Es sollten Items im spiel vorkommen wie Laser,um Gegner zu töten. 
+Herzen um die Leben zu regenerieren zu können. 
+Coins um damit Beispielsweise Leben regenerieren zu können
+oder mit späteren Erweiterungen neue Items an Shopstationen oder ähnlichem zu kaufen.
