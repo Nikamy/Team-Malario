@@ -365,7 +365,7 @@ namespace GDI_Malario
                     x_Pos_Malario += (4 * x_Bit_Multiplier0);
                     y_Pos_Malario -= (1 * y_Bit_Multiplier0);
                     grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 1 * x_Bit_Multiplier0, 1 * y_Bit_Multiplier0);
-                    x_Pos_Malario += (1* x_Bit_Multiplier0);
+                    x_Pos_Malario += (1 * x_Bit_Multiplier0);
                     y_Pos_Malario += (1 * y_Bit_Multiplier0);
                     grundmethoden.malen_Bit(graphics, x_Pos_Malario, y_Pos_Malario, füllfarbe, stiftfarbe, 2 * x_Bit_Multiplier0, 1 * y_Bit_Multiplier0);
                     x_Pos_Malario += (2 * x_Bit_Multiplier0);
@@ -377,6 +377,196 @@ namespace GDI_Malario
 
                 }
             }
+        }
+
+        public static void malen_Banner(Graphics graphics, int x_Pos_Banner, int y_Pos_Banner)
+        {
+            int Bit_Multiplier0 = 4; //Pixelgröße definieren
+            Color colour;
+            Grundmethoden grundmethoden = new Grundmethoden();
+            int xPos = x_Pos_Banner;
+            int yPos = y_Pos_Banner;
+            #region M_Letter
+            colour = Color.SaddleBrown;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 6 * Bit_Multiplier0, 15 * Bit_Multiplier0);
+            yPos += 2 * Bit_Multiplier0;
+            xPos += 6 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 4 * Bit_Multiplier0, 7 * Bit_Multiplier0);
+            yPos -= Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, Bit_Multiplier0, Bit_Multiplier0);
+            xPos += 3 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, Bit_Multiplier0, Bit_Multiplier0);
+            yPos += 8 * Bit_Multiplier0;
+            xPos -= 2 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 2 * Bit_Multiplier0, Bit_Multiplier0);
+            yPos -= 9 * Bit_Multiplier0;
+            xPos += 3 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 6 * Bit_Multiplier0, 15 * Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 4 * Bit_Multiplier0, 13 * Bit_Multiplier0);
+            xPos = x_Pos_Banner + 5 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + 3 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 2 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            yPos -= Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, Bit_Multiplier0, Bit_Multiplier0);
+            xPos += 5 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, Bit_Multiplier0, Bit_Multiplier0);
+            xPos -= Bit_Multiplier0;
+            yPos += Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 2 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            yPos += Bit_Multiplier0;
+            xPos -= 2 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 2 * Bit_Multiplier0, 5 * Bit_Multiplier0);
+            xPos = x_Pos_Banner + 11 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 4 * Bit_Multiplier0, 13 * Bit_Multiplier0);
+            yPos = y_Pos_Banner;
+            #endregion
+            x_Pos_Banner += 17 * Bit_Multiplier0;//Neuen "Nullpunkt" für den Nächsten Buchstaben setzen
+            #region A_Letter
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, 9 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 14 * Bit_Multiplier0);
+            xPos += 9 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 14 * Bit_Multiplier0);
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + 2 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 10 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            yPos += Bit_Multiplier0;
+            xPos -= Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 12 * Bit_Multiplier0);
+            xPos += 9 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 12 * Bit_Multiplier0);
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner + 5 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + 4 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 4 * Bit_Multiplier0, 2 * Bit_Multiplier0);
+            #endregion
+            x_Pos_Banner += 15 * Bit_Multiplier0;//Neuen "Nullpunkt" für den Nächsten Buchstaben setzen
+            #region L_Letter
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, 15 * Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 10 * Bit_Multiplier0, 13 * Bit_Multiplier0);
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner + 5 * Bit_Multiplier0;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 6 * Bit_Multiplier0, 11 * Bit_Multiplier0);
+            colour = Color.LightSkyBlue;
+            xPos = x_Pos_Banner + 6 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 6 * Bit_Multiplier0, 10 * Bit_Multiplier0);
+            #endregion
+            x_Pos_Banner += 13 * Bit_Multiplier0;//Neuen "Nullpunkt" für den Nächsten Buchstaben setzen
+            #region A_Letter
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, 9 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 14 * Bit_Multiplier0);
+            xPos += 9 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 14 * Bit_Multiplier0);
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + 2 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 10 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            yPos += Bit_Multiplier0;
+            xPos -= Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 12 * Bit_Multiplier0);
+            xPos += 9 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 12 * Bit_Multiplier0);
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner + 5 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + 4 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 4 * Bit_Multiplier0, 2 * Bit_Multiplier0);
+            #endregion
+            x_Pos_Banner += 15 * Bit_Multiplier0;//Neuen "Nullpunkt" für den Nächsten Buchstaben setzen
+            #region R_Letter
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, 10 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 15 * Bit_Multiplier0);
+            xPos += 8 * Bit_Multiplier0;
+            yPos += Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 14 * Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 10 * Bit_Multiplier0, 8 * Bit_Multiplier0);
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 13 * Bit_Multiplier0);
+            xPos += 8 * Bit_Multiplier0;
+            yPos += Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 12 * Bit_Multiplier0);
+            colour = Color.SaddleBrown;
+            xPos -= 5 * Bit_Multiplier0;
+            yPos += 2 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 2 * Bit_Multiplier0);
+            yPos = y_Pos_Banner + 8 * Bit_Multiplier0;
+            xPos = x_Pos_Banner + 11 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 2 * Bit_Multiplier0, Bit_Multiplier0);
+            #endregion
+            x_Pos_Banner += 14 * Bit_Multiplier0;//Neuen "Nullpunkt" für den Nächsten Buchstaben setzen
+            #region I_Letter
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 9 * Bit_Multiplier0, 3 * Bit_Multiplier0);
+            xPos += 2 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 5 * Bit_Multiplier0, 15 * Bit_Multiplier0);
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner + 12 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 9 * Bit_Multiplier0, 3 * Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 7 * Bit_Multiplier0, Bit_Multiplier0);
+            yPos = y_Pos_Banner + 13 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 7 * Bit_Multiplier0, Bit_Multiplier0);
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            xPos = x_Pos_Banner + 3 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 3 * Bit_Multiplier0, 12 * Bit_Multiplier0);
+            #endregion
+            x_Pos_Banner += 10 * Bit_Multiplier0;//Neuen "Nullpunkt" für den Nächsten Buchstaben setzen 
+            #region O_Letter
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 14 * Bit_Multiplier0, 13 * Bit_Multiplier0);
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, 15 * Bit_Multiplier0);
+            colour = Color.Yellow;
+            xPos = x_Pos_Banner + Bit_Multiplier0;
+            yPos = y_Pos_Banner + 2 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 12 * Bit_Multiplier0, 11 * Bit_Multiplier0);
+            xPos = x_Pos_Banner + 2 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 10 * Bit_Multiplier0, 13 * Bit_Multiplier0);
+            colour = Color.SaddleBrown;
+            xPos = x_Pos_Banner + 4 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + 3 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 6 * Bit_Multiplier0, 9 * Bit_Multiplier0);
+            colour = Color.LightSkyBlue;
+            xPos = x_Pos_Banner + 5 * Bit_Multiplier0;
+            yPos = y_Pos_Banner + 4 * Bit_Multiplier0;
+            grundmethoden.malen_Bit(graphics, xPos, yPos, colour, colour, 4 * Bit_Multiplier0, 7 * Bit_Multiplier0);
+
+            #endregion
         }
     }
 }

@@ -28,7 +28,7 @@ namespace GDI_Malario
         List<bool> list_RichtungLinks_Enemys = new List<bool>();
         #endregion
         #region Variablen
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = true;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, Schriftzug = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = true;
         #region Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
         #endregion
@@ -39,7 +39,7 @@ namespace GDI_Malario
             getöteteGegner_Counter = 0,
             ScoreZähler = 0;
         #endregion
-        int animation_ms, interwall_GegnerSpawner = 300, interwall_RöhrenLaser,M_unkillable, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
+        int animation_ms, interwall_GegnerSpawner = 300, interwall_RöhrenLaser, M_unkillable, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
         int nextBlock = 0;
         #region Level_Generator
         int bodenhöhe = 432, bodenabstand, laufzähler = 960;
@@ -59,13 +59,14 @@ namespace GDI_Malario
             label3.Text = Convert.ToString(CoinCounter) + " Münzen";
 
 
+            if (Schriftzug == true) Malario.malen_Banner(graphics, 55, 140);
             if (Startbildschirm == true)
             {
                 malen_Startmenü();
                 Startbildschirm = false;
+
             }
             // malen_Startmenü(graphics);
-
             generiert_LevelAbschnitt();
             #region LevelObjekte werden gemalt
             int Zähler = 0;
@@ -189,20 +190,24 @@ namespace GDI_Malario
             switch (e.KeyCode)
             {
                 case Keys.F:
+                    Schriftzug = false;
                     if (I_Laser == true && I_LaserActive == false)
                     {
                         I_LaserActive = true;
                     }
                     break;
                 case Keys.D:
+                    Schriftzug = false;
                     M_Right = true;
                     M_Richtung = false;
                     break;
                 case Keys.A:
+                    Schriftzug = false;
                     M_Left = true;
                     M_Richtung = true;
                     break;
                 case Keys.W:
+                    Schriftzug = false;
                     if (M_Jump != true)
                     {
                         M_Jump = true;
@@ -293,7 +298,7 @@ namespace GDI_Malario
             else
             {
                 animation_ms += 17;
-                if (M_Right == true && x_Pos_Malario < Width / 2 -30)
+                if (M_Right == true && x_Pos_Malario < Width / 2 - 30)
                 {
                     M_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
@@ -497,7 +502,7 @@ namespace GDI_Malario
             LeftValue0 = -480;
             LeftValue1 = -480;
             int n = 0;
-            do if (list_Typ_Enemys.Count > 0 )
+            do if (list_Typ_Enemys.Count > 0)
                 {
                     C_Above = false;
                     C_Underneath = false;
@@ -507,7 +512,7 @@ namespace GDI_Malario
                     c_Underneath(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[n], list_y_Pos_Enemys[n], 30, 32);
 
                     //Mario links vom gegner
-                    if (x_Pos_Malario + 30 +nextBlock >= list_x_Pos_Enemys[n] && x_Pos_Malario <= list_x_Pos_Enemys[n] +30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario+30 >= list_y_Pos_Enemys[n])
+                    if (x_Pos_Malario + 30 + nextBlock >= list_x_Pos_Enemys[n] && x_Pos_Malario <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
                     {
                         if (M_Richtung == false && I_LaserAnimation == true)
                         {
@@ -517,7 +522,7 @@ namespace GDI_Malario
                         }
                     }
                     //mario rechts vom gegmer
-                    else if ( x_Pos_Malario - nextBlock <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
+                    else if (x_Pos_Malario - nextBlock <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
                     {
                         if (M_Richtung == true && I_LaserAnimation == true)
                         {
@@ -527,7 +532,7 @@ namespace GDI_Malario
                         }
 
                     }
-                    
+
                     n++;
                 } while (n < list_Typ_Enemys.Count);
             #endregion
@@ -872,6 +877,7 @@ namespace GDI_Malario
         }
         private void malen_Startmenü()
         {
+            Schriftzug = true;
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
             generiert_Rechteck(-216, 0, 1, 20, 10);
