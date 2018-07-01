@@ -28,21 +28,21 @@ namespace GDI_Malario
         List<bool> list_RichtungLinks_Enemys = new List<bool>();
         #endregion
         #region Variablen
-        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = true;
+        bool M_Right = false, M_Left = false, M_Richtung = false, M_Jump = false, Startbildschirm = true, Schriftzug = true, M_Gehend = false, M_Anziehungskraft = false, Goethe_AnziehungskraftBool = true;
         #region Collsions
         bool C_Right = false, C_Left = false, C_Above = false, C_Underneath = false;
         #endregion
         #region Items
-        bool I_Energy = false, I_Laser = true, I_LaserActive = false, I_LaserAnimation = false;
+        bool I_Energy = false, I_Laser = false, I_LaserActive = false, I_LaserAnimation = false;
         int M_Lives = 3,
             CoinCounter = 0,
             getöteteGegner_Counter = 0,
             ScoreZähler = 0;
         #endregion
-        int animation_ms, interwall_GegnerSpawner = 300, interwall_RöhrenLaser,M_unkillable, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
+        int animation_ms, interwall_GegnerSpawner = 300, interwall_RöhrenLaser, M_unkillable, LaserAnimation_ms, M_Bewegungskraft = 0, Block_Bewegungskraft = 0, anziehungskraft = 0, anziehungskraft_Steigen = -15, x_Pos_Malario = 48, y_Pos_Malario = 397, x_Pos_Block = 0, y_Pos_Block = 0, fall_Limit = 480, sprung_Limit = 0, rightlimit = 480, leftlimit = 0, M_Laufgeschwindigkeit = 3, Goethe_Geschwindigkeit = 3;
         int nextBlock = 0;
         #region Level_Generator
-        int bodenhöhe = 432, bodenabstand, laufzähler = 960;
+        int bodenhöhe = 432, bodenabstand, laufzähler = 1920;
         bool lvlGenerator_PipeLvl = false;
         #endregion
         #region Gegner
@@ -54,10 +54,14 @@ namespace GDI_Malario
         {
             Graphics graphics = e.Graphics;
             base.OnPaint(e);
+<<<<<<< HEAD
             #region Killcounter
             label1.Text = Convert.ToString(list_x_Pos_Obj.Count) + " Gegner getötet";
             #endregion
             #region livecounter
+=======
+            label1.Text = Convert.ToString(getöteteGegner_Counter) + " Gegner getötet";
+>>>>>>> f96cdf66c2a3af081e3568afca625120a09f6c8f
             label2.Text = Convert.ToString(M_Lives) + " Leben";
             #endregion
             #region Coincounter
@@ -65,13 +69,14 @@ namespace GDI_Malario
             #endregion
 
 
+            if (Schriftzug == true) Malario.malen_Banner(graphics, 55, 140);
             if (Startbildschirm == true)
             {
                 malen_Startmenü();
                 Startbildschirm = false;
+
             }
             // malen_Startmenü(graphics);
-
             generiert_LevelAbschnitt();
             #region LevelObjekte werden gemalt
             int Zähler = 0;
@@ -195,20 +200,24 @@ namespace GDI_Malario
             switch (e.KeyCode)
             {
                 case Keys.F:
+                    Schriftzug = false;
                     if (I_Laser == true && I_LaserActive == false)
                     {
                         I_LaserActive = true;
                     }
                     break;
                 case Keys.D:
+                    Schriftzug = false;
                     M_Right = true;
                     M_Richtung = false;
                     break;
                 case Keys.A:
+                    Schriftzug = false;
                     M_Left = true;
                     M_Richtung = true;
                     break;
                 case Keys.W:
+                    Schriftzug = false;
                     if (M_Jump != true)
                     {
                         M_Jump = true;
@@ -298,15 +307,15 @@ namespace GDI_Malario
             }
             else
             {
+                laufzähler += M_Laufgeschwindigkeit;
                 animation_ms += 17;
-                if (M_Right == true && x_Pos_Malario < Width / 2 -30)
+                if (M_Right == true && x_Pos_Malario < Width / 2 - 30)
                 {
                     M_Bewegungskraft = M_Laufgeschwindigkeit;
                 }
                 else if (M_Right == true)
                 {
                     Block_Bewegungskraft = -M_Laufgeschwindigkeit;
-                    laufzähler += M_Laufgeschwindigkeit;
                     ScoreZähler += M_Laufgeschwindigkeit;
                 }
             }
@@ -503,7 +512,7 @@ namespace GDI_Malario
             LeftValue0 = -480;
             LeftValue1 = -480;
             int n = 0;
-            do if (list_Typ_Enemys.Count > 0 )
+            do if (list_Typ_Enemys.Count > 0)
                 {
                     C_Above = false;
                     C_Underneath = false;
@@ -513,7 +522,7 @@ namespace GDI_Malario
                     c_Underneath(x_Pos_Malario, y_Pos_Malario, 30, 30, list_x_Pos_Enemys[n], list_y_Pos_Enemys[n], 30, 32);
 
                     //Mario links vom gegner
-                    if (x_Pos_Malario + 30 +nextBlock >= list_x_Pos_Enemys[n] && x_Pos_Malario <= list_x_Pos_Enemys[n] +30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario+30 >= list_y_Pos_Enemys[n])
+                    if (x_Pos_Malario + 30 + nextBlock >= list_x_Pos_Enemys[n] && x_Pos_Malario <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
                     {
                         if (M_Richtung == false && I_LaserAnimation == true)
                         {
@@ -523,7 +532,7 @@ namespace GDI_Malario
                         }
                     }
                     //mario rechts vom gegmer
-                    else if ( x_Pos_Malario - nextBlock <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
+                    else if (x_Pos_Malario - nextBlock <= list_x_Pos_Enemys[n] + 30 && y_Pos_Malario <= list_y_Pos_Enemys[n] + 32 && y_Pos_Malario + 30 >= list_y_Pos_Enemys[n])
                     {
                         if (M_Richtung == true && I_LaserAnimation == true)
                         {
@@ -533,7 +542,7 @@ namespace GDI_Malario
                         }
 
                     }
-                    
+
                     n++;
                 } while (n < list_Typ_Enemys.Count);
             #endregion
@@ -679,7 +688,7 @@ namespace GDI_Malario
                 M_Lives = 3;
                 CoinCounter = 0;
                 getöteteGegner_Counter = 0;
-                laufzähler = 960;
+                laufzähler = 1920;
                 x_Pos_Malario = 48;
                 y_Pos_Malario = 397;
                 list_x_Pos_Obj.Clear();
@@ -843,12 +852,12 @@ namespace GDI_Malario
                         Interwall_RöhrenLaser_zurücksetzen = true;
                         if (RöhrenLaser_ist_da == true)
                         {
-                            list_y_Pos_Enemys[j] -= 960;
+                            list_y_Pos_Enemys[j] += 960;
                             RöhrenLaser_ist_da = false;
                         }
-                        else
+                        else if(RöhrenLaser_ist_da == false)
                         {
-                            list_y_Pos_Enemys[j] += 960;
+                            list_y_Pos_Enemys[j] -= 960;
                             RöhrenLaser_ist_da = true;
                         }
                     }
@@ -859,12 +868,12 @@ namespace GDI_Malario
                         Interwall_RöhrenLaser_zurücksetzen = true;
                         if (RöhrenLaser_ist_da == true)
                         {
-                            list_y_Pos_Enemys[j] -= 960;
+                            list_y_Pos_Enemys[j] += 960;
                             RöhrenLaser_ist_da = false;
                         }
-                        else
+                        else if (RöhrenLaser_ist_da == false)
                         {
-                            list_y_Pos_Enemys[j] += 960;
+                            list_y_Pos_Enemys[j] -= 960;
                             RöhrenLaser_ist_da = true;
                         }
                     }
@@ -878,6 +887,7 @@ namespace GDI_Malario
         }
         private void malen_Startmenü()
         {
+            Schriftzug = true;
             x_Pos_Block = 0;
             y_Pos_Block = (this.Height - 39 - 48);
             generiert_Rechteck(-216, 0, 1, 20, 10);
@@ -953,7 +963,7 @@ namespace GDI_Malario
                     obj_Höhe = random.Next(2, 3),
                     xabstand = random.Next(0, 3),
                     yabstand = random.Next(-2, 2),
-                    lvlabschnitt_Art = random.Next(1, 1),
+                    lvlabschnitt_Art = random.Next(0, 3),
                     letzter_Block_x;
                 #endregion
                 int Zähler0 = 0, x_Value0 = 0, x_Value1 = 0;
@@ -1040,14 +1050,14 @@ namespace GDI_Malario
                     #endregion
                     #region Ebene 1
                     generiert_Rechteck(letzter_Block_x + 240, bodenhöhe - 120, 4, 1, Blockbreite + 1 * 2);
-                    generiert_Rechteck(letzter_Block_x + Width + 24, bodenhöhe - 120, 4, 1, Blockbreite + (12 - Blockbreite));
+                    generiert_Rechteck(letzter_Block_x + 504 + 24, bodenhöhe - 120, 4, 1, Blockbreite + (12 - Blockbreite));
                     #endregion
                     #region Ebene 2
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
                     Blockbreite = 6 - Blockbreite + 1;
                     generiert_Rechteck(letzter_Block_x + 240 + (24 * BlockAbstand), bodenhöhe - 216, 4, 1, Blockbreite + 1 * 2);
                     generiert_Rechteck(letzter_Block_x + 240 + (24 * (Blockbreite + 6)), bodenhöhe - 216, 4, 1, 1);
-                    generiert_Rechteck(letzter_Block_x + Width + 24 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
+                    generiert_Rechteck(letzter_Block_x + 504 + (24 * (BlockAbstand + 5)), bodenhöhe - 216, 4, 1, Blockbreite + (4 - Blockbreite));
                     #endregion
                     #region Ebene 3
                     generiert_Rechteck(letzter_Block_x - 24, bodenhöhe - 240, 4, 1, 6);
@@ -1111,7 +1121,7 @@ namespace GDI_Malario
                 }
                 #endregion
                 #region Leveltyp 3
-                else if (lvlabschnitt_Art == 2)
+                else if (lvlabschnitt_Art >= 2)
                 {
                     bodenhöhe = 456;
                     #region Rahmen des Dungeons
@@ -1150,7 +1160,7 @@ namespace GDI_Malario
                 #endregion
                 #endregion
                 letzter_Block_x += 24 * 40;
-                laufzähler = 0;
+                laufzähler -= 960;
             }
         }
         private void generiert_BodenAbschnitt(int boden_Höhe, int boden_Länge, int x_Coor)
